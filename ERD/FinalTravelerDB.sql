@@ -3,9 +3,9 @@ SET SESSION FOREIGN_KEY_CHECKS=0;
 /* Drop Tables */
 
 DROP TABLE IF EXISTS t_authority;
-DROP TABLE IF EXISTS t_Post_Location;
-DROP TABLE IF EXISTS t_Reservation;
-DROP TABLE IF EXISTS t_Member;
+DROP TABLE IF EXISTS t_post_location;
+DROP TABLE IF EXISTS t_reservation;
+DROP TABLE IF EXISTS t_member;
 
 
 
@@ -20,7 +20,7 @@ CREATE TABLE t_authority
 );
 
 
-CREATE TABLE t_Member
+CREATE TABLE t_member
 (
 	uid int NOT NULL AUTO_INCREMENT,
 	username varchar(20) NOT NULL,
@@ -35,7 +35,7 @@ CREATE TABLE t_Member
 );
 
 
-CREATE TABLE t_Post_Location
+CREATE TABLE t_post_location
 (
 	uid int NOT NULL AUTO_INCREMENT,
 	mb_uid int NOT NULL,
@@ -48,7 +48,7 @@ CREATE TABLE t_Post_Location
 );
 
 
-CREATE TABLE t_Reservation
+CREATE TABLE t_reservation
 (
 	uid int NOT NULL AUTO_INCREMENT,
 	mb_uid int NOT NULL,
@@ -65,25 +65,25 @@ CREATE TABLE t_Reservation
 
 ALTER TABLE t_authority
 	ADD FOREIGN KEY (mb_uid)
-	REFERENCES t_Member (uid)
+	REFERENCES t_member (uid)
 	ON UPDATE RESTRICT
 	ON DELETE CASCADE
 ;
 
 
-ALTER TABLE t_Post_Location
+ALTER TABLE t_post_location
 	ADD FOREIGN KEY (mb_uid)
-	REFERENCES t_Member (uid)
+	REFERENCES t_member (uid)
 	ON UPDATE RESTRICT
 	ON DELETE NO ACTION
 ;
 
 
-ALTER TABLE t_Reservation
+ALTER TABLE t_reservation
 	ADD FOREIGN KEY (mb_uid)
-	REFERENCES t_Member (uid)
+	REFERENCES t_member (uid)
 	ON UPDATE RESTRICT
-	ON DELETE RESTRICT
+	ON DELETE CASCADE
 ;
 
 
