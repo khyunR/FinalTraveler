@@ -2,15 +2,23 @@ package com.lec.spring.domain;
 
 import java.util.List;
 
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public class UserDAOImpl implements UserDAO {
 
+	UserDAO mapper;
+	
+	@Autowired
+	public UserDAOImpl(SqlSession sqlSession) {
+		mapper = sqlSession.getMapper(UserDAO.class);
+	}
+	
 	@Override
-	public int insert(UserDTO dto) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int insert(UserDTO user) {
+		return mapper.insert(user);
 	}
 
 	@Override
