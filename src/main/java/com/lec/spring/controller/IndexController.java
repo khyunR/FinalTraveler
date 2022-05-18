@@ -21,4 +21,9 @@ public class IndexController {
 	public String login() {
 		return "/loginForm";
 	}
+	
+	@RequestMapping("/sample/guestpage")
+	public String guestpage() {
+		return "sample/guestAccessTest";
+	}
 }
