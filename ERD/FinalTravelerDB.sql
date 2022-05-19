@@ -108,4 +108,4 @@ ALTER TABLE t_reservation
 ;
 
 
-
+SELECT * FROM t_member;

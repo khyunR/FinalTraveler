@@ -6,6 +6,12 @@ public interface UserDAO {
 	// 회원 추가
 	//  ┗ 회원가입
 	abstract int insert(UserDTO dto);
+	
+	// 중복 확인 용
+	//  ┗ 회원가입
+	abstract Count countByUsername(String username);
+	abstract Count countByNickname(String nickname);
+	abstract Count countByEmail(String email);
 
 	// 아이디로 특정 회원 조회
 	//  ┗ 로그인
@@ -25,7 +31,7 @@ public interface UserDAO {
 	
 	// 회원 권한 조회
 	//  ┗ 인가
-	abstract List<String> selectAuthsByUid(int uid);
+	abstract List<String> selectAuthsByUsername(String username);
 	
 	// 회원의 특정 권한 제거
 	//  ┗ 관리자 페이지 - 권한제거
@@ -38,4 +44,5 @@ public interface UserDAO {
 	// 회원 삭제
 	//  ┗ 회원탈퇴
 	abstract int delete(UserDTO dto);
+
 }

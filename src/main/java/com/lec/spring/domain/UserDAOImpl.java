@@ -17,56 +17,63 @@ public class UserDAOImpl implements UserDAO {
 	}
 	
 	@Override
-	public int insert(UserDTO user) {
-		return mapper.insert(user);
+	public int insert(UserDTO dto) {
+		return mapper.insert(dto);
 	}
 
 	@Override
 	public UserDTO selectByUsername(String username) {
-		// TODO Auto-generated method stub
-		return null;
+		return mapper.selectByUsername(username);
 	}
 
 	@Override
 	public int update(UserDTO dto) {
-		// TODO Auto-generated method stub
-		return 0;
+		return mapper.update(dto);
 	}
 
 	@Override
 	public List<UserDTO> selectByUsernameLike(String searchKey) {
-		// TODO Auto-generated method stub
-		return null;
+		return mapper.selectByUsernameLike(searchKey);
 	}
 
 	@Override
 	public int insertAuth(int mb_uid, String auth) {
-		// TODO Auto-generated method stub
-		return 0;
+		return mapper.insertAuth(mb_uid, auth);
 	}
 
 	@Override
-	public List<String> selectAuthsByUid(int uid) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<String> selectAuthsByUsername(String username) {
+		return mapper.selectAuthsByUsername(username);
 	}
 
 	@Override
 	public int deleteAuth(int uid, String auth) {
-		// TODO Auto-generated method stub
-		return 0;
+		return mapper.deleteAuth(uid, auth);
 	}
 
 	@Override
 	public int deleteAllAuths(int uid) {
-		// TODO Auto-generated method stub
-		return 0;
+		return mapper.deleteAllAuths(uid);
 	}
 
 	@Override
 	public int delete(UserDTO dto) {
-		// TODO Auto-generated method stub
-		return 0;
+		return mapper.delete(dto);
+	}
+
+	@Override
+	public Count countByUsername(String username) {
+		return mapper.countByUsername(username);
+	}
+
+	@Override
+	public Count countByEmail(String email) {
+		return mapper.countByEmail(email);
+	}
+
+	@Override
+	public Count countByNickname(String nickname) {
+		return mapper.countByNickname(nickname);
 	}
 
 }

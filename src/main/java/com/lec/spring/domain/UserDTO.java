@@ -1,10 +1,12 @@
 package com.lec.spring.domain;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
-@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class UserDTO {
 
 	int uid;
@@ -14,4 +16,7 @@ public class UserDTO {
 	String email;
 	String mobile;
 	
+	public UserDTO() {
+		System.out.println("UserDTO() 생성");
+	}
 }

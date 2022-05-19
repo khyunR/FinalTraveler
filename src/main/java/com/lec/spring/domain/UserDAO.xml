@@ -1,10 +1,108 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.lec.spring.domain.UserDAO">
+
 	<insert id="insert" parameterType="com.lec.spring.domain.UserDTO" flushCache="true">
 		INSERT INTO t_member (username, nickname, password, email, mobile)
 		VALUES (#{username}, #{nickname}, #{password}, #{email}, #{mobile})
 	</insert>
+	
+	<select id="countByUsername" parameterType="String" resultType="com.lec.spring.domain.Count">
+		SELECT
+			count(username) "count"
+		FROM
+			t_member
+		WHERE
+			username = #{username}
+	</select>
+	
+	<select id="countByNickname" parameterType="String" resultType="com.lec.spring.domain.Count">
+		SELECT
+			count(mobile) "count"
+		FROM
+			t_member
+		WHERE
+			nickname = #{nickname}
+	</select>
+	
+	<select id="countByEmail" parameterType="String" resultType="com.lec.spring.domain.Count">
+		SELECT
+			count(email) "count"
+		FROM
+			t_member
+		WHERE
+			email = #{email}
+	</select>
+	
+	<select id="selectByUsername" parameterType="String" resultType="com.lec.spring.domain.UserDTO">
+		SELECT
+			uid "uid",
+			username "username",
+			nickname "nickname",
+			password "password",
+			email "email",
+			mobile "mobile"
+		FROM
+			t_member
+		WHERE
+			username = #{username}
+	</select>
+	
+	<update id="update" parameterType="com.lec.spring.domain.UserDTO" flushCache="true">
+		UPDATE
+			t_member
+		SET
+			nickname = #{nickname},
+			mobile = #{mobile}
+		WHERE
+			uid = #{uid}
+	</update>
 
+	<select id="selectByUsernameLike" parameterType="String" resultType="com.lec.spring.domain.UserDTO">
+		SELECT
+			uid "uid",
+			username "username",
+			nickname "nickname",
+			password "password",
+			email "email",
+			mobile "mobile"
+		FROM
+			t_member
+		WHERE
+			username LIKE "%#{searchKey}%"
+	</select>
+	
+	<insert id="insertAuth" flushCache="true">
+		INSERT INTO t_authority (mb_uid, auth)
+		VALUES (#{param1}, #{param2})
+	</insert>
 
+	<select id="selectAuthsByUsername" parameterType="String" resultType="com.lec.spring.domain.AuthDTO">
+		SELECT 
+			username "username",
+			auth "auth"
+		FROM
+			t_auth
+		WHERE
+			username = #{param1} 
+	</select>
+	
+	
+	<delete id="deleteAuth" flushCache="true">
+		DELETE FROM t_auth
+		WHERE
+			mb_uid = #{param1} AND auth = #{param2}
+	</delete>
+	
+	
+	<delete id="deleteAllAuths" flushCache="true">
+		DELETE FROM t_auth
+		WHERE mb_uid = #{param1}
+	</delete>
+	
+	<delete id="delete" parameterType="com.lec.spring.domain.UserDTO" flushCache="true">
+		DELETE FROM t_member
+		WHERE uid = #{uid}
+	</delete>
+	
 </mapper>

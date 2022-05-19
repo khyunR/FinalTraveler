@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.lec.spring</groupId>
-	<artifactId>Security</artifactId>
+	<artifactId>FinalTraveler</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Bt020_Security</name>
-	<description>Spring Security</description>
+	<name>FinalTraveler</name>
+	<description>Final Project</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
@@ -52,7 +52,11 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-validation</artifactId>
+		</dependency>
+		
 		<!-- JSP library -->
 		<dependency>
 			<groupId>org.apache.tomcat.embed</groupId>
