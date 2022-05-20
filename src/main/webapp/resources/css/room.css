@@ -1,0 +1,27 @@
+@charset "UTF-8";
+
+#wrap{
+    width: 100%;
+    height: 100%;
+}
+
+.room_all{
+   width: 100px;
+   height: 250px;
+}
+
+.room_img{
+    width: 200px;
+    height: 100px;
+
+    background-color: aqua;
+}
+
+.room_all > h2{
+    width: 500px;
+    height: 25px;
+    text-align: center;
+}
+
+
+
