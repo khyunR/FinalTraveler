@@ -5,23 +5,30 @@
     height: 100%;
 }
 
-.room_all{
-   width: 100px;
-   height: 250px;
-}
-
 .room_img{
-    width: 200px;
-    height: 100px;
+    width: 800px;
+    height: 200px;
+} 
 
-    background-color: aqua;
+.room_img > img{
+    width: 350px;
+    height: 200px;
+    margin-top: 180px;
+    margin-left: 400px;
+    margin-bottom: 50px;
+    object-fit: cover;
 }
 
-.room_all > h2{
+#room_name > h2{
     width: 500px;
     height: 25px;
-    text-align: center;
+    margin-left: 800px;
 }
 
-
+#room_name > p{
+    width: 500px;
+    height: 25px;
+    margin-top: 50px;
+    margin-left: 800px;
+}
 

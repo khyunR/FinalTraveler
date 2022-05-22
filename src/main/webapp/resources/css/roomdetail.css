@@ -4,3 +4,69 @@
     width: 100%;
     height: 100%;
 }
+
+.room_name{
+    width: 250px;
+    height: 50px;
+    margin-top: 100px;
+    margin-left: 300px;
+    text-align: center;
+    font-weight: 900;
+    font-size: 19px;
+}
+
+.room_pic{
+    width: 800px;
+    height: 10px;
+} 
+
+.room_pic > img{
+    width: 350px;
+    height: 300px;
+    margin-left: 300px;
+    margin-top: 10px;
+    object-fit: cover;
+}
+
+.room_choose{
+    width: 500px;
+    height: 280px;
+    margin-left: 750px;
+}
+
+.room_choose > p{
+    padding-top: 50px;
+    font-weight: 900;
+    font-size: 19px;
+}
+
+.room_res{
+    width: 70px;
+    height: 25px;
+    margin-left: 50px;
+    margin-top: 100px;
+}
+
+.room_pics > img{
+    width: 350px;
+    height: 300px;
+    margin-left: 300px;
+    margin-top: 150px;
+    object-fit: cover;
+}
+
+.room_info{
+    width: 800px;
+    height: 200px;
+    margin-left: 400px;
+    padding-top: 50px;
+    text-align: center;
+    font-weight: 900;
+}
+
+.room_map{
+    width: 500px;
+    height: 400px;
+    margin-left: 500px;
+    background-color: beige;
+}
