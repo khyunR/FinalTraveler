@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/common.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/index.css" />
 <script src="${pageContext.request.contextPath}/resources/js/common.js" defer></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -11,7 +12,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Seoul Traveler</title>
 </head>
 <body>
 <body>
@@ -69,7 +70,7 @@
                 <div class="about_box">
                     <ul class="place_list box_inner clear">
                         <li class="place_list_img">
-                            <a href="#">
+                            <a href="${pageContext.request.contextPath}/travel/namsanTower">
                                 <img src="${pageContext.request.contextPath}/resources/images/namsan_tower.jpg" alt="남산 타워" class="img_topplace">
                                 <h3>남산 타워</h3>
                                 <p class="txt">
@@ -153,7 +154,7 @@
                     </span>
                 </p>
                 <p class="copy box_inner">
-                    Copyrightⓒ TouristInTour all right reserved
+                    Copyrightⓒ SeoulTraveler all right reserved
                 </p>
             </div>
         </footer>

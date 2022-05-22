@@ -230,6 +230,48 @@ header > .header_area > h1 > a{
 .header_cont .gnb li:last-child a{ padding-right: 30px; }
 
 #container{ padding-bottom: 70px; }
+
+/* footer */
+footer { border-top: 1px solid #ddd; }
+footer > .foot_area { position: relative; padding-bottom: 40px; }
+footer > .foot_area > .foot_list { padding-top: 25px; }
+
+footer > .foot_area > .foot_list > li { float:left; }
+footer > .foot_area > .foot_list li:first-child::after {
+    content:"|";
+    display: inline-block;
+    padding: 0 10px;
+    font-size: 10px;
+    color:#000;
+    position: relative;
+    top:-2px;
+}
+footer > .foot_area > .foot_list > li > a{ 
+    font-weight: bold;
+    font-size: 15px;
+}
+footer > .foot_area > h2 {
+    padding-top: 25px;
+    font-size: 14px;
+    color:#666;
+}
+footer > .foot_area > .addr{
+    padding-top: 5px;
+    line-height: 1.4;
+    font-size: 13px;
+    color:#666;
+}
+footer > .foot_area > .addr .space0{
+    letter-spacing: 0;
+}
+/* Copyright 스타일링 */
+footer > .foot_area > .copy{
+    padding-top: 3px;
+    font-size: 13px;
+    color:#666;
+    letter-spacing: 0;
+}
+
 /* 롤링 */
 .main_rolling_mobile{ display:none; }
 .visualRoll{ position: relative; width:100%;}
@@ -325,46 +367,6 @@ border: 0 !important;
     overflow:hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-}
-/* footer */
-footer { border-top: 1px solid #ddd; }
-footer > .foot_area { position: relative; padding-bottom: 40px; }
-footer > .foot_area > .foot_list { padding-top: 25px; }
-
-footer > .foot_area > .foot_list > li { float:left; }
-footer > .foot_area > .foot_list li:first-child::after {
-    content:"|";
-    display: inline-block;
-    padding: 0 10px;
-    font-size: 10px;
-    color:#000;
-    position: relative;
-    top:-2px;
-}
-footer > .foot_area > .foot_list > li > a{ 
-    font-weight: bold;
-    font-size: 15px;
-}
-footer > .foot_area > h2 {
-    padding-top: 25px;
-    font-size: 14px;
-    color:#666;
-}
-footer > .foot_area > .addr{
-    padding-top: 5px;
-    line-height: 1.4;
-    font-size: 13px;
-    color:#666;
-}
-footer > .foot_area > .addr .space0{
-    letter-spacing: 0;
-}
-/* Copyright 스타일링 */
-footer > .foot_area > .copy{
-    padding-top: 3px;
-    font-size: 13px;
-    color:#666;
-    letter-spacing: 0;
 }
 
 
