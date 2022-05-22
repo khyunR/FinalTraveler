@@ -125,4 +125,8 @@ public class IndexController {
 	public String guestpage() {
 		return "sample/guestAccessTest";
 	}
+	@RequestMapping("/main")
+	public String main() {
+		return "/index";
+	}
 }

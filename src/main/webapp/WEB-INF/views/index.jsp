@@ -79,7 +79,7 @@
                             </a>
                         </li>
                         <li class="place_list_img">
-                            <a href="#">
+                            <a href="${pageContext.request.contextPath}/travel/olympicPark">
                                 <img src="${pageContext.request.contextPath}/resources/images/olympic_park.jpg" alt="올림픽 공원" class="img_topplace">
                                 <h3>올림픽 공원</h3>
                                 <p class="txt">
@@ -88,7 +88,7 @@
                             </a>
                         </li>
                         <li class="place_list_img">
-                            <a href="#">
+                            <a href="${pageContext.request.contextPath}/travel/seoulForest">
                                 <img src="${pageContext.request.contextPath}/resources/images/seoul_forest.jpg" alt="서울숲" class="img_topplace">
                                 <h3>서울숲</h3>
                                 <p class="txt">

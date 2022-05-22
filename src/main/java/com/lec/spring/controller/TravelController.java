@@ -10,4 +10,12 @@ public class TravelController {
 	public String namsanTower() {
 		return "/travel/namsanTower";
 	}
+	@RequestMapping("/olympicPark")
+	public String olympicPark() {
+		return "/travel/olympicPark";
+	}
+	@RequestMapping("/seoulForest")
+	public String seoulForest() {
+		return "/travel/seoulForest";
+	}
 }

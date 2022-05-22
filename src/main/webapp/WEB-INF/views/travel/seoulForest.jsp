@@ -14,7 +14,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Namsan Tower</title>
+<title>Olympic Park</title>
 </head>
 <body>
 <body>
@@ -44,7 +44,7 @@
             </div>
         </header>
         <div class="title">
-        <h2>남산 타워</h2>
+        <h2>올림픽 공원</h2>
         </div>
 <div class="content">
 		<div class="imageWrap">
@@ -53,17 +53,17 @@
 			          <ul class="ImgList">
                         <li class="imgList0">
                             <div class="roll_content">
-                                <img src="../../resources/images/namsan_tower.jpg"  alt="남산타워"><p class="roll_txtline"></p>
+                                <img src="../../resources/images/seoul_forest.jpg" alt="서울숲"><p class="roll_txtline"></p>
                             </div>
                         </li>
                         <li class="imgList1">
                             <div class="roll_content">
-                                <img src="../../resources/images/namsan_tower1.jpg" alt="남산타워"><p class="roll_txtline"></p>
+                                <img src="../../resources/images/seoul_forest1.jpg" alt="서울숲"><p class="roll_txtline"></p>
                             </div>
                         </li>
                         <li class="imgList2">
                             <div class="roll_content">
-                                <img src="../../resources/images/namsan_tower2.jpg"  alt="남산타워"><p class="roll_txtline"></p>
+                                <img src="../../resources/images/seoul_forest2.jpg" alt="서울숲"><p class="roll_txtline"></p>
                             </div>
                         </li>
                     </ul>
@@ -73,16 +73,19 @@
 	<div class="infoWrap">	
 	<div class="subtitle">상세 정보</div>
 	 <div id="info">
-	 ‘남산서울타워’는 효율적인 방송전파 송수신과 한국의 전통미를 살린 관광 전망시설의 기능을 겸비한 국내 최초의 종합전파 탑으로 방송문화와 관광산업의 미래를 위해 건립되었습니다. 세계 유명한 종합 탑들이 그 나라 또는 그 도시의 상징적인 존재가 된 것처럼 '남산서울타워' 역시 지난 40여 년간 대한민국의 대표적인 관광지이자 서울의 상징물 역할을 해왔습니다. ‘남산서울타워’는 서울 시내 전 지역에서 바라보이는 탑의 높이와 독특한 구조, 형태 등으로 인하여 시민의 관심과 사랑의 대상이 되었고, 내외국인들이 즐겨 찾는 제1의 관광 명소로서의 위치를 확고히 하고 있습니다. 최근에는 한류 바람을 몰고 온 각종 예능, 드라마의 촬영지로 이름이 높아지면서 내외국인 관광객들이 발길이 끊이지 않는 곳입니다.
-	 </div>
+	 서울숲은 문화예술공원, 체험학습원, 생태숲, 습지생태원 네 가지의 특색 있는 공간들로 구성되어 있으며, 한강과 맞닿아 있어 다양한 문화여가공간을 제공합니다.
+    또한 서울숲공원은 조성부터 프로그램 운영까지 시민의 참여로 이루어진 최초의 공원입니다.
+   </div>
 	</div>
 	<div class="mapWrap">	
 	 <div id="map"></div>
 		<div class="mapInfo">
 			<div class="address">
-				<div class="mAddr"><span>주소</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;서울 용산구 남산공원길 105 (용산동2가 산1-3)</div>
-				<div class="homepage"><span>홈페이지</span> &nbsp;&nbsp; www.seoultower.co.kr</div>
-				<div class="price"><span>전망대</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;16,000원(대인) / 12,000원(소인)</div>
+				<div class="mAddr"><span>주소</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;서울 성동구 뚝섬로 273 (성수동1가 685-20)</div>
+				<div class="mAddr"><span>전화</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;02-460-2905</div>
+				<div class="homepage"><span>홈페이지</span> &nbsp;&nbsp; https://seoulforest.or.kr/</div>
+				<div class="price"><span>주차안내</span> &nbsp;&nbsp;&nbsp;070-7119-2893, 1688-1054(24시간)</div>
+				<div class="price"><span>관람시간</span> &nbsp;&nbsp;&nbsp;연중무휴 (일부 시설 월요일 휴관)</div>
 				</div>
 			</div>
 	    </div>
@@ -131,7 +134,7 @@ var map = new kakao.maps.Map(mapContainer, mapOption);
 var geocoder = new kakao.maps.services.Geocoder();
 
 // 주소로 좌표를 검색합니다
-geocoder.addressSearch('서울 용산구 남산공원길 105', function(result, status) {
+geocoder.addressSearch('서울 성동구 뚝섬로 273', function(result, status) {
 
     // 정상적으로 검색이 완료됐으면 
      if (status === kakao.maps.services.Status.OK) {
@@ -146,7 +149,7 @@ geocoder.addressSearch('서울 용산구 남산공원길 105', function(result, 
 
         // 인포윈도우로 장소에 대한 설명을 표시합니다
         var infowindow = new kakao.maps.InfoWindow({
-            content: '<div style="width:150px;text-align:center;padding:6px 0;">남산타워</div>'
+            content: '<div style="width:150px;text-align:center;padding:6px 0;">서울숲</div>'
         });
         infowindow.open(map, marker);
 

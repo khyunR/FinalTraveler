@@ -14,7 +14,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Namsan Tower</title>
+<title>Olympic Park</title>
 </head>
 <body>
 <body>
@@ -44,7 +44,7 @@
             </div>
         </header>
         <div class="title">
-        <h2>남산 타워</h2>
+        <h2>올림픽 공원</h2>
         </div>
 <div class="content">
 		<div class="imageWrap">
@@ -53,17 +53,17 @@
 			          <ul class="ImgList">
                         <li class="imgList0">
                             <div class="roll_content">
-                                <img src="../../resources/images/namsan_tower.jpg"  alt="남산타워"><p class="roll_txtline"></p>
+                                <img src="../../resources/images/olympic_park.jpg" alt="올림픽 공원"><p class="roll_txtline"></p>
                             </div>
                         </li>
                         <li class="imgList1">
                             <div class="roll_content">
-                                <img src="../../resources/images/namsan_tower1.jpg" alt="남산타워"><p class="roll_txtline"></p>
+                                <img src="../../resources/images/olympic_park1.jpg" alt="올림픽 공원"><p class="roll_txtline"></p>
                             </div>
                         </li>
                         <li class="imgList2">
                             <div class="roll_content">
-                                <img src="../../resources/images/namsan_tower2.jpg"  alt="남산타워"><p class="roll_txtline"></p>
+                                <img src="../../resources/images/olympic_park2.jpg" alt="올림픽 공원"><p class="roll_txtline"></p>
                             </div>
                         </li>
                     </ul>
@@ -73,16 +73,18 @@
 	<div class="infoWrap">	
 	<div class="subtitle">상세 정보</div>
 	 <div id="info">
-	 ‘남산서울타워’는 효율적인 방송전파 송수신과 한국의 전통미를 살린 관광 전망시설의 기능을 겸비한 국내 최초의 종합전파 탑으로 방송문화와 관광산업의 미래를 위해 건립되었습니다. 세계 유명한 종합 탑들이 그 나라 또는 그 도시의 상징적인 존재가 된 것처럼 '남산서울타워' 역시 지난 40여 년간 대한민국의 대표적인 관광지이자 서울의 상징물 역할을 해왔습니다. ‘남산서울타워’는 서울 시내 전 지역에서 바라보이는 탑의 높이와 독특한 구조, 형태 등으로 인하여 시민의 관심과 사랑의 대상이 되었고, 내외국인들이 즐겨 찾는 제1의 관광 명소로서의 위치를 확고히 하고 있습니다. 최근에는 한류 바람을 몰고 온 각종 예능, 드라마의 촬영지로 이름이 높아지면서 내외국인 관광객들이 발길이 끊이지 않는 곳입니다.
-	 </div>
+	 올림픽 공원의 전체면적은 43만 8000평으로 서울특별시가 1,823억 원의 사업비를 들여 1984년 4월에 착공해 1986년 4월에 완공하였습니다. 
+     원래는 1986년 서울아시아경기대회와 1988년 서울올림픽대회를 목적으로 건설되었으나, 지금은 체육·문화예술·역사·교육·휴식 등 다양한 용도를 갖춘 종합공원으로 이용되고 있습니다.
+     3개 테마공원으로 구분되는데, 첫째는 산책·조깅 코스, 건강지압로, 인라인스케이팅, 레포츠 킥보딩, 엑스게임경기장으로 이루어진 건강올림픽공원이고, 둘째는 몽촌역사관, 몽촌토성, 평화의 성지, 조각작품공원, 올림픽미술관으로 이루어진 볼거리 올림픽공원, 셋째는 호돌이 관광열차, 음악분수, 웨딩사진 찍기, 이벤트 광장 등으로 구성된 재미있는 올림픽공원입니다.
+	</div>
 	</div>
 	<div class="mapWrap">	
 	 <div id="map"></div>
 		<div class="mapInfo">
 			<div class="address">
-				<div class="mAddr"><span>주소</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;서울 용산구 남산공원길 105 (용산동2가 산1-3)</div>
-				<div class="homepage"><span>홈페이지</span> &nbsp;&nbsp; www.seoultower.co.kr</div>
-				<div class="price"><span>전망대</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;16,000원(대인) / 12,000원(소인)</div>
+				<div class="mAddr"><span>주소</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;서울 송파구 올림픽로 424 (방이동 88-3)</div>
+				<div class="homepage"><span>홈페이지</span> &nbsp;&nbsp; olympicpark.kspo.or.kr</div>
+				<div class="price"><span>영업시간</span> &nbsp;&nbsp;&nbsp;05:00 - 22:00 도보나 자전거 출입 (광장지역은 24:00)</div>
 				</div>
 			</div>
 	    </div>
@@ -131,7 +133,7 @@ var map = new kakao.maps.Map(mapContainer, mapOption);
 var geocoder = new kakao.maps.services.Geocoder();
 
 // 주소로 좌표를 검색합니다
-geocoder.addressSearch('서울 용산구 남산공원길 105', function(result, status) {
+geocoder.addressSearch('서울 송파구 올림픽로 424', function(result, status) {
 
     // 정상적으로 검색이 완료됐으면 
      if (status === kakao.maps.services.Status.OK) {
@@ -146,7 +148,7 @@ geocoder.addressSearch('서울 용산구 남산공원길 105', function(result, 
 
         // 인포윈도우로 장소에 대한 설명을 표시합니다
         var infowindow = new kakao.maps.InfoWindow({
-            content: '<div style="width:150px;text-align:center;padding:6px 0;">남산타워</div>'
+            content: '<div style="width:150px;text-align:center;padding:6px 0;">올림픽 공원</div>'
         });
         infowindow.open(map, marker);
 
