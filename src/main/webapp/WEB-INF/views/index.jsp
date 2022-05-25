@@ -15,7 +15,6 @@
 <title>Seoul Traveler</title>
 </head>
 <body>
-<body>
     <div id="wrap">
         <header>
             <div class="header_area box_inner clear">
@@ -35,6 +34,9 @@
                             </li>
                             <li>
                                 <a href="#" class="openAll">공지사항</a>
+                            </li>
+                            <li>
+                            <div id="weather"></div>
                             </li>
                         </ul>
                     </nav>
@@ -159,6 +161,7 @@
             </div>
         </footer>
     </div>
+    
 
 </body>
 </html> 

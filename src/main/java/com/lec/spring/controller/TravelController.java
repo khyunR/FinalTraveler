@@ -17,5 +17,6 @@ public class TravelController {
 	@RequestMapping("/seoulForest")
 	public String seoulForest() {
 		return "/travel/seoulForest";
+		}
 	}
-}
+

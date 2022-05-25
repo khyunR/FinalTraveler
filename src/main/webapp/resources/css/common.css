@@ -228,6 +228,7 @@ header > .header_area > h1 > a{
 .header_cont .gnb li{ float:left; }
 .header_cont .gnb li a{ display: block; padding:15px 30px 15px; font-size: 22px; color:black; }
 .header_cont .gnb li:last-child a{ padding-right: 30px; }
+.header_cont .gnb li:last-child { float:right; }
 
 #container{ padding-bottom: 70px; }
 
