@@ -218,6 +218,15 @@ header > .header_area > h1 > a{
     position: relative;
     top:-2px;
 }
+.header_cont .util li:nth-child(2)::after{
+    content:"|";
+    display:inline-block;
+    padding:0 10px;
+    font-size: 10px;
+    color:black;
+    position: relative;
+    top:-2px;
+}
 .header_cont .util li a{ font-size: 14px; color:black; }
 
 .header_cont .gnb {

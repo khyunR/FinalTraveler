@@ -1,5 +1,7 @@
 package com.lec.spring.domain;
 
+import java.time.LocalDateTime;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -10,11 +12,13 @@ import lombok.Data;
 public class UserDTO {
 
 	int uid;
-	String username;
-	String nickname;
-	String password;
-	String email;
-	String mobile;
+	private String username;
+	private String nickname;
+	private String password;
+	private String email;
+	private String mobile;
+	private String enabled;
+	private LocalDateTime regDate;
 	
 	public UserDTO() {
 		System.out.println("UserDTO() 생성");

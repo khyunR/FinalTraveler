@@ -1,43 +1,40 @@
 package com.lec.spring.controller;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.lec.spring.domain.UserDTO;
+import com.lec.spring.domain.UserValidator;
 import com.lec.spring.service.UserService;
 
 
 @Controller
 public class IndexController {
 	
-
-	UserService userService;
-
-	public IndexController() {}
-	
 	@Autowired
-	public void setUserService(UserService userService) {
-		this.userService = userService;
-	}
-	
+	UserService userService;
 	@Autowired
 	private PasswordEncoder passwordEncoder;
+
 	
-	@GetMapping("/login")
-	public String login() {
-		return "/loginForm";
-	}
-	
+	public IndexController() {}
+
 	@RequestMapping("/register")
 	public String register(UserDTO dto, Model model) {
 		System.out.println("register() 호출");
@@ -47,13 +44,14 @@ public class IndexController {
 	@PostMapping("/registerOk")
 	public String registerOk(@ModelAttribute("w") @Valid UserDTO dto, String repassword,
 			BindingResult result, Model model, RedirectAttributes redirectAttrs) {
+		
 		System.out.println("registerOk() 호출: " + dto.getUid() + ": " + dto.getUsername());
 		System.out.println("repassword: " + repassword);
-		System.out.println("result: " + result.toString());
-		String page = "registerOk";
+		String page = "/registerOk";
         
 		if(result.hasErrors()) {
 			System.out.println("result.hasError() == true");
+			page = "redirect:/register";
 			redirectAttrs.addFlashAttribute("w", dto);
 			if(result.getFieldError("username") != null) {
 				redirectAttrs.addFlashAttribute("errUsername", "아이디를 입력하세요.");
@@ -92,13 +90,13 @@ public class IndexController {
 					break;
 				}
 			}
-			page = "redirect:/register";
 		}else {
 			System.out.println("result.hasError() == false");
 			int usernameDupChkDto = userService.countByUsername(dto.getUsername()).getCount();
 			int nicknameDupChkDto = userService.countByNickname(dto.getNickname()).getCount();
 			int emailDupChkDto = userService.countByEmail(dto.getEmail()).getCount();
 			if(usernameDupChkDto != 0 || nicknameDupChkDto != 0 || emailDupChkDto != 0) {
+				page = "redirect:/register";
 				redirectAttrs.addFlashAttribute("w", dto);
 				if(usernameDupChkDto != 0) {
 					redirectAttrs.addFlashAttribute("errUsername", "중복되는 아이디가 존재합니다.");	
@@ -109,7 +107,6 @@ public class IndexController {
 				if(emailDupChkDto != 0) {				
 					redirectAttrs.addFlashAttribute("errEmail", "중복되는 이메일이 존재합니다.");	
 				}
-				page = "redirect:/register";
 			}else {
 				String rawPw = dto.getPassword();
 				String encPw = passwordEncoder.encode(rawPw);
@@ -121,6 +118,27 @@ public class IndexController {
 		return page;
 	}
 	
+	@GetMapping("/login")
+	public String login() {
+		return "/loginForm";
+	}
+	
+	@PostMapping("/login")
+	public String loginFail() {
+		System.out.println("POST: /login");
+		return "/loginForm";
+	}
+	
+	@RequestMapping("/auth")
+	@ResponseBody
+	public Authentication auth (HttpSession session) {
+		return SecurityContextHolder.getContext().getAuthentication();
+	}
+	
+	
+    @RequestMapping("/accessError")
+    public void accessError() {}
+	
 	@RequestMapping("/sample/guestpage")
 	public String guestpage() {
 		return "sample/guestAccessTest";
@@ -129,4 +147,10 @@ public class IndexController {
 	public String main() {
 		return "/index";
 	}
+	
+	@InitBinder
+	public void initBinder(WebDataBinder binder) {
+		binder.setValidator(new UserValidator());
+	}
+	
 }

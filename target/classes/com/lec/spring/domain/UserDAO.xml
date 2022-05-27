@@ -2,7 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.lec.spring.domain.UserDAO">
 
-	<insert id="insert" parameterType="com.lec.spring.domain.UserDTO" flushCache="true">
+	<insert id="insert" parameterType="com.lec.spring.domain.UserDTO" flushCache="true"
+			useGeneratedKeys="true" keyColumn="uid" keyProperty="uid">
 		INSERT INTO t_member (username, nickname, password, email, mobile)
 		VALUES (#{username}, #{nickname}, #{password}, #{email}, #{mobile})
 	</insert>
@@ -41,7 +42,9 @@
 			nickname "nickname",
 			password "password",
 			email "email",
-			mobile "mobile"
+			mobile "mobile",
+			enabled "enabled",
+			regdate "regDate"
 		FROM
 			t_member
 		WHERE
@@ -65,7 +68,9 @@
 			nickname "nickname",
 			password "password",
 			email "email",
-			mobile "mobile"
+			mobile "mobile",
+			enabled "enabled",
+			regdate "regDate"
 		FROM
 			t_member
 		WHERE
@@ -82,22 +87,34 @@
 			username "username",
 			auth "auth"
 		FROM
-			t_auth
+			(select tm.username username, ta.auth auth
+			from t_member tm inner join t_authority ta
+			where tm.uid = ta.mb_uid) tm_ta
 		WHERE
 			username = #{param1} 
 	</select>
 	
 	
 	<delete id="deleteAuth" flushCache="true">
-		DELETE FROM t_auth
-		WHERE
-			mb_uid = #{param1} AND auth = #{param2}
+		delete from
+			t_authority
+		where
+			mb_uid = 
+				(select uid
+				from t_member 
+				where username = #{param1})
+			and auth = #{param2};
 	</delete>
 	
 	
 	<delete id="deleteAllAuths" flushCache="true">
-		DELETE FROM t_auth
-		WHERE mb_uid = #{param1}
+		delete from
+			t_authority
+		where
+			mb_uid = 
+				(select uid
+				from t_member 
+				where username = #{param1})
 	</delete>
 	
 	<delete id="delete" parameterType="com.lec.spring.domain.UserDTO" flushCache="true">

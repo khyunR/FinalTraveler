@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.lec.spring.domain.AuthDTO;
 import com.lec.spring.domain.Count;
 import com.lec.spring.domain.UserDAO;
 import com.lec.spring.domain.UserDTO;
@@ -21,7 +22,11 @@ public class UserService {
 	}
 	
 	public int insert(UserDTO dto) {
-		return dao.insert(dto);
+		int cnt =  dao.insert(dto);
+		if(cnt==1) {
+			dao.insertAuth(dto.getUid(), "ROLE_MEMBER");			
+		}
+		return cnt;
 	}
 	
 	public UserDTO selectByUsername(String username) {
@@ -40,7 +45,7 @@ public class UserService {
 		return dao.insertAuth(mb_uid, auth);
 	}
 	
-	public List<String> selectAuthsByUsername(String username) {
+	public List<AuthDTO> selectAuthsByUsername(String username) {
 		return dao.selectAuthsByUsername(username);
 	}
 

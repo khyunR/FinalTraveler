@@ -23,16 +23,35 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		
 		http
 			.authorizeRequests()
-			.antMatchers("/user/**").authenticated()
+			.antMatchers("/user/**").authenticated()		
+			.antMatchers("/member/**").access("hasRole('ROLE_ADMIN') or hasRole('ROLE_MEMBER')")
 			.antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
 			.anyRequest().permitAll()
 			.and()
+			
+//			.csrf()
+//			.ignoringAntMatchers("/login")
+//			.ignoringAntMatchers("/loginOk")
+//			.and()
 			
 			.formLogin()
 			.loginPage("/login")
 			.loginProcessingUrl("/loginOk")
 			.defaultSuccessUrl("/")
 			.successHandler(new CustomLoginSuccessHandler("/"))
+			.failureHandler(new CustomLoginFailureHandler())
+			.and()
+			
+			.exceptionHandling()
+			.accessDeniedHandler(new CustomAccessDeniedHandler())
+			.and()
+			
+			.logout()
+			.logoutUrl("/logout")
+			.logoutSuccessUrl("/login?logout")
+			.invalidateHttpSession(false)
+			.logoutSuccessHandler(new CustomLogoutSuccessHandler())
+
 			;
 	}
 }

@@ -14,7 +14,6 @@ public class WriteDAOImpl implements WriteDAO {
 	@Autowired
 	public WriteDAOImpl(SqlSession sqlSession) {
 		System.out.println("WriteDAOImpl() 생성");
-		// MyBatis 가 생성한 WriteDAO 의 mapper (구현체)를 받아온다.
 		mapper = sqlSession.getMapper(WriteDAO.class);   
 	}
 	

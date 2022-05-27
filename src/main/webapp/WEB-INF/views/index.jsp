@@ -1,11 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
+<sec:authentication property="name" var="username"/>
+<sec:authentication property="authorities" var="authorities"/>
+<sec:authentication property="principal" var="principal"/>
+
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/common.css" />
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/index.css" />
 <script src="${pageContext.request.contextPath}/resources/js/common.js" defer></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
 
 
 <!DOCTYPE html>
@@ -21,8 +26,20 @@
                 <h1><a href="">Seoul Traveler</a></h1>
                 <div class="header_cont">
                     <ul class="util clear">
-                        <li><a href="">로그인</a></li>
-                        <li><a href="">회원가입</a></li>
+                    	<sec:authorize access="isAnonymous()">
+	                        <li><a href="${pageContext.request.contextPath }/login">로그인</a></li>
+	                        <li><a href="${pageContext.request.contextPath }/register">회원가입</a></li>
+                    	</sec:authorize>
+                    	<sec:authorize access="isAuthenticated()">
+	                    	<sec:authorize access="hasRole('ADMIN')">
+		                        <li><a href="${pageContext.request.contextPath }/admin/">관리자</a></li>
+
+	                    	</sec:authorize>
+	                    	<sec:authorize access="hasRole('MEMBER')">
+		                        <li><a href="${pageContext.request.contextPath }/user/mypage">마이페이지</a></li>
+	                    	</sec:authorize>
+	                    	<li><a href="${pageContext.request.contextPath }/logout">로그아웃</a></li>
+                    	</sec:authorize>
                     </ul>
                     <nav>
                         <ul class="gnb clear">

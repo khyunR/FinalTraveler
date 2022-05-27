@@ -42,7 +42,7 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public List<String> selectAuthsByUsername(String username) {
+	public List<AuthDTO> selectAuthsByUsername(String username) {
 		return mapper.selectAuthsByUsername(username);
 	}
 

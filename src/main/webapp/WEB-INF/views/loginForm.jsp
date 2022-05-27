@@ -16,6 +16,7 @@
 		<input type="text" name="username" id="username" class="" required><br>
 		<label for="password">비밀번호: </label><br>
 		<input type="password" name="password" id="password" class="" required><br>
+		<span class="error text-danger">${errorMessage }</span><br>
 		<button type="submit" class="btn btn-outline-dark">로그인</button>
 	</form>
 	<a class="btn btn-outline-dark" href="/register">회원가입</a><br>

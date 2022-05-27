@@ -31,7 +31,7 @@ public interface UserDAO {
 	
 	// 회원 권한 조회
 	//  ┗ 인가
-	abstract List<String> selectAuthsByUsername(String username);
+	abstract List<AuthDTO> selectAuthsByUsername(String username);
 	
 	// 회원의 특정 권한 제거
 	//  ┗ 관리자 페이지 - 권한제거

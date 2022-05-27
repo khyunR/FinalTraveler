@@ -13,13 +13,12 @@ DROP TABLE IF EXISTS t_member;
 
 /* Create Tables */
 
--- 복합키(mb_uid, auth) 설정
 CREATE TABLE t_authority
 (
 	mb_uid int NOT NULL,
 	auth varchar(20) NOT NULL,
-	CONSTRAINT t_Authority_compositeKey UNIQUE (mb_uid, auth)
-) COMMENT = '복합키(mb_uid, auth) 설정';
+	UNIQUE (mb_uid, auth)
+);
 
 
 CREATE TABLE t_member
@@ -30,6 +29,8 @@ CREATE TABLE t_member
 	password varchar(200) NOT NULL,
 	email varchar(60) NOT NULL,
 	mobile varchar(14),
+	enabled char(1) DEFAULT '1',
+	regdate datetime DEFAULT now(),
 	PRIMARY KEY (uid),
 	UNIQUE (username),
 	UNIQUE (nickname),
@@ -88,7 +89,7 @@ ALTER TABLE t_post_location
 	ADD FOREIGN KEY (mb_uid)
 	REFERENCES t_member (uid)
 	ON UPDATE RESTRICT
-	ON DELETE NO ACTION
+	ON DELETE RESTRICT
 ;
 
 
@@ -108,4 +109,4 @@ ALTER TABLE t_reservation
 ;
 
 
-SELECT * FROM t_member;
+

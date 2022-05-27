@@ -8,4 +8,9 @@ import lombok.NoArgsConstructor;
 public class AuthDTO {
 	int mb_uid;
 	String auth;
+	
+	@Override
+	public String toString() {
+		return "" + this.mb_uid + ": " + this.auth;
+	}
 }

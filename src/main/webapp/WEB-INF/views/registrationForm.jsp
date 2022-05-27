@@ -9,29 +9,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<!--     <script src="/js/registrationForm.js"></script>	 -->
-	<script>
-	
-	$(function(){
-	    $("#repassword").change(function (){
-	        if($(this).val()!=$("#password").val()){
-	            $("#pwNotMatching").text(" 입력하신 두 비밀번호가 일치하지 않습니다.");
-	            $("#submitFormBtn").attr("disabled", "disabled");
-	        }else{
-	            $("#pwNotMatching").empty();
-	            $("#submitFormBtn").removeAttr("disabled");
-	        }
-		});
-	    
-	    $("#mobile").change(function(){
-	    	$(this).val($(this).val().replace(/[^0-9]/g, "").replace(/(^02.{0}|^01.{1}|[0-9]{3})([0-9]+)([0-9]{4})/,"$1-$2-$3").replace("--", "-") );
-	    	if($(this).val().length>13){
-	    		$(this).val($(this).val().substring(0,13));	
-	    	}
-	    });
-	});
-	
-	</script>
+	<script src="${pageContext.request.contextPath}/resources/js/registrationForm.js"></script>
+
 	<title>회원가입</title>
 </head>
 <body>
@@ -49,7 +28,7 @@
 		<input type="email" name="email" id="email" class="" value="${w.email }" required><br><br>
 		<label for="mobile">휴대폰 번호('-' 제외) : </label><span class="text-danger"><b> ${errMobile }</b></span><br>
 		<input type="text" name="mobile" id="mobile" class="" value="${w.mobile }" ><br><br>
-		<button type="submit" id="submitFormBtn" class="btn btn-outline-dark"> 가입 </button>
+		<button type="submit" id="submitFormBtn" class="btn btn-outline-dark" disabled> 가입 </button>
 	</form>
 </body>
 

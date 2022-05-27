@@ -4,11 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>마이페이지</title>
+<title>admin main</title>
 </head>
 <body>
-
-<h2>마이페이지</h2>
-
+<h2>관리자</h2>
 </body>
 </html>
