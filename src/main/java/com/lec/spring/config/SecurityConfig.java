@@ -29,11 +29,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.anyRequest().permitAll()
 			.and()
 			
-//			.csrf()
-//			.ignoringAntMatchers("/login")
-//			.ignoringAntMatchers("/loginOk")
-//			.and()
-			
 			.formLogin()
 			.loginPage("/login")
 			.loginProcessingUrl("/loginOk")

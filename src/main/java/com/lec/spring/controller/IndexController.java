@@ -9,7 +9,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
@@ -42,19 +41,30 @@ public class IndexController {
 	}
 	
 	@PostMapping("/registerOk")
-	public String registerOk(@ModelAttribute("w") @Valid UserDTO dto, String repassword,
+	public String registerOk(@ModelAttribute("w") @Valid UserDTO dto,
 			BindingResult result, Model model, RedirectAttributes redirectAttrs) {
 		
 		System.out.println("registerOk() 호출: " + dto.getUid() + ": " + dto.getUsername());
-		System.out.println("repassword: " + repassword);
 		String page = "/registerOk";
         
 		if(result.hasErrors()) {
-			System.out.println("result.hasError() == true");
 			page = "redirect:/register";
 			redirectAttrs.addFlashAttribute("w", dto);
 			if(result.getFieldError("username") != null) {
-				redirectAttrs.addFlashAttribute("errUsername", "아이디를 입력하세요.");
+				String idErrCode = result.getFieldError("username").getCode();
+				switch (idErrCode) {
+				case "emptyUsername":
+					redirectAttrs.addFlashAttribute("errUsername", "아이디를 입력하세요.");					
+					break;
+				case "usernameLengthError":
+					redirectAttrs.addFlashAttribute("errUsername", "아이디는 6자에서 20자 사이어야 햡니다.");					
+					break;
+				case "usernameInvalidPattern":
+					redirectAttrs.addFlashAttribute("errUsername", "아이디는 영문으로 시작되어야 하며, 영문과 숫자로만 이루어져 있어야 합니다.");					
+					break;
+				default:
+					break;
+				}
 			}
 			if(result.getFieldError("email") != null) {
 				String emailErrCode = result.getFieldError("email").getCode();
@@ -70,6 +80,9 @@ public class IndexController {
 			if(result.getFieldError("password") != null) {
 				String pwErrCode = result.getFieldError("password").getCode();
 				switch(pwErrCode) {
+				case "emptyPassword":
+					redirectAttrs.addFlashAttribute("errPassword", "비밀번호를 입력하세요.");
+					break;					
 				case "passwordLengthUnder8":
 				case "passwordLengthOver20":
 					redirectAttrs.addFlashAttribute("errPassword", "비밀번호는 8자 이상 20자 이하로 입력하세요.");

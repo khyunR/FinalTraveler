@@ -21,6 +21,11 @@ where mb_uid =
 insert into t_authority (mb_uid, auth) values (1, "ROLE_ADMIN");
 insert into t_authority (mb_uid, auth) values (1, "ROLE_MEMBER");
 
+
+
+DELETE FROM t_member where uid = 2;
+
+
 DELETE FROM t_member;
 delete from t_authority;
 

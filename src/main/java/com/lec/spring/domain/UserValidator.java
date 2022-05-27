@@ -21,6 +21,7 @@ public class UserValidator implements Validator {
 		
 		UserDTO dto = (UserDTO)target;
 		
+		String idRegex = "^[a-zA-Z]{1}[a-zA-Z0-9]{7,19}$";
 		String pwRegex = "^(?=.*[a-zA-Z])(?=.*\\d)(?=.*\\W).{8,20}$";
 		String emailRegex = "^(.+)@(.+)$";
 		String mobileRegex = "[0-9]{3}-[0-9]{4}-[0-9]{4}";
@@ -33,8 +34,14 @@ public class UserValidator implements Validator {
 		
 		String username = dto.getUsername();
 		System.out.println("validate().dto.getUsername(): " + username);
-		if(username.length()>20||username.length()<4) {
+		if(username.length()>20||username.length()<6) {
 			errors.rejectValue("username", "usernameLengthError");
+		}else {
+			pattern = Pattern.compile(idRegex);
+			matcher = pattern.matcher(username);
+			if(!matcher.matches()) {
+				errors.rejectValue("username", "usernameInvalidPattern");
+			}
 		}
 		
 		
@@ -45,14 +52,10 @@ public class UserValidator implements Validator {
 		}else if(password.length()>20) {
 			errors.rejectValue("password", "passwordLengthOver20");			
 		}else {
-			System.out.println("TESTING PW REGEX...");
 			pattern = Pattern.compile(pwRegex);
 			matcher = pattern.matcher(password);
 			if(!matcher.matches()) {
-				System.out.println("PW NOT MATCHING THE PATTERN");
 				errors.rejectValue("password", "passwordInvalidPattern");	
-			}else {
-				System.out.println("PW MATCHING THE PATTERN");
 			}
 		}
 		
