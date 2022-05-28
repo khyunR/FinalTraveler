@@ -1,0 +1,16 @@
+@charset "UTF-8";
+
+.blank_under_header{
+	position: absolute;
+	top:0;
+    left:0;
+    width:100%;
+    height:95px;
+}
+
+
+.login_form_area{
+	position: absolute;
+	display: inline-block;
+	top: 100px;
+}
