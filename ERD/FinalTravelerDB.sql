@@ -25,15 +25,14 @@ CREATE TABLE t_member
 (
 	uid int NOT NULL AUTO_INCREMENT,
 	username varchar(20) NOT NULL,
-	nickname varchar(20),
 	password varchar(200) NOT NULL,
+	name varchar(20) NOT NULL,
 	email varchar(60) NOT NULL,
 	mobile varchar(14),
 	enabled char(1) DEFAULT '1',
 	regdate datetime DEFAULT now(),
 	PRIMARY KEY (uid),
 	UNIQUE (username),
-	UNIQUE (nickname),
 	UNIQUE (email)
 );
 

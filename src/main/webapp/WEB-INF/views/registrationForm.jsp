@@ -35,9 +35,9 @@
 					<input type="password" name="password" id="password" class="form-control" required><br>
 					<label for="repassword">비밀번호 확인*: </label><span class="text-danger"><b> ${errPassword }</b></span><br>
 					<input type="password" name="repassword" id="repassword" class="form-control" required><br>
-					<span class="text-danger" id="pwNotMatching"></span><br><br>
-					<label for="nickname">별명 : </label><span class="text-danger"><b> ${errNickname }</b></span><br>
-					<input type="text" name="nickname" id="nickname" class="form-control" value="${w.nickname }" ><br><br>
+					<span class="text-danger" id="pwNotMatching"></span><br><br>					
+					<label for="name">이름 : </label><span class="text-danger"></span><br>
+					<input type="text" name="name" id="name" class="form-control" value="${w.name }" ><br><br>
 					<label for="email">이메일*: </label><span class="text-danger"><b> ${errEmail }</b></span><br>
 					<input type="email" name="email" id="email" value="${w.email }" style="width:60%" required>
 					<input type="button" id="sendVerificationCode" style="width:39%;" value="인증번호 전송" onclick="sendCode()"><br><br>

@@ -6,7 +6,6 @@
 <sec:authentication property="principal" var="principal"/>
 
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/common.css" />
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/index.css" />
 <script src="${pageContext.request.contextPath}/resources/js/common.js" defer></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -31,9 +30,11 @@
 	                        <li><a href="${pageContext.request.contextPath }/register">회원가입</a></li>
                     	</sec:authorize>
                     	<sec:authorize access="isAuthenticated()">
+	                    	<sec:authentication property="principal.username" var="username" />
+	                    	<sec:authentication property="principal.name" var="name" />
+                    		<li class="welcome">환영합니다, <strong>${username }</strong>(${name }) 님! </li>
 	                    	<sec:authorize access="hasRole('ADMIN')">
 		                        <li><a href="${pageContext.request.contextPath }/admin/">관리자</a></li>
-
 	                    	</sec:authorize>
 	                    	<sec:authorize access="hasRole('MEMBER')">
 		                        <li><a href="${pageContext.request.contextPath }/user/mypage">마이페이지</a></li>

@@ -18,8 +18,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.lec.spring.domain.EmailDTO;
 import com.lec.spring.domain.UserDTO;
 import com.lec.spring.domain.UserValidator;
+import com.lec.spring.service.EmailService;
 import com.lec.spring.service.UserService;
 
 
@@ -28,6 +30,8 @@ public class IndexController {
 	
 	@Autowired
 	UserService userService;
+	@Autowired
+	EmailService emailService;
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 
@@ -106,16 +110,12 @@ public class IndexController {
 		}else {
 			System.out.println("result.hasError() == false");
 			int usernameDupChkDto = userService.countByUsername(dto.getUsername()).getCount();
-			int nicknameDupChkDto = userService.countByNickname(dto.getNickname()).getCount();
 			int emailDupChkDto = userService.countByEmail(dto.getEmail()).getCount();
-			if(usernameDupChkDto != 0 || nicknameDupChkDto != 0 || emailDupChkDto != 0) {
+			if(usernameDupChkDto != 0 || emailDupChkDto != 0) {
 				page = "redirect:/register";
 				redirectAttrs.addFlashAttribute("w", dto);
 				if(usernameDupChkDto != 0) {
 					redirectAttrs.addFlashAttribute("errUsername", "중복되는 아이디가 존재합니다.");	
-				}
-				if(nicknameDupChkDto != 0) {				
-					redirectAttrs.addFlashAttribute("errNickname", "중복되는 별명이 존재합니다.");	
 				}
 				if(emailDupChkDto != 0) {				
 					redirectAttrs.addFlashAttribute("errEmail", "중복되는 이메일이 존재합니다.");	
@@ -146,6 +146,72 @@ public class IndexController {
 	@ResponseBody
 	public Authentication auth (HttpSession session) {
 		return SecurityContextHolder.getContext().getAuthentication();
+	}
+	
+	@RequestMapping("/findUsername")
+	public String findUsername() {
+		return "/findUsername";
+	}
+	
+	@PostMapping("/findUsernameOk")
+	public String findUsernameOk(UserDTO dto, Model model, RedirectAttributes redirectAttrs) {
+		System.out.println("findUsernameOk() 호출");
+		String page = "/findUsername";
+		
+		String result = userService.selectUsernameByNameEmail(dto);
+		if(result==null || result.equals("")) {
+			redirectAttrs.addFlashAttribute("w", dto);
+			redirectAttrs.addFlashAttribute("errorMessage", "<br>정보가 일치하는 회원이 없습니다.<br>");
+			page="redirect:/findUsername";
+		}else {
+	        model.addAttribute("foundUsername", result);
+		}
+		
+		return page;
+	}
+	
+	@RequestMapping("/findPassword")
+	public String findPassword() {
+		return "/findPassword";
+	}
+	
+	@PostMapping("/findPasswordOk")
+	public String findPasswordOk(UserDTO dto, Model model, RedirectAttributes redirectAttrs) {
+		System.out.println("findPassword() 호출");
+		String page = "/findPasswordOk";
+		
+		UserDTO result = userService.selectByUsernameEmail(dto);
+		if(result==null) {
+			redirectAttrs.addFlashAttribute("w", dto);
+			redirectAttrs.addFlashAttribute("errorMessage", "<br>정보가 일치하는 회원이 없습니다.<br>");
+			page="redirect:/findPassword";
+		}else {
+			String tempRandPw = userService.generateRandomPassword();
+			result.setPassword(passwordEncoder.encode(tempRandPw));
+			int cnt = userService.updatePassword(result);
+			if(cnt==1) {
+				model.addAttribute("result", cnt);
+				EmailDTO email = EmailDTO.builder()
+						.address(result.getEmail())
+						.subject("임시 비밀번호가 설정되었습니다.")
+						.content("임시 비밀번호가 아래와 같이 설정되었습니다.\n\t"+tempRandPw+"\n로그인 후 비밀번호를 재설정 하시기 바랍니다.")
+						.build();
+				int emailSendCount = 0;
+				while(!emailService.sendEmail(email)) {
+					emailSendCount++;
+					if(emailSendCount==3) {
+						redirectAttrs.addFlashAttribute("w", dto);
+						redirectAttrs.addFlashAttribute("errorMessage", "<br>임시 비밀번호 이메일 전송에 오류가 발생했습니다<br>");
+						page="redirect:/findPassword";	
+					}
+				}
+			}else {				
+				redirectAttrs.addFlashAttribute("w", dto);
+				redirectAttrs.addFlashAttribute("errorMessage", "<br>비밀번호 재설정에 오류가 발생했습니다<br>");
+				page="redirect:/findPassword";				
+			}
+		}
+		return page;
 	}
 	
 	

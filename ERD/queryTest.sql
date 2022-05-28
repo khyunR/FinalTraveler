@@ -14,14 +14,19 @@ delete from t_authority
 where mb_uid = 
 	(select uid
 	from t_member 
-	where username = "admin1")
+	where username = "khryu1221")
 	and auth = 'ROLE_ADMIN';
 ;
 
 insert into t_authority (mb_uid, auth) values (1, "ROLE_ADMIN");
 insert into t_authority (mb_uid, auth) values (1, "ROLE_MEMBER");
 
-
+SELECT
+	username "username"
+FROM
+	t_member
+WHERE
+	name = "류길현" AND email = "khryu1221@gmail.com";
 
 DELETE FROM t_member where uid = 2;
 

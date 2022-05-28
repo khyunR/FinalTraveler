@@ -10,13 +10,24 @@ public interface UserDAO {
 	// 중복 확인 용
 	//  ┗ 회원가입
 	abstract Count countByUsername(String username);
-	abstract Count countByNickname(String nickname);
 	abstract Count countByEmail(String email);
 
 	// 아이디로 특정 회원 조회
 	//  ┗ 로그인
 	abstract UserDTO selectByUsername(String username);
 	
+	// 이름과 이메일로 회원 조회
+	//  ┗ 아이디 찾기
+	abstract String selectUsernameByNameEmail(UserDTO dto);
+	
+	// 아이디와 이메일로 회원 조회
+	//  ┗ 비밀번호 찾기
+	abstract UserDTO selectByUsernameEmail(UserDTO dto);
+	
+	// 아이디와 이메일로 비밀번호 재설정
+	//  ┗ 비밀번호 찾기
+	abstract int updatePassword(UserDTO dto);
+		
 	// 회원 정보 수정
 	//  ┗ 마이페이지 - 수정
 	abstract int update(UserDTO dto);

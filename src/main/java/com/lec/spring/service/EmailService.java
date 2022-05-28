@@ -18,8 +18,8 @@ public class EmailService {
 	@Autowired
 	private JavaMailSender emailSender;
 	
-	public boolean sendEmailCode(EmailDTO dto) {
-		System.out.println("sendEmailCode() 호출");
+	public boolean sendEmail(EmailDTO dto) {
+		System.out.println("sendEmail() 호출");
 		SimpleMailMessage message = new SimpleMailMessage();
 		message.setTo(dto.getAddress());
 		message.setSubject(dto.getSubject());

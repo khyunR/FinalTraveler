@@ -37,7 +37,7 @@ public class EmailController {
 				.build();
 		String verificationCode = emailService.randomCodeGenerator();
 		email.setContent(String.format("아래 인증번호를 확인하여 입력해주세요.\n 인증번호: %s", verificationCode));
-		if(emailService.sendEmailCode(email)){
+		if(emailService.sendEmail(email)){
 			map.put("status", "Ok");
 			Cookie cookie = new Cookie("verificationCode", verificationCode);
 			cookie.setMaxAge(3*60);
@@ -55,6 +55,7 @@ public class EmailController {
 		Map<String, String> map = new HashMap<String, String>();
 		if(emailService.isCodeMatching(request.getCookies(), code)) {
 			map.put("status", "Ok");
+			// TODO: 쿠키 삭제
 		}else {
 			map.put("status", "Failed");
 		}

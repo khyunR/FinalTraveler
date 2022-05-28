@@ -77,6 +77,11 @@ public class PrincipalDetails implements UserDetails{
 		return user.getUsername();
 	}
 
+	public String getName() {
+		// TODO Auto-generated method stub
+		return user.getName();
+	}
+
 	@Override
 	public boolean isAccountNonExpired() {
 		// TODO Auto-generated method stub

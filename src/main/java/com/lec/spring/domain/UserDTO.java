@@ -13,8 +13,8 @@ public class UserDTO {
 
 	int uid;
 	private String username;
-	private String nickname;
 	private String password;
+	private String name;
 	private String email;
 	private String mobile;
 	private String enabled;

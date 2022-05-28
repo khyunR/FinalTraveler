@@ -72,8 +72,18 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public Count countByNickname(String nickname) {
-		return mapper.countByNickname(nickname);
+	public String selectUsernameByNameEmail(UserDTO dto) {
+		return mapper.selectUsernameByNameEmail(dto);
+	}
+
+	@Override
+	public int updatePassword(UserDTO dto) {
+		return mapper.updatePassword(dto);
+	}
+
+	@Override
+	public UserDTO selectByUsernameEmail(UserDTO dto) {
+		return mapper.selectByUsernameEmail(dto);
 	}
 
 }

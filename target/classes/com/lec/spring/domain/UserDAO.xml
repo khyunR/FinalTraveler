@@ -4,8 +4,8 @@
 
 	<insert id="insert" parameterType="com.lec.spring.domain.UserDTO" flushCache="true"
 			useGeneratedKeys="true" keyColumn="uid" keyProperty="uid">
-		INSERT INTO t_member (username, nickname, password, email, mobile)
-		VALUES (#{username}, #{nickname}, #{password}, #{email}, #{mobile})
+		INSERT INTO t_member (username, password, name, email, mobile)
+		VALUES (#{username}, #{password}, #{name}, #{email}, #{mobile})
 	</insert>
 	
 	<select id="countByUsername" parameterType="String" resultType="com.lec.spring.domain.Count">
@@ -39,8 +39,8 @@
 		SELECT
 			uid "uid",
 			username "username",
-			nickname "nickname",
 			password "password",
+			name "name",
 			email "email",
 			mobile "mobile",
 			enabled "enabled",
@@ -50,6 +50,40 @@
 		WHERE
 			username = #{username}
 	</select>
+	
+	<select id="selectUsernameByNameEmail" parameterType="com.lec.spring.domain.UserDTO" resultType="String">
+		SELECT
+			username "username"
+		FROM
+			t_member
+		WHERE
+			name = #{name} AND email = #{email}
+	</select>
+	
+	<select id="selectByUsernameEmail" parameterType="com.lec.spring.domain.UserDTO" resultType="com.lec.spring.domain.UserDTO">
+		SELECT
+			uid "uid",
+			username "username",
+			password "password",
+			name "name",
+			email "email",
+			mobile "mobile",
+			enabled "enabled",
+			regdate "regDate"
+		FROM
+			t_member
+		WHERE
+			username = #{username} AND email = #{email}
+	</select>
+	
+	<update id="updatePassword" parameterType="com.lec.spring.domain.UserDTO" flushCache="true">
+		UPDATE
+			t_member
+		SET
+			password = #{password}
+		WHERE
+			username = #{username} AND email=#{email}
+	</update>
 	
 	<update id="update" parameterType="com.lec.spring.domain.UserDTO" flushCache="true">
 		UPDATE
@@ -65,8 +99,8 @@
 		SELECT
 			uid "uid",
 			username "username",
-			nickname "nickname",
 			password "password",
+			name "name",
 			email "email",
 			mobile "mobile",
 			enabled "enabled",

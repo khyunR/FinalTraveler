@@ -32,6 +32,18 @@ public class UserService {
 	public UserDTO selectByUsername(String username) {
 		return dao.selectByUsername(username);
 	}
+	
+	public String selectUsernameByNameEmail(UserDTO dto) {
+		return dao.selectUsernameByNameEmail(dto);
+	}
+	
+	public UserDTO selectByUsernameEmail(UserDTO dto) {
+		return dao.selectByUsernameEmail(dto);
+	}
+	
+	public int updatePassword(UserDTO dto) {
+		return dao.updatePassword(dto);
+	}
 
 	public int update(UserDTO dto) {
 		return dao.update(dto);
@@ -65,13 +77,17 @@ public class UserService {
 		return dao.countByUsername(username);
 	}
 
-
 	public Count countByEmail(String email) {
 		return dao.countByEmail(email);
 	}
 	
-	public Count countByNickname(String nickname) {
-		return dao.countByNickname(nickname);
+	public String generateRandomPassword() {
+		StringBuffer strPwd = new StringBuffer();
+		char str[] = new char[1];
+		for (int i = 0; i < 12; i++) {
+			str[0] = (char) ((Math.random() * 94) + 33);
+			strPwd.append(str);
+		}
+		return strPwd.toString();
 	}
-
 }

@@ -135,7 +135,7 @@
 			</connections>
 			<display>false</display>
 			<creation_date>2022-05-16 23:31:38</creation_date>
-			<updated_date>2022-05-27 21:41:56</updated_date>
+			<updated_date>2022-05-29 02:31:14</updated_date>
 			<model_property>
 				<name>프로젝트명</name>
 				<value></value>
@@ -328,8 +328,8 @@
 			<args></args>
 			<char_semantics>false</char_semantics>
 			<description></description>
-			<logical_name>별명</logical_name>
-			<physical_name>nickname</physical_name>
+			<logical_name>회원이름</logical_name>
+			<physical_name>name</physical_name>
 			<type>varchar(n)</type>
 		</word>
 		<word>
@@ -1553,7 +1553,7 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
-					<word_id>9</word_id>
+					<word_id>10</word_id>
 					<id>22</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
@@ -1564,9 +1564,9 @@
 					<default_value></default_value>
 					<auto_increment>false</auto_increment>
 					<foreign_key>false</foreign_key>
-					<not_null>false</not_null>
+					<not_null>true</not_null>
 					<primary_key>false</primary_key>
-					<unique_key>true</unique_key>
+					<unique_key>false</unique_key>
 					<character_set></character_set>
 					<collation></collation>
 					<sequence>
@@ -1586,7 +1586,7 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
-					<word_id>10</word_id>
+					<word_id>9</word_id>
 					<id>23</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
