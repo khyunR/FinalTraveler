@@ -20,7 +20,8 @@
 					"enabledTLSProtocols": "TLSv1,TLSv1.1,TLSv1.2",
 					"allowPublicKeyRetrieval": "TRUE"
 				},
-				"auth-model": "native"
+				"auth-model": "native",
+				"handlers": {}
 			}
 		}
 	},

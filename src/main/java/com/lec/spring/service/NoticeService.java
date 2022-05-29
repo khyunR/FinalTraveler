@@ -17,7 +17,7 @@ import com.lec.spring.domain.WriteDTO;
 //Spring
 //@Controller -> @Service -> DAO -> JdbcTemplate
 @Service
-public class BoardService {
+public class NoticeService {
 
 	WriteDAO dao;
 	
@@ -26,8 +26,8 @@ public class BoardService {
 		this.dao = dao;
 	}
 	
-	public BoardService() {
-		System.out.println("BoardServcie() 생성");		
+	public NoticeService() {
+		System.out.println("NoticeServcie() 생성");		
 	}
 
 	public List<WriteDTO> list() {
@@ -35,12 +35,8 @@ public class BoardService {
 		return dao.select();
 	}
 
-	@Transactional
 	public List<WriteDTO> viewByUid(int uid) {
-		// 트랜잭션 처리!
-		// 1. 조회수 증가
-		// 2. 글 하나 읽어오기
-		dao.incViewCnt(uid);
+
 		return dao.selectByUid(uid);
 	}
 

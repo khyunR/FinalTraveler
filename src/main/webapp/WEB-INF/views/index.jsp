@@ -6,6 +6,7 @@
 <sec:authentication property="principal" var="principal"/>
 
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/common.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/index.css" />
 <script src="${pageContext.request.contextPath}/resources/js/common.js" defer></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -51,7 +52,7 @@
                                 <a href="" class="openAll">숙소 예약</a>
                             </li>
                             <li>
-                                <a href="#" class="openAll">공지사항</a>
+                                <a href="${pageContext.request.contextPath }/notice/list" class="openAll">공지사항</a>
                             </li>
                             <li>
                             <div id="weather"></div>

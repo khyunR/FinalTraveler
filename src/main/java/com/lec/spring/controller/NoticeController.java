@@ -8,28 +8,28 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.lec.spring.domain.WriteDTO;
-import com.lec.spring.service.BoardService;
+import com.lec.spring.service.NoticeService;
 
 @Controller
-@RequestMapping("/board")
-public class BoardController {
+@RequestMapping("/notice")
+public class NoticeController {
 
-	private BoardService boardService;
+	private NoticeService noticeService;
 
 	@Autowired
-	public void setBoardService(BoardService boardService) {
-		this.boardService = boardService;
+	public void setNoticeService(NoticeService noticeService) {
+		this.noticeService = noticeService;
 	}
 
 
-	public BoardController() {
-		System.out.println("BoardController() 생성");
+	public NoticeController() {
+		System.out.println("NoticeController() 생성");
 	}
 	
 	
 	@RequestMapping("/list")
 	public void list(Model model) {
-		model.addAttribute("list", boardService.list());
+		model.addAttribute("list", noticeService.list());
 	}
 	
 	@GetMapping("/write")
@@ -37,29 +37,29 @@ public class BoardController {
 	
 	@PostMapping("/writeOk")
 	public void writeOk(WriteDTO dto, Model model) {
-		model.addAttribute("result", boardService.write(dto));
+		model.addAttribute("result", noticeService.write(dto));
 		model.addAttribute("dto", dto);  // auto-generated key 
 	}
 
 	@GetMapping("/view")
 	public void view(int uid, Model model) {
-		model.addAttribute("list", boardService.viewByUid(uid));
+		model.addAttribute("list", noticeService.viewByUid(uid));
 	}
 	
 	@GetMapping("/update")
 	public void update(int uid, Model model) {
-		model.addAttribute("list", boardService.selectByUid(uid));
+		model.addAttribute("list", noticeService.selectByUid(uid));
 	}
 	
 	@PostMapping("/updateOk")
 	public void updateOk(WriteDTO dto, Model model) {
-		model.addAttribute("result", boardService.update(dto));
+		model.addAttribute("result", noticeService.update(dto));
 		model.addAttribute("dto", dto);
 	}
 	
 	@RequestMapping("/deleteOk")
 	public void deleteOk(int uid, Model model) {
-		model.addAttribute("result", boardService.deleteByUid(uid));
+		model.addAttribute("result", noticeService.deleteByUid(uid));
 	}
 	
 }

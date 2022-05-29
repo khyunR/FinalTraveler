@@ -1,7 +1,7 @@
 
 .content h2 {text-align:center; font-size:28px; color:#3d393d; line-height:1.2; font-weight:600; letter-spacing:-2px; padding:30px 0 20px 0;}
 .title h2{position: relative; width:100%; height: 50px; margin-top: 160px; text-align:center; font-size:40px; color:#3d393d; line-height:1.2; font-weight:600; letter-spacing:-2px; padding:30px 0 20px 0;}
-.imageWrap { position: relative; width:60%; margin:0 auto; height: 600px; margin-top: 60px;}
+.imageWrap { position: relative; width:80%; margin:0 auto; height: 600px; margin-top: 60px;}
 .imageWrap .subtitle{position: relative; width:100%; height: 20px; margin-bottom:30px; border-bottom: 2px solid black; text-align:left; font-size:26px; color:#3d393d; line-height:1.2; font-weight:600; letter-spacing:-2px; padding:10px 0 20px 0; }
 .ImgList { position: absolute; padding-top:30px; width:100%; }
 .ImgList li{
@@ -29,11 +29,11 @@
     position: absolute; z-index: 10;
     top:0; left:0; width:100%;
 }
-.infoWrap {width:60%; height: 300px; margin:0 auto; position:relative;}
+.infoWrap {width:80%; height: 300px; margin:0 auto; position:relative;}
 .infoWrap .subtitle{position: relative; width:100%; height: 20px; margin-bottom:15px; border-bottom: 2px solid black; text-align:left; font-size:26px; color:#3d393d; line-height:1.2; font-weight:600; letter-spacing:-2px; padding:10px 0 20px 0; }
 .infoWrap #info{text-align: left; font-size:18px; color:#595458; line-height:120%; padding:10px 0 0 0;}
 
-.mapWrap {width:60%; height: 600px; margin:0 auto; position:relative;}
+.mapWrap {width:80%; height: 600px; margin:0 auto; position:relative;}
 .mapWrap:after {content:""; display:block; clear:both; *zoom:1;}
 .mapWrap #map {width: 100%; height: 250px; position:relative; padding-top : 100px;}
 .mapInfo {position:absolute; width:100%; overflow:hidden; padding-top:10px;}
