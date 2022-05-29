@@ -8,5 +8,7 @@
 </head>
 <body>
 <h2>관리자</h2>
+<a href="${pageContext.request.contextPath}/admin/notice/write">공지사항 게시판</a>
+<a href="${pageContext.request.contextPath}/admin/location/list">추천 여행지 게시판</a>
 </body>
 </html>

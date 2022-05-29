@@ -11,6 +11,8 @@ public interface UserDAO {
 	//  ┗ 회원가입
 	abstract Count countByUsername(String username);
 	abstract Count countByEmail(String email);
+	//  ┗ 이메일 주소 변경
+	abstract Integer selectUidByEmail(String email);
 
 	// 아이디로 특정 회원 조회
 	//  ┗ 로그인

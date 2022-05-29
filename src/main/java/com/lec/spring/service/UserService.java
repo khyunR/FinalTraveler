@@ -81,6 +81,10 @@ public class UserService {
 		return dao.countByEmail(email);
 	}
 	
+	public Integer selectUidByEmail(String email) {
+		return dao.selectUidByEmail(email);
+	}
+	
 	public String generateRandomPassword() {
 		StringBuffer strPwd = new StringBuffer();
 		char str[] = new char[1];
@@ -90,4 +94,5 @@ public class UserService {
 		}
 		return strPwd.toString();
 	}
+
 }

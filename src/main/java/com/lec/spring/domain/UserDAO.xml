@@ -17,18 +17,18 @@
 			username = #{username}
 	</select>
 	
-	<select id="countByNickname" parameterType="String" resultType="com.lec.spring.domain.Count">
-		SELECT
-			count(mobile) "count"
-		FROM
-			t_member
-		WHERE
-			nickname = #{nickname}
-	</select>
-	
 	<select id="countByEmail" parameterType="String" resultType="com.lec.spring.domain.Count">
 		SELECT
 			count(email) "count"
+		FROM
+			t_member
+		WHERE
+			email = #{email}
+	</select>
+	
+	<select id="selectUidByEmail" parameterType="String" resultType="Integer">
+		SELECT
+			uid "uid"
 		FROM
 			t_member
 		WHERE
@@ -89,7 +89,7 @@
 		UPDATE
 			t_member
 		SET
-			nickname = #{nickname},
+			email = #{email},
 			mobile = #{mobile}
 		WHERE
 			uid = #{uid}

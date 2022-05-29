@@ -1,5 +1,6 @@
 package com.lec.spring.config;
 
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -64,6 +65,9 @@ public class PrincipalDetails implements UserDetails{
 		return collect;
 	}
 
+	public int getUid() {
+		return user.getUid();
+	}
 
 	@Override
 	public String getPassword() {
@@ -81,7 +85,27 @@ public class PrincipalDetails implements UserDetails{
 		// TODO Auto-generated method stub
 		return user.getName();
 	}
+	public String getEmail() {
+		// TODO Auto-generated method stub
+		return user.getEmail();
+	}
+	public String getMobile() {
+		// TODO Auto-generated method stub
+		return user.getMobile();
+	}
+	public String getRegDate() {
+		// TODO Auto-generated method stub
+		return user.getRegDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+	}
 
+	public void setEmail(String email) {
+		user.setEmail(email);
+	}
+	
+	public void setMobile(String mobile) {
+		user.setMobile(mobile);
+	}
+	
 	@Override
 	public boolean isAccountNonExpired() {
 		// TODO Auto-generated method stub

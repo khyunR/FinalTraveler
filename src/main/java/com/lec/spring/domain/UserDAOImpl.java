@@ -35,6 +35,11 @@ public class UserDAOImpl implements UserDAO {
 	public List<UserDTO> selectByUsernameLike(String searchKey) {
 		return mapper.selectByUsernameLike(searchKey);
 	}
+	
+	@Override
+	public Integer selectUidByEmail(String email) {
+		return mapper.selectUidByEmail(email);
+	}
 
 	@Override
 	public int insertAuth(int mb_uid, String auth) {

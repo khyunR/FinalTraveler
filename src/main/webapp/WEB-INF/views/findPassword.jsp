@@ -24,7 +24,7 @@
 	<div id="wrap">
         <header>
             <div class="header_area box_inner clear">
-                <h1><a href="">Seoul Traveler</a></h1>
+                <h1><a href="${pageContext.request.contextPath}/">Seoul Traveler</a></h1>
             </div>
         </header>  
         <div class="blank_under_header"><br><br><br><br><br><br><br><br></div>  
