@@ -101,10 +101,14 @@ function chkDelete(){
             </div>
 
             <div class="button">
-            <a class="butt" href="update?uid=${dto.uid }">수정</a>
             <a class="butt" href="list">목록</a>
-            <a class="butt" onclick="chkDelete()">삭제</a>
-            <a class="butt" href="write">작성</a>
+            <sec:authorize access="isAuthenticated()">
+	        	<sec:authorize access="hasRole('ADMIN')">
+		            <a class="butt" href="update?uid=${dto.uid }">수정</a>
+		            <a class="butt" onclick="chkDelete()">삭제</a>
+		            <a class="butt" href="write">작성</a>
+	        	</sec:authorize>
+	        </sec:authorize>	                    
             </div>
         </div>
 </div>

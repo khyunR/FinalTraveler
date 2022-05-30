@@ -131,7 +131,15 @@
           	</c:if>
           </ul>
         </div>
-        
+ 		<div class="contents_read">
+	        <div class="button">
+			    <sec:authorize access="isAuthenticated()">
+					<sec:authorize access="hasRole('ADMIN')">
+						<a class="butt" href="write">작성</a>
+					</sec:authorize>
+				</sec:authorize>	                    
+	        </div>
+        </div>
 	</div>
   
         <footer>

@@ -83,6 +83,7 @@
 				</div>
 				<div class="button">
 					<button type="submit" class="write">작성완료</button>
+					<button type="button" class="write" onclick="history.back();">취소</button>
 				</div>
 			</form>
 		</div>
