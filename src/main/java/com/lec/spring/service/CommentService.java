@@ -4,18 +4,11 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.lec.spring.domain.CommentDAO;
 import com.lec.spring.domain.CommentDTO;
 
-//Service 단.
-//JSP MVC model2 의 Command 역할 비슷
-//  Controller -> Commmand -> DAO
 
-//- Transaction 담당
-//Spring
-//@Controller -> @Service -> DAO -> JdbcTemplate
 @Service
 public class CommentService {
 
@@ -35,7 +28,6 @@ public class CommentService {
 		return dao.select();
 	}
 
-	@Transactional
 	public int write(CommentDTO dto) {
 		return dao.insert(dto);
 	}
