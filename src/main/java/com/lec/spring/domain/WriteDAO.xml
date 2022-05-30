@@ -4,7 +4,7 @@
 
 	<select id="select" resultType="com.lec.spring.domain.WriteDTO">
 		SELECT 
-			uid "uid", 
+			uid "uid",
 			subject subject, 
 			content content, 
 			regDate regDate 
@@ -30,9 +30,9 @@
 		useGeneratedKeys="true"
 		keyColumn="uid" keyProperty="uid">
 		INSERT INTO t_post_notice
-			(subject, content)
+			(mb_uid, subject, content)
 		VALUES
-			(#{subject}, #{content})	
+			(#{mb_uid}, #{subject}, #{content})	
 	</insert>
 	
 	<update id="update" flushCache="true"
@@ -45,25 +45,5 @@
 	<delete id="deleteByUid" flushCache="true">
 		DELETE FROM t_post_notice WHERE uid = #{uid}
 	</delete>
-	
-	
-	
+
 </mapper>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

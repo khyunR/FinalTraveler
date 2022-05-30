@@ -1,6 +1,8 @@
-SELECT * FROM t_member;
-SELECT * FROM t_authority;
-select  * from t_post_notice;
+SELECT * from t_member;
+SELECT * from t_authority;
+SELECT * from t_post_notice;
+SELECT * from t_post_location;
+SELECT * from t_reservation;
 
 select
 	username, auth
@@ -15,7 +17,7 @@ delete from t_authority
 where mb_uid = 
 	(select uid
 	from t_member 
-	where username = "khryu1221")
+	where username = "")
 	and auth = 'ROLE_ADMIN';
 ;
 
@@ -27,7 +29,7 @@ SELECT
 FROM
 	t_member
 WHERE
-	name = "류길현" AND email = "khryu1221@gmail.com";
+	name = "" AND email = "";
 
 DELETE FROM t_member where uid = 2;
 

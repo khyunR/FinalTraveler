@@ -45,7 +45,7 @@ public class IndexController {
 	}
 	
 	@PostMapping("/registerOk")
-	public String registerOk(@ModelAttribute("w") @Valid UserDTO dto,
+	public String registerOk(@ModelAttribute("w") UserDTO dto,
 			BindingResult result, Model model, RedirectAttributes redirectAttrs) {
 		
 		System.out.println("registerOk() 호출: " + dto.getUid() + ": " + dto.getUsername());

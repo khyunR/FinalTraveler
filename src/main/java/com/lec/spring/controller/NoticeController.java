@@ -1,12 +1,14 @@
 package com.lec.spring.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.lec.spring.config.PrincipalDetails;
 import com.lec.spring.domain.WriteDTO;
 import com.lec.spring.service.NoticeService;
 
@@ -37,6 +39,8 @@ public class NoticeController {
 	
 	@PostMapping("/writeOk")
 	public void writeOk(WriteDTO dto, Model model) {
+		PrincipalDetails principal = (PrincipalDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		dto.setMb_uid(principal.getUid());
 		model.addAttribute("result", noticeService.write(dto));
 		model.addAttribute("dto", dto);  // auto-generated key 
 	}

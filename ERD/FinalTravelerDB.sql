@@ -2,16 +2,27 @@ SET SESSION FOREIGN_KEY_CHECKS=0;
 
 /* Drop Tables */
 
+DROP TABLE IF EXISTS t_accommo_review;
 DROP TABLE IF EXISTS t_authority;
 DROP TABLE IF EXISTS t_post_location;
-DROP TABLE IF EXISTS t_post_notice;
 DROP TABLE IF EXISTS t_reservation;
+DROP TABLE IF EXISTS FinalTraveler.t_post_notice;
 DROP TABLE IF EXISTS t_member;
 
 
 
 
 /* Create Tables */
+
+CREATE TABLE t_accommo_review
+(
+	uid int NOT NULL AUTO_INCREMENT,
+	mb_uid int NOT NULL,
+	content text NOT NULL,
+	regDate datetime DEFAULT now(),
+	PRIMARY KEY (uid)
+);
+
 
 CREATE TABLE t_authority
 (
@@ -50,18 +61,6 @@ CREATE TABLE t_post_location
 );
 
 
-CREATE TABLE t_post_notice
-(
-	uid int NOT NULL AUTO_INCREMENT,
-	mb_uid int NOT NULL,
-	subject varchar(100) NOT NULL,
-	content text NOT NULL,
-	regDate datetime NOT NULL DEFAULT now(),
-	viewCnt int NOT NULL DEFAULT 0,
-	PRIMARY KEY (uid)
-);
-
-
 CREATE TABLE t_reservation
 (
 	uid int NOT NULL AUTO_INCREMENT,
@@ -74,8 +73,28 @@ CREATE TABLE t_reservation
 );
 
 
+CREATE TABLE FinalTraveler.t_post_notice
+(
+	uid int NOT NULL AUTO_INCREMENT,
+	mb_uid int NOT NULL,
+	subject varchar(100) NOT NULL,
+	content text NOT NULL,
+	viewCnt int NOT NULL DEFAULT 0,
+	regDate datetime NOT NULL DEFAULT now(),
+	PRIMARY KEY (uid)
+);
+
+
 
 /* Create Foreign Keys */
+
+ALTER TABLE t_accommo_review
+	ADD FOREIGN KEY (mb_uid)
+	REFERENCES t_member (uid)
+	ON UPDATE RESTRICT
+	ON DELETE CASCADE
+;
+
 
 ALTER TABLE t_authority
 	ADD FOREIGN KEY (mb_uid)
@@ -89,15 +108,7 @@ ALTER TABLE t_post_location
 	ADD FOREIGN KEY (mb_uid)
 	REFERENCES t_member (uid)
 	ON UPDATE RESTRICT
-	ON DELETE RESTRICT
-;
-
-
-ALTER TABLE t_post_notice
-	ADD FOREIGN KEY (mb_uid)
-	REFERENCES t_member (uid)
-	ON UPDATE RESTRICT
-	ON DELETE RESTRICT
+	ON DELETE NO ACTION
 ;
 
 
@@ -106,6 +117,14 @@ ALTER TABLE t_reservation
 	REFERENCES t_member (uid)
 	ON UPDATE RESTRICT
 	ON DELETE CASCADE
+;
+
+
+ALTER TABLE FinalTraveler.t_post_notice
+	ADD FOREIGN KEY (mb_uid)
+	REFERENCES t_member (uid)
+	ON UPDATE RESTRICT
+	ON DELETE NO ACTION
 ;
 
 
