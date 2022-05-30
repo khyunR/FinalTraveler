@@ -24,7 +24,7 @@ padding-bottom : 40px;
 }
 .contents .content #content{
  width : 100%;
- height : 500px;
+ min-height : 500px;
  padding : 30px 30px 30px 30px;
 }
 .contents .button{
@@ -89,7 +89,7 @@ text-align : center;
 }
 .contents_read .subject {
 
-padding-bottom : 40px;
+ padding-bottom : 40px;
 }
 .contents_read .subject #subject{
  font-size : 22px;
@@ -105,7 +105,7 @@ padding-bottom : 40px;
 }
 
 .contents_read .content{
- height : 500px;
+ min-height : 500px;
  background-color : WhiteSmoke;
 }
 .contents_read .content #content{

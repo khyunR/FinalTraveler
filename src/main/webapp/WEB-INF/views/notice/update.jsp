@@ -9,6 +9,7 @@
 
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/common.css" />
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/notice.css" />
+<script src="${pageContext.request.contextPath}/resources/ckeditor/ckeditor.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/common.js" defer></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -87,6 +88,15 @@
             </div>
             <div class="content">
                 <textarea id="content" placeholder="내용을 입력하세요" name="content">${dto.content }</textarea>
+                <Script>
+					var ckeditor_config = {
+						resize_enaleb : false,
+						enterMode : CKEDITOR.ENTER_BR,
+						shiftEnterMode : CKEDITOR.ENTER_P,
+						filebrowserUploadUrl : "/admin/goods/ckUpload"
+					};
+					CKEDITOR.replace("content", ckeditor_config);
+				</Script>
             </div>
 			<div class="button">
             <button type="submit" class="butt">수정완료</button>

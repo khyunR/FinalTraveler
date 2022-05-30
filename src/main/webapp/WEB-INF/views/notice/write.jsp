@@ -9,10 +9,8 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/notice.css" />
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/write.css" />
 
-<script src="${pageContext.request.contextPath}/resources/ckeditor5/ckeditor.js" defer></script>
-<script src="${pageContext.request.contextPath}/resources/ckeditor5/translations/ko.js" defer></script>
+<script src="${pageContext.request.contextPath}/resources/ckeditor/ckeditor.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/common.js" defer></script>
-<script src="${pageContext.request.contextPath}/resources/js/write.js" defer></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
@@ -69,7 +67,7 @@
 			<h2>공지사항 작성</h2>
 		</div>
 		<div class="contents">
-			<form action="writeOk" method="POST">
+			<form name="frm" action="writeOk" method="POST">
 				<div class="subject">
 					<div class="subject_ti"></div>
 					<input type="text" class="form-control" id="subject" placeholder="제목을 입력하세요" name="subject" required>
@@ -77,9 +75,15 @@
 				<div class="content">
 					<div class="content_ti"></div>
 					<textarea class="form-control" rows="5" id="content" placeholder="내용을 입력하세요" name="content"></textarea>
-					<script type="text/javascript">
-
-					</script>
+					<Script>
+						var ckeditor_config = {
+							resize_enaleb : false,
+							enterMode : CKEDITOR.ENTER_BR,
+							shiftEnterMode : CKEDITOR.ENTER_P,
+							filebrowserUploadUrl : "/admin/goods/ckUpload"
+						};
+						CKEDITOR.replace("content", ckeditor_config);
+					</Script>
 				</div>
 				<div class="button">
 					<button type="submit" class="write">작성완료</button>

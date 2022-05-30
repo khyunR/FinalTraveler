@@ -61,7 +61,7 @@ public class NoticeController {
 		model.addAttribute("dto", dto);
 	}
 	
-	@RequestMapping("/deleteOk")
+	@PostMapping("/deleteOk")
 	public void deleteOk(int uid, Model model) {
 		model.addAttribute("result", noticeService.deleteByUid(uid));
 	}
