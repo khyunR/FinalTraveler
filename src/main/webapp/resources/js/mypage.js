@@ -54,7 +54,7 @@ function sendCode(){
 		cache: false,
 	}).done(function(data){
 		if(data.status == "Ok"){			
-				alert("입력하신 이메일 주소로 인증코드를 전송하였습니다.\n3분 이내로 확인 qwe후 입력해주세요.");
+				alert("입력하신 이메일 주소로 인증코드를 전송하였습니다.\n3분 이내로 확인 후 입력해주세요.");
 				$("#verifyEmail").removeAttr("disabled");
 		}else{
 				alert("인증코드 발송에 실패하였습니다.")			

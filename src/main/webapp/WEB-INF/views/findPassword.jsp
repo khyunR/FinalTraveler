@@ -36,9 +36,9 @@
 					<input type="text" name="username" id="username" class="form-control" required><br><br>
 					<label for="email">이메일: </label><br>
 					<input type="email" name="email" id="email" value="${w.email }" style="width:60%" required>
-					<input type="button" id="sendVerificationCode" style="width:39%;" value="인증번호 전송" onclick="sendCode()"><br><br>
+					<input type="button" id="sendVerificationCode" style="width:39%; min-height: 45px" value="인증번호 전송" onclick="sendCode()"><br><br>
 					<input type="text" name="verificationCode" id="verificationCode" value="" style="width:60%" required>
-					<input type="button" id="verifyEmail" style="width:39%;" value="인증번호 확인" onclick="checkCode()" disabled><br><br>
+					<input type="button" id="verifyEmail" style="width:39%; min-height: 45px" value="인증번호 확인" onclick="checkCode()" disabled><br><br>
 					<span class="text-danger">${errorMessage }</span><br>
 
 					<button type="submit" class="btn btn-outline-dark" id="submitFormBtn" disabled>찾기</button>

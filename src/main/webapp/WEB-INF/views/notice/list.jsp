@@ -24,7 +24,7 @@
     <div id="wrap">
         <header>
             <div class="header_area box_inner clear">
-                <h1><a href="">Seoul Traveler</a></h1>
+                <h1><a href="/">Seoul Traveler</a></h1>
                 <div class="header_cont">
                     <ul class="util clear">
                     	<sec:authorize access="isAnonymous()">
@@ -129,7 +129,8 @@
           	</c:if>
           </ul>
         </div>
-</div>
+        
+	</div>
   
         <footer>
             <div class="foot_area box_inner">

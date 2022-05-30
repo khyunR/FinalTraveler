@@ -4,13 +4,13 @@
 <c:choose>
 	<c:when test="${result == 0}">
 	<script>
-		alert("비밀번호 변경 실패");
+		alert("연락처 변경 실패");
 		location.href = "/user/mypage";
 	</script>
 	</c:when>
 	<c:otherwise>
 	<script>
-		alert("비밀번호 변경 성공");
+		alert("연락처 변경 성공");
 		location.href = "/user/mypage";
 	</script>
 	</c:otherwise>

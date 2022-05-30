@@ -57,6 +57,7 @@ CREATE TABLE t_post_notice
 	subject varchar(100) NOT NULL,
 	content text NOT NULL,
 	regDate datetime NOT NULL DEFAULT now(),
+	viewCnt int NOT NULL DEFAULT 0,
 	PRIMARY KEY (uid)
 );
 

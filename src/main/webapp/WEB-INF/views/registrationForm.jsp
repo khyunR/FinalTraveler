@@ -47,9 +47,9 @@
 						<input type="text" name="name" id="name" class="form-control" value="${w.name }" ><br><br>
 						<label for="email">이메일*: </label><span class="text-danger"><b> ${errEmail }</b></span><br>
 						<input type="email" name="email" id="email" value="${w.email }" style="width:60%" required>
-						<input type="button" id="sendVerificationCode" style="width:39%;" value="인증번호 전송" onclick="sendCode()"><br><br>
+						<input type="button" id="sendVerificationCode" style="width:39%; min-height: 45px" value="인증번호 전송" onclick="sendCode()"><br><br>
 						<input type="text" name="verificationCode" id="verificationCode" value="" style="width:60%" required>
-						<input type="button" id="verifyEmail" style="width:39%;" value="인증번호 확인" onclick="checkCode()" disabled><br><br>					
+						<input type="button" id="verifyEmail" style="width:39%; min-height: 45px" value="인증번호 확인" onclick="checkCode()" disabled><br><br>					
 						<label for="mobile">휴대폰 번호('-' 제외) : </label><span class="text-danger"><b> ${errMobile }</b></span><br>
 						<input type="text" name="mobile" id="mobile" class="form-control" value="${w.mobile }" ><br><br>
 					</div>
@@ -59,7 +59,7 @@
 		</div>
 
 		
-		<footer>
+	<footer>
         <div class="foot_area box_inner">
             <ul class="foot_list clear">
                 <li><a href="#">이용약관</a></li>

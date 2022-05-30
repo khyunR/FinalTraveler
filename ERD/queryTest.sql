@@ -1,5 +1,6 @@
 SELECT * FROM t_member;
 SELECT * FROM t_authority;
+select  * from t_post_notice;
 
 select
 	username, auth
