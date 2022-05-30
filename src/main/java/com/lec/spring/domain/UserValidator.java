@@ -21,7 +21,7 @@ public class UserValidator implements Validator {
 		
 		UserDTO dto = (UserDTO)target;
 		
-		String idRegex = "^[a-zA-Z]{1}[a-zA-Z0-9]{7,19}$";
+		String idRegex = "^[a-zA-Z]{1}[a-zA-Z0-9]{5,19}$";
 		String pwRegex = "^(?=.*[a-zA-Z])(?=.*\\d)(?=.*\\W).{8,20}$";
 		String emailRegex = "^(.+)@(.+)$";
 		String mobileRegex = "[0-9]{3}-[0-9]{4}-[0-9]{4}";

@@ -53,7 +53,7 @@
 						<label for="mobile">휴대폰 번호('-' 제외) : </label><span class="text-danger"><b> ${errMobile }</b></span><br>
 						<input type="text" name="mobile" id="mobile" class="form-control" value="${w.mobile }" ><br><br>
 					</div>
-						<button type="submit" id="submitFormBtn" class="btn btn-outline-dark"> 가입 </button>
+						<button type="submit" id="submitFormBtn" class="btn btn-outline-dark" disabled> 가입 </button>
 				</form><br><br><br>
 			</div>
 		</div>

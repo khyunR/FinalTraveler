@@ -3,13 +3,10 @@
  */
 
 $(function() {
-	$("#repassword").change(function() {
-		if ($(this).val() != $("#password").val()) {
-			$("#pwNotMatching").text("입력하신 두 비밀번호가 일치하지 않습니다.");
-		} else {
-			$("#pwNotMatching").text("");
-		}
-	});
+	
+	$("#password").change(comparePwInput);
+	
+	$("#repassword").change(comparePwInput);
 
 	$("#mobile").keyup(function() {
 		$(this).val($(this).val().replace(/[^0-9]/g, "").replace(/(^02.{0}|^01.{1}|[0-9]{3})([0-9]+)([0-9]{4})/, "$1-$2-$3").replace("--", "-"));
@@ -19,6 +16,14 @@ $(function() {
 		}
 	});
 });
+
+var comparePwInput = function() {
+	if ($("#password").val() != $("#repassword").val()) {
+		$("#pwNotMatching").text("입력하신 두 비밀번호가 일치하지 않습니다.");
+	} else {
+		$("#pwNotMatching").text("");
+	}
+}
 
 function sendCode(){
 	console.log("jQuery sendCode() 호출");

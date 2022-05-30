@@ -1,13 +1,6 @@
 $(function() {
-	$("#newPwRe").change(function() {
-		if ($(this).val() != $("#newPw").val()) {
-			$("#pwNotMatching").text("입력하신 두 비밀번호가 일치하지 않습니다.");
-			$("#submitChangePwFrmBtn").attr("disabled", true);
-		} else {
-			$("#pwNotMatching").text("");
-			$("#submitChangePwFrmBtn").removeAttr("disabled");
-		}
-	});
+	$("#newPw").change(comparePwInput);
+	$("#newPwRe").change(comparePwInput);
 
 	$("#mobile").keyup(function() {
 		$(this).val($(this).val().replace(/[^0-9]/g, "").replace(/(^02.{0}|^01.{1}|[0-9]{3})([0-9]+)([0-9]{4})/, "$1-$2-$3").replace("--", "-"));
@@ -21,6 +14,16 @@ $(function() {
 function openChangePw(){
 	$(".changePwFormArea").removeAttr("hidden");
 	$("#changePasswordBtn").attr("hidden",true);		
+}
+
+var comparePwInput = function() {
+	if ($("#newPw").val() != $("#newPwRe").val()) {
+		$("#pwNotMatching").text("입력하신 두 비밀번호가 일치하지 않습니다.");
+		$("#submitChangePwFrmBtn").attr("disabled", true);
+	} else {
+		$("#pwNotMatching").text("");
+		$("#submitChangePwFrmBtn").removeAttr("disabled");
+	}
 }
 
 function closeChangePw(){

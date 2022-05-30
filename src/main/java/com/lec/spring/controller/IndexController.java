@@ -45,7 +45,7 @@ public class IndexController {
 	}
 	
 	@PostMapping("/registerOk")
-	public String registerOk(@ModelAttribute("w") UserDTO dto,
+	public String registerOk(@ModelAttribute("w") @Valid UserDTO dto,
 			BindingResult result, Model model, RedirectAttributes redirectAttrs) {
 		
 		System.out.println("registerOk() 호출: " + dto.getUid() + ": " + dto.getUsername());
@@ -194,7 +194,7 @@ public class IndexController {
 				EmailDTO email = EmailDTO.builder()
 						.address(result.getEmail())
 						.subject("임시 비밀번호가 설정되었습니다.")
-						.content("임시 비밀번호가 아래와 같이 설정되었습니다.\n\t"+tempRandPw+"\n로그인 후 비밀번호를 재설정 하시기 바랍니다.")
+						.content("임시 비밀번호가 아래와 같이 설정되었습니다.\n임시 비밀번호: "+tempRandPw+"\n로그인 후 비밀번호를 재설정 하시기 바랍니다.")
 						.build();
 				int emailSendCount = 0;
 				while(!emailService.sendEmail(email)) {
