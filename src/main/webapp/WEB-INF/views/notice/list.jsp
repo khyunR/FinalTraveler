@@ -68,6 +68,7 @@
             <tr>
               <th style="height:40px;">No</th>
               <th style="height:40px;">제목</th>
+              <th style="height:40px;">작성자</th>
               <th style="height:40px;">작성일</th>
             </tr>
           </thead>
@@ -76,7 +77,8 @@
 	            <tr>
                     <td>${dto.uid }</td>
                     <td><a href="view?uid=${dto.uid }">${dto.subject }</a></td>
-                    <td>${dto.regDateTime }</td>
+                    <td>${dto.username }</td>
+                    <td>${dto.regDate }</td>
 	            </tr>
           	</c:forEach>
           </tbody>

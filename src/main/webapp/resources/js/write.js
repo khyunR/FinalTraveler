@@ -1,32 +1,34 @@
+/**
+ * @license Copyright (c) 2014-2022, CKSource Holding sp. z o.o. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+ */
 
+/*********************************************************************/
 
 ClassicEditor
 	.create( document.querySelector( '#content' ), {
 		ckfinder: {
-			uploadUrl: '${pageContext.request.contextPath}/admin/goods/ckUpload'
+			uploadUrl: '${pageContext.request.contextPath}/resources/ckUpload'
 		},
 		toolbar: {
 			items: [
 				'heading',
 				'|',
-				'fontFamily',
-				'fontSize',
-				'fontColor',
 				'bold',
-				'underline',
 				'italic',
-				'blockQuote',
-				'specialCharacters',
-				'|',
+				'link',
 				'bulletedList',
 				'numberedList',
-				'indent',
-				'outdent',
 				'|',
+				'alignment',
+				'outdent',
+				'indent',
+				'|',
+				'imageUpload',
+				'imageInsert',
+				'blockQuote',
 				'insertTable',
 				'mediaEmbed',
-				'link',
-				'imageUpload',
 				'undo',
 				'redo'
 			]

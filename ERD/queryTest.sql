@@ -33,6 +33,11 @@ WHERE
 
 DELETE FROM t_member where uid = 2;
 
+select tpn.uid uid, username, subject, content, viewCnt
+from 
+	(t_post_notice tpn join t_member tm
+	on tpn.mb_uid = tm.uid)
+order by uid desc;
 
 DELETE FROM t_member;
 delete from t_authority;

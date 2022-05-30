@@ -25,6 +25,7 @@ import lombok.NoArgsConstructor;
 public class WriteDTO {
 	private int uid; 
 	private int mb_uid;
+	private String username;
 	private String subject;
 	private String content;
 	private int viewCnt;

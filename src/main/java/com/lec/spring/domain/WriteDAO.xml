@@ -3,26 +3,31 @@
 <mapper namespace="com.lec.spring.domain.WriteDAO">
 
 	<select id="select" resultType="com.lec.spring.domain.WriteDTO">
-		SELECT 
-			uid "uid",
-			subject subject, 
-			content content, 
-			regDate regDate 
+		SELECT
+			tpn.uid uid,
+			mb_uid,
+			username,
+			subject,
+			content,
+			viewCnt,
+			tpn.regDate regDate
 		FROM 
-			t_post_notice 
-		ORDER BY 
-			uid DESC	
+			(t_post_notice tpn JOIN t_member tm ON tpn.mb_uid = tm.uid)
+		ORDER BY uid DESC;	
 	</select>
 
 	<select id="selectByUid" resultType="com.lec.spring.domain.WriteDTO">
-		SELECT 
-			uid "uid", 
-			subject subject, 
-			content content,  
-			regDate regDate 
+		SELECT
+			tpn.uid uid,
+			mb_uid,
+			username,
+			subject,
+			content,
+			viewCnt,
+			tpn.regDate regDate
 		FROM 
-			t_post_notice
-		WHERE uid = #{uid} 
+			(t_post_notice tpn JOIN t_member tm ON tpn.mb_uid = tm.uid)
+		WHERE tpn.uid = #{uid} 
 	</select>
 	
 	<insert id="insert" flushCache="true"
