@@ -13,7 +13,7 @@
 			tpn.regDate regDate
 		FROM 
 			(t_post_notice tpn JOIN t_member tm ON tpn.mb_uid = tm.uid)
-		ORDER BY uid DESC;	
+		ORDER BY uid DESC
 	</select>
 
 	<select id="selectByUid" resultType="com.lec.spring.domain.WriteDTO">

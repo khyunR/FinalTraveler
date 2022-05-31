@@ -32,7 +32,7 @@
 
 <head>
     <meta charset="utf-8">
-<title>공지사항 세부</title>
+<title>추천 여행지 세부</title>
 
     <div id="wrap">
         <header>
@@ -86,7 +86,7 @@ function chkDelete(){
 
 <body>
         <div class="title">
-        <h2>공지사항</h2>
+        <h2>추천 여행지</h2>
         </div>
           <form name="frmDelete" action="deleteOk" method="POST">
           <input type="hidden" name="uid" value="${dto.uid }">
@@ -101,16 +101,20 @@ function chkDelete(){
                 <div class="content_ti"></div>
                 <div id="content">${dto.content }</div>
             </div>
-
+			<div class="viewCntArea">
+				조회수: ${dto.viewCnt }
+			</div>
             <div class="button">
 	            <a class="butt" href="list">목록</a>
 	            <sec:authorize access="isAuthenticated()">
 		        	<sec:authorize access="hasRole('ADMIN')">
-			            <a class="butt" href="update?uid=${dto.uid }">수정</a>
-			            <a class="butt" onclick="chkDelete()">삭제</a>
+		        		<c:if test="${principal.username eq dto.username }">
+				            <a class="butt" href="update?uid=${dto.uid }">수정</a>
+				            <a class="butt" onclick="chkDelete()">삭제</a>
+		        		</c:if>
 			            <a class="butt" href="write">작성</a>
 		        	</sec:authorize>
-		        </sec:authorize>	                    
+		        </sec:authorize>	                
             </div>
         </div>
 </div>

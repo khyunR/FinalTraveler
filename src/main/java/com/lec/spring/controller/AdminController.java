@@ -105,7 +105,7 @@ public class AdminController {
 			byte[] bytes = upload.getBytes();
 			
 			// 업로드 경로
-			String ckUploadPath = uploadPath + File.separator + "ckUpload/notice" + File.separator + uid + "_" +fileName;
+			String ckUploadPath = uploadPath + File.separator + "ckUpload/location" + File.separator + uid + "_" +fileName;
 			
 			out = new FileOutputStream(new File(ckUploadPath));
 			out.write(bytes);
@@ -113,7 +113,7 @@ public class AdminController {
 			
 			//String callback = req.getParameter("CKEditorFuncNum");
 			printWriter = res.getWriter();
-			String fileUrl = "/ckUpload/notice/" + uid + "_" +fileName; // 작성화면
+			String fileUrl = "/ckUpload/location/" + uid + "_" +fileName; // 작성화면
 			// 업로드시 메시지 출력
 			JSONObject json = new JSONObject();
 			json.put("uploaded", 1);

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lec.spring.domain.LocationDAO">
+	<insert id="insert" parameterType="com.lec.spring.domain.LocationDTO"
+		useGeneratedKeys="true"
+		keyColumn="uid" keyProperty="uid"
+		flushCache="true">
+		INSERT INTO 
+			t_post_location
+			(mb_uid, subject, locationName, locationAddr, content)
+		VALUES
+			(#{mb_uid}, #{subject}, #{locationName}, #{locationAddr}, #{content})	
+	</insert>
+	
+	<update id="update" parameterType="com.lec.spring.domain.LocationDTO" flushCache="true">
+		UPDATE 
+			t_post_location
+		SET
+			subject = #{subject},
+			locationName = #{locationName},
+			locationAddr = #{locationAddr},
+			content = #{content}
+		WHERE
+			uid = #{uid}
+	</update>
+	
+	<select id="select" resultType="com.lec.spring.domain.LocationDTO">
+		SELECT
+			tpl.uid uid,
+			mb_uid,
+			username,
+			subject,
+			content,
+			viewCnt,
+			tpl.regDate regDate
+		FROM 
+			(t_post_location tpl JOIN t_member tm ON tpl.mb_uid = tm.uid)
+		ORDER BY tpl.uid DESC
+	</select>
+	
+	<select id="selectByUid" parameterType="int" resultType="com.lec.spring.domain.LocationDTO">
+		SELECT
+			tpl.uid uid,
+			mb_uid,
+			username,
+			subject,
+			content,
+			viewCnt,
+			tpl.regDate regDate
+		FROM 
+			(t_post_location tpl JOIN t_member tm ON tpl.mb_uid = tm.uid)
+		WHERE tpl.uid = #{uid}
+	</select>
+	
+	<delete id="deleteByUid" parameterType="int" flushCache="true">
+		DELETE FROM t_post_location WHERE uid = #{uid}
+	</delete>
+	
+	<update id="incViewCnt" parameterType="int" flushCache="true">
+		UPDATE t_post_location
+		SET viewCnt = viewCnt + 1
+		WHERE uid = #{uid}
+	</update>
+
+</mapper>

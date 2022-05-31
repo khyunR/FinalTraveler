@@ -46,7 +46,7 @@
                     <nav>
                         <ul class="gnb clear">
                             <li>
-                                <a href="#" class="openAll">추천 여행지</a>
+                                <a href="${pageContext.request.contextPath }/location/list" class="openAll">추천 여행지</a>
                             </li>
                             <li>
                                 <a href="" class="openAll">숙소 예약</a>

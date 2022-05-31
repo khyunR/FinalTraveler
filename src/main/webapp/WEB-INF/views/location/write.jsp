@@ -20,7 +20,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>공지사항 작성</title>
+<title>추천 여행지 작성</title>
 </head>
 
 <body>
@@ -64,7 +64,7 @@
 		</header>
 
 		<div class="title">
-			<h2>공지사항 작성</h2>
+			<h2>추천 여행지 작성</h2>
 		</div>
 		<div class="contents">
 			<form name="frm" action="writeOk" method="POST">
@@ -72,6 +72,15 @@
 					<div class="subject_ti"></div>
 					<input type="text" class="form-control" id="subject" placeholder="제목을 입력하세요" name="subject" required>
 				</div>
+				
+				<div class="locationName">
+					<input type="text" class="form-control" id="locationName" placeholder="여행지 이름을 입력하세요" name="locationName" required>
+				</div>
+				
+				<div class="locationAddr">
+					<input type="text" class="form-control" id="locationAddr" placeholder="여행지 주소를 입력하세요" name="locationAddr" required>
+				</div>
+				
 				<div class="content">
 					<div class="content_ti"></div>
 					<textarea class="form-control" rows="5" id="content" placeholder="내용을 입력하세요" name="content"></textarea>
@@ -80,7 +89,7 @@
 							resize_enaleb : false,
 							enterMode : CKEDITOR.ENTER_BR,
 							shiftEnterMode : CKEDITOR.ENTER_P,
-							filebrowserUploadUrl : "/admin/notice/ckUpload"
+							filebrowserUploadUrl : "/admin/location/ckUpload"
 						};
 						CKEDITOR.replace("content", ckeditor_config);
 					</Script>

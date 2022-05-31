@@ -32,7 +32,7 @@
 <html lang="ko">
 
 <head>
-<title>공지사항 수정</title>
+<title>추천 여행지 수정</title>
      <div id="wrap">
         <header>
             <div class="header_area box_inner clear">
@@ -78,7 +78,7 @@
 
 <body>
         <div class="title">
-        <h2>공지사항 수정</h2>
+        <h2>추천 여행지 수정</h2>
         </div>
         <div class="contents_update">
         <form name="frm" action="updateOk" method="post">
@@ -93,7 +93,7 @@
 						resize_enaleb : false,
 						enterMode : CKEDITOR.ENTER_BR,
 						shiftEnterMode : CKEDITOR.ENTER_P,
-						filebrowserUploadUrl : "/admin/notice/ckUpload"
+						filebrowserUploadUrl : "/admin/location/ckUpload"
 					};
 					CKEDITOR.replace("content", ckeditor_config);
 				</Script>

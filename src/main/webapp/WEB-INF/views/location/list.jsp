@@ -19,7 +19,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>공지사항 목록</title>
+<title>추천 여행지 목록</title>
 <body>
     <div id="wrap">
         <header>
@@ -69,6 +69,7 @@
               <th style="height:40px;">No</th>
               <th style="height:40px;">제목</th>
               <th style="height:40px;">작성자</th>
+              <th style="height:40px;">조회수</th>
               <th style="height:40px;">작성일</th>
             </tr>
           </thead>
@@ -78,6 +79,7 @@
                     <td>${dto.uid }</td>
                     <td><a href="view?uid=${dto.uid }">${dto.subject }</a></td>
                     <td>${dto.username }</td>
+                    <td>${dto.viewCnt }</td>
                     <td>${dto.regDate }</td>
 	            </tr>
           	</c:forEach>

@@ -106,8 +106,10 @@ function chkDelete(){
 	            <a class="butt" href="list">목록</a>
 	            <sec:authorize access="isAuthenticated()">
 		        	<sec:authorize access="hasRole('ADMIN')">
-			            <a class="butt" href="update?uid=${dto.uid }">수정</a>
-			            <a class="butt" onclick="chkDelete()">삭제</a>
+		        		<c:if test="${principal.username eq dto.username }">
+				            <a class="butt" href="update?uid=${dto.uid }">수정</a>
+				            <a class="butt" onclick="chkDelete()">삭제</a>
+		        		</c:if>
 			            <a class="butt" href="write">작성</a>
 		        	</sec:authorize>
 		        </sec:authorize>	                    

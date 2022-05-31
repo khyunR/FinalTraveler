@@ -7,7 +7,8 @@ public interface LocationDAO {
 	public abstract int insert(LocationDTO dto);
 	public abstract int update(LocationDTO dto);
 	public abstract List<LocationDTO> select();
-	public abstract List<LocationDTO> selectByUid();
-	public abstract int delete(int uid);
+	public abstract List<LocationDTO> selectByUid(int uid);
+	public abstract int deleteByUid(int uid);
+	public abstract int incViewCnt(int uid);
 
 }

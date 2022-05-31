@@ -12,7 +12,7 @@
 	<c:otherwise>
 		<script>
 			alert("삭제 성공");
-			location.href = "list";
+			location.href = "/notice/list";
 		</script>
 	</c:otherwise>
 </c:choose>
