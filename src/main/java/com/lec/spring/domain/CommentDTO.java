@@ -20,19 +20,17 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 public class CommentDTO {
-	private int uid;   // uid
-	private String content;
-
 	
+	private int uid;   // uid
+	private int mb_uid;
+	
+	private String content;
 	// java.time.* 객체 변환을 위한 annotation
 	@JsonDeserialize(using = LocalDateTimeDeserializer.class)
 	@JsonSerialize(using = LocalDateTimeSerializer.class)
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Seoul")
 	private LocalDateTime regDate;  // wr_regdate
 	
-	private UserDTO user;    // user_uid (FK) 작성자
-	@JsonIgnore
-	private WriteDTO write;  // write_uid (FK) 글
 	
 	
 	public int getUid() {
@@ -40,6 +38,13 @@ public class CommentDTO {
 	}
 	public void setUid(int uid) {
 		this.uid = uid;
+	}
+	
+	public int getMb_uid() {
+		return mb_uid;
+	}
+	public void setMb_uid(int mb_uid) {
+		this.mb_uid = mb_uid;
 	}
 	
 	public String getContent() {
