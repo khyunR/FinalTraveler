@@ -1,7 +1,7 @@
 $(document).ready(function(){ 
 	$('.viewImgList').bxSlider({ 
 		auto: true, 
-		speed: 500, 
+		speed: 400, 
 		pause: 4000, 
 		mode:'fade', 
 		autoControls: false, 
@@ -16,7 +16,7 @@ $(document).ready(function(){
 		pager:true, 
 		}); 
 		$(".openAll").hover(function(){
-    $(this).css("border-bottom", '5px solid deepskyblue');
+    $(this).css("border-bottom", '5px solid DarkBlue');
       }, function(){
     $(this).css("border-bottom", '5px solid transparent');
 	});

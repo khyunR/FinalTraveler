@@ -43,5 +43,9 @@ public class WriteDAOImpl implements WriteDAO {
 		return mapper.deleteByUid(uid);
 	}
 
+	@Override
+	public int incViewCnt(int uid) {
+		return mapper.incViewCnt(uid);
+	}
 
 }

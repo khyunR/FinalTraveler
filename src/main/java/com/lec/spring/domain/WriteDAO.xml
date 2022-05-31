@@ -51,4 +51,10 @@
 		DELETE FROM t_post_notice WHERE uid = #{uid}
 	</delete>
 
+	<update id="incViewCnt" flushCache="true">
+		UPDATE t_post_notice
+		SET viewCnt = viewCnt + 1
+		WHERE uid = #{param1}
+	</update>
+	
 </mapper>

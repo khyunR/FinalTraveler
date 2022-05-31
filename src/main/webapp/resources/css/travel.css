@@ -38,7 +38,7 @@
 .mapWrap #map {width: 100%; height: 250px; position:relative; padding-top : 100px;}
 .mapInfo {position:absolute; width:100%; overflow:hidden; padding-top:10px;}
 .mapInfo * {word-break:keep-all;}
-.mapInfo .address {position:relative; width:100%; padding:0 8.57142%; box-sizing:border-box;}
+.mapInfo .address {position:relative; width:100%; padding:0 25% 0 25%; box-sizing:border-box;}
 .mapInfo .address:after {content:""; display:block; clear:both; *zoom:1;}
 .mapInfo .address .mAddr {text-align: left; font-size:18px; color:#595458; line-height:1.2; padding:10px 0 0 0;}
 .mapInfo .address .mAddr span {font-weight: bold;}

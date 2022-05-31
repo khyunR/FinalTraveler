@@ -36,7 +36,10 @@
                                 <a href="" class="openAll">숙소 예약</a>
                             </li>
                             <li>
-                                <a href="#" class="openAll">공지사항</a>
+                                <a href="${pageContext.request.contextPath }/notice/list" class="openAll">공지사항</a>
+                            </li>
+                            <li>
+                            	<div id="weather"></div>
                             </li>
                         </ul>
                     </nav>
@@ -84,7 +87,7 @@
 			<div class="address">
 				<div class="mAddr"><span>주소</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;서울 송파구 올림픽로 424 (방이동 88-3)</div>
 				<div class="homepage"><span>홈페이지</span> &nbsp;&nbsp; olympicpark.kspo.or.kr</div>
-				<div class="price"><span>영업시간</span> &nbsp;&nbsp;&nbsp;05:00 - 22:00 도보나 자전거 출입 (광장지역은 24:00)</div>
+				<div class="price"><span>영업시간</span> &nbsp;&nbsp;&nbsp;05:00 - 22:00 도보나 자전거 출입</div>
 				</div>
 			</div>
 	    </div>
