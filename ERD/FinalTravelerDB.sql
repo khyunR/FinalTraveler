@@ -56,6 +56,7 @@ CREATE TABLE t_post_location
 	locationName varchar(100) NOT NULL,
 	locationAddr varchar(100) NOT NULL,
 	content text,
+	viewCnt int NOT NULL DEFAULT 0,
 	regDate datetime NOT NULL DEFAULT now(),
 	PRIMARY KEY (uid)
 );

@@ -12,13 +12,13 @@ import com.lec.spring.service.CommentService;
 @Controller
 @RequestMapping("/room")
 public class CommentController{
-	
+	@Autowired
 	private CommentService commentService;
 	
-	@Autowired
-	public void setCommentService(CommentService commentService) {
-		this.commentService = commentService;
-	}
+//	@Autowired
+//	public void setCommentService(CommentService commentService) {
+//		this.commentService = commentService;
+//	}
 	
 	public CommentController() {
 		System.out.println("CommentController() 생성");

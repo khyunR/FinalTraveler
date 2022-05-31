@@ -9,31 +9,19 @@
 
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/common.css" />
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/notice.css" />
-<script src="${pageContext.request.contextPath}/resources/ckeditor/ckeditor.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/common.js" defer></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
 
-    
-<c:choose>
-	<c:when test="${empty list || fn:length(list) == 0 }">
-		<script>
-			alert("해당 정보가 삭제되거나 없습니다");
-			history.back();
-		</script>
-	</c:when>
-	
-	<c:otherwise>
-		<c:set var="dto" value="${list[0] }"/>
-
 
 <!DOCTYPE html>
-<html lang="ko">
-
+<html>
 <head>
-<title>공지사항 수정</title>
-     <div id="wrap">
+<meta charset="UTF-8">
+<title>공지사항 목록</title>
+<body>
+    <div id="wrap">
         <header>
             <div class="header_area box_inner clear">
                 <h1><a href="/">Seoul Traveler</a></h1>
@@ -73,41 +61,88 @@
                 </div>
             </div>
         </header>
-
-</head>
-
-<body>
-        <div class="title">
-        <h2>공지사항 수정</h2>
+      <main>
+      <div class="notice_list">
+        <table id="table_menu">
+          <thead class="title">
+            <tr>
+              <th style="height:40px;">No</th>
+              <th style="height:40px;">제목</th>
+              <th style="height:40px;">작성자</th>
+              <th style="height:40px;">작성일</th>
+            </tr>
+          </thead>
+          <tbody>
+          	<c:forEach var="dto" items="${ list }">
+	            <tr>
+                    <td>${dto.uid }</td>
+                    <td><a href="view?uid=${dto.uid }">${dto.subject }</a></td>
+                    <td>${dto.username }</td>
+                    <td>${dto.regDate }</td>
+	            </tr>
+          	</c:forEach>
+          </tbody>
+        </table>
         </div>
-        <div class="contents_update">
-        <form name="frm" action="updateOk" method="post">
-        <input type="hidden" name="uid" value="${dto.uid }"/>  
-            <div class="subject">
-                <input type="text" id="subject" placeholder="제목을 입력하세요" name="subject" value="${dto.subject }" required>
-            </div>
-            <div class="content">
-                <textarea id="content" placeholder="내용을 입력하세요" name="content">${dto.content }</textarea>
-                <Script>
-					var ckeditor_config = {
-						resize_enaleb : false,
-						enterMode : CKEDITOR.ENTER_BR,
-						shiftEnterMode : CKEDITOR.ENTER_P,
-						filebrowserUploadUrl : "/admin/notice/ckUpload"
-					};
-					CKEDITOR.replace("content", ckeditor_config);
-				</Script>
-            </div>
-			<div class="button">
-            <button type="submit" class="butt">수정완료</button>
-            <button type="button" class="butt" onclick="history.back()">이전으로</button>
-            <a class="butt" href="list">목록</a>
-            </div>
-        </form>
+      </main>
+
+
+        <div id="">
+          <ul class="pagination justify-content-center">
+          	<c:if test="${ page > 1 }">
+            	<li class="page-item">
+	              <a href="${ url }?page=1" class="page-link text-dark" title="처음">&laquo;</a>
+	            </li>
+          	</c:if>
+          	
+          	<c:if test="${ startPage > 1 }">
+          		<li class="page-item">
+          			<a href="${ url }?page=${ startPage - 1 }" class="page-link text-dark">&lt;</a>
+          		</li>
+          	</c:if>
+          	
+          	<c:if test="${ totalPage > 1 }">
+          		<c:forEach var="k" begin="${ startPage }" end="${ endPage }">
+          			<c:choose>
+          				<c:when test="${ k != page }">
+				            <li class="page-item">
+				              <a href="${ url }?page=${ k }" class="page-link text-dark">${ k }</a>
+				            </li>
+          				</c:when>
+          				<c:otherwise>
+				            <li class="page-item active">
+				              <a href="javascript:void(0);" class="page-link text-dark">${k }</a>
+				            </li>
+          				</c:otherwise>
+          			</c:choose>
+          		</c:forEach>
+          	</c:if>
+          	
+          	<c:if test="${ totalPage > endPage }">
+          		<li class="page-item">
+          			<a href="${ url }?page=${ endPage + 1 }" class="page-link text-dark">&gt;</a>
+          		</li>
+          	</c:if>
+          	
+          	<c:if test="${ page < totalPage }">
+	            <li class="page-item">
+	              <a href="${ url }?page=${ totalPage }" class="page-link text-dark">&raquo;</a>
+	            </li>
+          	</c:if>
+          </ul>
         </div>
-</div>
-</body>
-       <footer>
+ 		<div class="contents_read">
+	        <div class="button">
+			    <sec:authorize access="isAuthenticated()">
+					<sec:authorize access="hasRole('ADMIN')">
+						<a class="butt" href="write">작성</a>
+					</sec:authorize>
+				</sec:authorize>	                    
+	        </div>
+        </div>
+	</div>
+  
+        <footer>
             <div class="foot_area box_inner">
                 <ul class="foot_list clear">
                     <li><a href="#">이용약관</a></li>
@@ -130,38 +165,8 @@
                 </p>
             </div>
         </footer>
-</html>
 
-	</c:otherwise>
-</c:choose>
+    
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+</body>
+</html> 
