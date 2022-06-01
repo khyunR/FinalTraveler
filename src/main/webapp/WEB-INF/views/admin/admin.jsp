@@ -32,6 +32,11 @@ new Chart(document.getElementById("line-chart"), {
 	        label: "신규 가입자",
 	        borderColor: "#3e95cd",
 	        fill: false
+	      }, {
+    	    data: [2, 3, 5, 6, 9, 12],
+		    label: "회원 수",
+		    borderColor: "#A851F5",
+		    fill: false  
 	      }
 	    ]
 	  },

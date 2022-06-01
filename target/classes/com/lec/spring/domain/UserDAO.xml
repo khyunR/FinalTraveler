@@ -128,7 +128,7 @@
 			auth "auth"
 		FROM
 			(select tm.username username, ta.auth auth
-			from t_member tm inner join t_authority ta
+			from t_member tm join t_authority ta
 			where tm.uid = ta.mb_uid) tm_ta
 		ORDER BY username;
 	</select>
