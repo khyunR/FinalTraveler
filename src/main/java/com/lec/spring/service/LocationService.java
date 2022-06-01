@@ -22,8 +22,15 @@ public class LocationService {
 	}
 
 	public List<LocationDTO> viewByUid(int uid) {
-
-		return dao.selectByUid(uid);
+		if(dao.incViewCnt(uid)!=1) {
+			return null;
+		}
+		List<LocationDTO> list = dao.selectByUid(uid);
+		if(list.isEmpty()) {
+			dao.decViewCnt(uid);
+		}
+		System.out.println("viewCnt++ succeed");
+		return list;
 	}
 
 	public int write(LocationDTO dto) {
@@ -32,7 +39,6 @@ public class LocationService {
 	}
 
 	public List<LocationDTO> selectByUid(int uid) {
-		dao.incViewCnt(uid);
 		return dao.selectByUid(uid);
 	}
 

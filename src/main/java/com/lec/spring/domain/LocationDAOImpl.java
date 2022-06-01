@@ -44,5 +44,9 @@ public class LocationDAOImpl implements LocationDAO {
 	public int incViewCnt(int uid) {
 		return mapper.incViewCnt(uid);
 	}
+	@Override
+	public int decViewCnt(int uid) {
+		return mapper.decViewCnt(uid);
+	}
 
 }

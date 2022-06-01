@@ -86,6 +86,15 @@
             <div class="subject">
                 <input type="text" id="subject" placeholder="제목을 입력하세요" name="subject" value="${dto.subject }" required>
             </div>
+           				
+			<div class="locationName">
+				<input type="text" class="form-control" id="locationName" placeholder="여행지 이름을 입력하세요" name="locationName" value="${dto.locationName }" required>
+			</div>
+			
+			<div class="locationAddr">
+				<input type="text" class="form-control" id="locationAddr" placeholder="여행지 주소를 입력하세요" name="locationAddr" value="${dto.locationAddr }" required>
+			</div>
+			
             <div class="content">
                 <textarea id="content" placeholder="내용을 입력하세요" name="content">${dto.content }</textarea>
                 <Script>

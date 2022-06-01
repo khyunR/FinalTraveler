@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class AuthDTO {
 	int mb_uid;
+	String username;
 	String auth;
 	
 	@Override

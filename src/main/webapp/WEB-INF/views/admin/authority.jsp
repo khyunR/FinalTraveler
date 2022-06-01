@@ -7,38 +7,41 @@
 <sec:authentication property="authorities" var="authorities"/>
 <sec:authentication property="principal" var="principal"/>
 
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/common.css" />
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/notice.css" />
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/locationView.css" />
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/ckeditor/contents.css" />
-
-<script src="${pageContext.request.contextPath}/resources/js/common.js" defer></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
-
-
-<c:choose>
-	<c:when test="${empty list || fn:length(list) == 0 }">
-		<script>
-			alert("해당 정보가 삭제되거나 없습니다");
-			history.back();
-		</script>
-	</c:when>
-
-	<c:otherwise>
-		<c:set var="dto" value="${list[0] }"/>
-	</c:otherwise>
-</c:choose>
 
 <!DOCTYPE html>
-<html lang="ko">
-
+<html>
 <head>
-    <meta charset="utf-8">
-<title>추천 여행지 세부</title>
+<meta charset="UTF-8">
+<title>회원 권한 관리</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/common.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/notice.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/authority.css" />
+<script src="${pageContext.request.contextPath}/resources/js/common.js" defer></script>
 
-    <div id="wrap">
+<script>
+
+function addAuth(hrefVal){
+	var answer = confirm("관리자 권한을 추가하시겠습니까?");
+	if(answer){
+		location.href = hrefVal;
+	}
+}
+function removeAuth(hrefVal){
+	var answer = confirm("관리자 권한을 제거하시겠습니까?");
+	if(answer){
+		location.href = hrefVal;
+	}
+}
+
+</script>
+</head>
+<body>
+<div id="wrap">
         <header>
             <div class="header_area box_inner clear">
                 <h1><a href="/">Seoul Traveler</a></h1>
@@ -62,10 +65,10 @@
                     <nav>
                         <ul class="gnb clear">
                             <li>
-                                <a href="#" class="openAll">추천 여행지</a>
+                                <a href="${pageContext.request.contextPath }/location/list" class="openAll">추천 여행지</a>
                             </li>
                             <li>
-                                <a href="" class="openAll">숙소 예약</a>
+                                <a href="${pageContext.request.contextPath }/notice/list" class="openAll">숙소 예약</a>
                             </li>
                             <li>
                                 <a href="${pageContext.request.contextPath }/notice/list" class="openAll">공지사항</a>
@@ -78,57 +81,36 @@
                 </div>
             </div>
         </header>
-
-<script>
-function chkDelete(){
-	var answer = confirm("삭제하시겠습니까?");
-	if(answer){
-		document.forms['frmDelete'].submit();
-	}
-}
-</script>
-
-<body>
-        <div class="title">
-        <h2>추천 여행지</h2>
-        </div>
-          <form name="frmDelete" action="deleteOk" method="POST">
-          <input type="hidden" name="uid" value="${dto.uid }">
-          </form>
-        <div class="contents_read">
-            <div class="subject">
-                <div class="subject_ti"></div>
-                <div id="subject">제목 : ${dto.subject }</div>
-                <div id="username">by ${dto.username }</div>
-                <div id="regDate">${dto.regDate }</div>
-            </div>
-            <div id="locationInfo">
-               	${dto.locationName }<br>
-               	${dto.locationAddr }<br>
-            </div>
-            <div class="content">
-                <div class="content_ti"></div>
-                <div id="content">${dto.content }</div>
-            </div>
-			<div class="viewCntArea">
-				조회수: ${dto.viewCnt }
-			</div>
-            <div class="button">
-	            <a class="butt" href="list">목록</a>
-	            <sec:authorize access="isAuthenticated()">
-		        	<sec:authorize access="hasRole('ADMIN')">
-		        		<c:if test="${principal.username eq dto.username }">
-				            <a class="butt" href="update?uid=${dto.uid }">수정</a>
-				            <a class="butt" onclick="chkDelete()">삭제</a>
-		        		</c:if>
-			            <a class="butt" href="write">작성</a>
-		        	</sec:authorize>
-		        </sec:authorize>	                
-            </div>
-        </div>
+        <br><br><br><br><br><br><br>
+    <main>
+	<h2>회원 권한</h2>
+	<div class="table-wrap">
+		<div class="notice_list">
+		<table class="table">
+			<tr><th>아이디</th><th>일반회원</th><th>관리자</th><th></th></tr>
+			<c:forEach var="dto" items="${ list }">
+	            <tr>
+					<td>${dto.username }</td>
+					<td>${dto.isMember }</td>
+					<td>${dto.isAdmin }</td>
+					<td>
+						<c:choose>
+							<c:when test="${dto.isAdmin eq 'Yes'}">
+								<button class="btn" onclick="removeAuth('${pageContext.request.contextPath}/admin/removeAdminAuth?username=${dto.username}')">관리자 권한 삭제</button>
+							</c:when>
+							<c:otherwise>
+								<button class="btn" onclick="addAuth('${pageContext.request.contextPath}/admin/addAdminAuth?username=${dto.username}')">관리자 권한 추가</button>
+							</c:otherwise>
+						</c:choose>
+					</td>
+	            </tr>
+          	</c:forEach>
+		</table>
+		</div>
+	</div>
+</main>
 </div>
-</body>
-       <footer>
+        <footer>
             <div class="foot_area box_inner">
                 <ul class="foot_list clear">
                     <li><a href="#">이용약관</a></li>
@@ -152,23 +134,4 @@ function chkDelete(){
             </div>
         </footer>
 </body>
-</html> 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+</html>

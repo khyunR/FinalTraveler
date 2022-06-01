@@ -115,7 +115,24 @@
 		INSERT INTO t_authority (mb_uid, auth)
 		VALUES (#{param1}, #{param2})
 	</insert>
+	
+	<insert id="insertAuthByUsername" flushCache="true">
+		INSERT INTO t_authority (mb_uid, auth)
+		VALUES (
+			(SELECT uid FROM t_member WHERE username = #{param1}), #{param2})
+	</insert>
 
+	<select id="selectAuths" resultType="com.lec.spring.domain.AuthDTO">
+		SELECT 
+			username "username",
+			auth "auth"
+		FROM
+			(select tm.username username, ta.auth auth
+			from t_member tm inner join t_authority ta
+			where tm.uid = ta.mb_uid) tm_ta
+		ORDER BY username;
+	</select>
+	
 	<select id="selectAuthsByUsername" parameterType="String" resultType="com.lec.spring.domain.AuthDTO">
 		SELECT 
 			username "username",
@@ -155,5 +172,12 @@
 		DELETE FROM t_member
 		WHERE uid = #{uid}
 	</delete>
+	
+	<select id="selectRegDate" resultType="com.lec.spring.domain.UserDTO">
+		SELECT
+			regDate
+		FROM
+			t_member
+	</select>
 	
 </mapper>

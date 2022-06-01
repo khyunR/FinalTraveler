@@ -6,7 +6,6 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
-<script src="../../../js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=8d916d2023f8da17e354c4592559d114" ></script>
 
 
@@ -47,7 +46,7 @@
             </div>
         </header>
         <div class="title">
-        <h2>남산 타워</h2>
+        <h2 id="locationName">남산 타워</h2>
         </div>
 <div class="content">
 		<div class="imageWrap">
@@ -80,15 +79,15 @@
 	 </div>
 	</div>
 	<div class="mapWrap">	
-	 <div id="map"></div>
+		<div id="map"></div>
 		<div class="mapInfo">
 			<div class="address">
 				<div class="mAddr"><span>주소</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;서울 용산구 남산공원길 105 (용산동2가 산1-3)</div>
 				<div class="homepage"><span>홈페이지</span> &nbsp;&nbsp; www.seoultower.co.kr</div>
 				<div class="price"><span>전망대</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;16,000원(대인) / 12,000원(소인)</div>
-				</div>
 			</div>
-	    </div>
+		</div>
+	</div>
 	</div>
 	</div>
 <!-- //content -->
@@ -147,15 +146,20 @@ geocoder.addressSearch('서울 용산구 남산공원길 105', function(result, 
             position: coords
         });
 
+
+    	var locationName = $("#locationName").text();
         // 인포윈도우로 장소에 대한 설명을 표시합니다
         var infowindow = new kakao.maps.InfoWindow({
-            content: '<div style="width:150px;text-align:center;padding:6px 0;">남산타워</div>'
+            content: '<div style="width:150px;text-align:center;padding:6px 0;">'+locationName+'</div>'
         });
         infowindow.open(map, marker);
 
         // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
         map.setCenter(coords);
+    }else{
+    	alert("지도 실패");
     } 
+    
 });    
     </script>
     </html> 

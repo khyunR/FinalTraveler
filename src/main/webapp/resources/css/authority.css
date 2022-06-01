@@ -1,0 +1,6 @@
+@charset "UTF-8";
+
+.table-wrap {
+  height: 450px;
+  overflow-y: auto;
+}

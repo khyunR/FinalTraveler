@@ -5,6 +5,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.time.LocalDateTime;
+import java.time.Month;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,11 +17,15 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.lec.spring.domain.AuthDTO;
+import com.lec.spring.domain.MemberAuthDTO;
 import com.lec.spring.service.UserService;
 
 @Controller
@@ -28,7 +36,15 @@ public class AdminController {
 	UserService userService;
 	
 	@RequestMapping({"", "/"})
-	public String login() {
+	public String login(Model model) {
+		List<LocalDateTime> list =  userService.selectRegDate();
+		System.out.println(list.toString());
+		
+		model.addAttribute("prevMonthsName",userService.getPrevMonthes());
+		model.addAttribute("prevMonthsCnt", userService.countPrevMonths(list));
+		System.out.println(model.getAttribute("prevMonthsName"));
+		System.out.println(model.getAttribute("prevMonthsCnt"));
+		
 		return "/admin/admin";
 	}
 	
@@ -134,5 +150,21 @@ public class AdminController {
 		}
 		
 		return; 
+	}
+	
+	@RequestMapping("/authority")
+	public void authority(Model model) {
+		model.addAttribute("list", userService.selectAuths());
+	}
+	
+	@GetMapping("/addAdminAuth")
+	public String addAdminAuth(String username, Model model) {
+		model.addAttribute("reult", userService.insertAuthByUsername(username, "ROLE_ADMIN"));
+		return "/admin/authChangeOk";
+	}
+	@GetMapping("/removeAdminAuth")
+	public String removeAdminAuth(String username, Model model) {
+		model.addAttribute("reult", userService.deleteAuth(username, "ROLE_ADMIN"));
+		return "/admin/authChangeOk";
 	}
 }

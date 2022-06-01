@@ -10,5 +10,6 @@ public interface LocationDAO {
 	public abstract List<LocationDTO> selectByUid(int uid);
 	public abstract int deleteByUid(int uid);
 	public abstract int incViewCnt(int uid);
+	public abstract int decViewCnt(int uid);
 
 }

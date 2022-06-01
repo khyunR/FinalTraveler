@@ -1,5 +1,6 @@
 package com.lec.spring.domain;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -52,8 +53,8 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public int deleteAuth(int uid, String auth) {
-		return mapper.deleteAuth(uid, auth);
+	public int deleteAuth(String username, String auth) {
+		return mapper.deleteAuth(username, auth);
 	}
 
 	@Override
@@ -89,6 +90,22 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public UserDTO selectByUsernameEmail(UserDTO dto) {
 		return mapper.selectByUsernameEmail(dto);
+	}
+
+	@Override
+	public List<AuthDTO> selectAuths() {
+
+		return mapper.selectAuths();
+	}
+
+	@Override
+	public int insertAuthByUsername(String username, String auth) {
+		return mapper.insertAuthByUsername(username, auth);
+	}
+
+	@Override
+	public List<UserDTO> selectRegDate() {
+		return mapper.selectRegDate();
 	}
 
 }

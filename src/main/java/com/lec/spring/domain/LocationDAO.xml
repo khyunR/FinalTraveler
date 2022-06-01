@@ -44,6 +44,8 @@
 			mb_uid,
 			username,
 			subject,
+			locationName,
+			locationAddr,
 			content,
 			viewCnt,
 			tpl.regDate regDate
@@ -57,6 +59,12 @@
 	</delete>
 	
 	<update id="incViewCnt" parameterType="int" flushCache="true">
+		UPDATE t_post_location
+		SET viewCnt = viewCnt + 1
+		WHERE uid = #{uid}
+	</update>
+	
+	<update id="decViewCnt" parameterType="int" flushCache="true">
 		UPDATE t_post_location
 		SET viewCnt = viewCnt + 1
 		WHERE uid = #{uid}

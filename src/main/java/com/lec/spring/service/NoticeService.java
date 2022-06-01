@@ -38,8 +38,15 @@ public class NoticeService {
 	}
 
 	public List<WriteDTO> viewByUid(int uid) {
-
-		return dao.selectByUid(uid);
+		if(dao.incViewCnt(uid)!=1) {
+			return null;
+		}
+		List<WriteDTO> list = dao.selectByUid(uid);
+		if(list.isEmpty()) {
+			dao.decViewCnt(uid);
+		}
+		System.out.println("viewCnt++ succeed");
+		return list;
 	}
 
 	public int write(WriteDTO dto) {
@@ -48,15 +55,7 @@ public class NoticeService {
 	}
 
 	public List<WriteDTO> selectByUid(int uid) {
-		List<WriteDTO> list = dao.selectByUid(uid);
-		if(!list.isEmpty()) {
-			if(dao.incViewCnt(uid)!=1) {
-				list=null;
-				System.out.println("viewCnt++ failed");
-			}
-		}
-		System.out.println("viewCnt++ succeed");
-		return list;
+		return dao.selectByUid(uid);
 	}
 
 	public int update(WriteDTO dto) {

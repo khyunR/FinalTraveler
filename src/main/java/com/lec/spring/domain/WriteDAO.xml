@@ -56,5 +56,11 @@
 		SET viewCnt = viewCnt + 1
 		WHERE uid = #{param1}
 	</update>
+
+	<update id="decViewCnt" flushCache="true">
+		UPDATE t_post_notice
+		SET viewCnt = viewCnt - 1
+		WHERE uid = #{param1}
+	</update>
 	
 </mapper>

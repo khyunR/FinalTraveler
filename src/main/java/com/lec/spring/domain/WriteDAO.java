@@ -19,8 +19,9 @@ public interface WriteDAO {
 	// 특정 uid 글 삭제하기
 	public abstract int deleteByUid(int uid);
 	
-	// 특정 uid 글 조회수 증가
+	// 특정 uid 글 조회수 증가/감소
 	public abstract int incViewCnt(int uid);
+	public abstract int decViewCnt(int uid);
 	
 } // end DAO
 

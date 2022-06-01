@@ -1,5 +1,6 @@
 package com.lec.spring.domain;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 public interface UserDAO {
@@ -34,6 +35,10 @@ public interface UserDAO {
 	//  ┗ 마이페이지 - 수정
 	abstract int update(UserDTO dto);
 	
+	// 회원 가입일
+	//  ┗ 관리자 페이지
+	abstract List<UserDTO> selectRegDate();
+	
 	// 아이디로 회원 검색
 	//  ┗ 관리자 페이지 - 권한부여
 	abstract List<UserDTO> selectByUsernameLike(String searchKey);
@@ -41,14 +46,16 @@ public interface UserDAO {
 	// 회원에게 권한 부여
 	//  ┗ 관리자 페이지 - 권한부여
 	abstract int insertAuth(int mb_uid, String auth);
+	abstract int insertAuthByUsername(String username, String auth);
 	
 	// 회원 권한 조회
 	//  ┗ 인가
+	abstract List<AuthDTO> selectAuths();
 	abstract List<AuthDTO> selectAuthsByUsername(String username);
 	
 	// 회원의 특정 권한 제거
 	//  ┗ 관리자 페이지 - 권한제거
-	abstract int deleteAuth(int uid, String auth);
+	abstract int deleteAuth(String username, String auth);
 	
 	// 회원 권한 모두 제거
 	//  ┗ 관리자 페이지 - 권한제거
