@@ -21,7 +21,7 @@ public interface CommentDAO{
 	public abstract int update(CommentDTO dto);
 		
 	// 특정 댓글 삭제하기 <-- uid
-	public abstract int deleteByUid(int uid);
+	public abstract int deleteByUid(CommentDTO dto);
 	
 	
 	

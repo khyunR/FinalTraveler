@@ -104,6 +104,13 @@
 			<version>1.0.2</version>
 		</dependency>
 		
+		<!-- Java에서 html 태그 파싱을 위한 라이브러리 -->
+		<dependency>
+		    <groupId>org.jsoup</groupId>
+		    <artifactId>jsoup</artifactId>
+		    <version>1.10.3</version>
+		</dependency>
+		
 	</dependencies>
 
 	<build>

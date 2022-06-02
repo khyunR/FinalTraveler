@@ -188,24 +188,6 @@ public class UserService {
 	}
 	
 	public List<Integer> countPrevMonths(List<LocalDateTime> list){
-		class YM{
-			String year;
-			String month;
-			
-			public YM(String year, String month) {
-				this.year = year;
-				this.month = month;
-			}
-			
-			@Override
-			public String toString() {
-				return year + " " + month;
-			}
-			
-			public boolean isEqual(YM ym) {
-				return this.toString().equals(ym.toString());
-			}
-		}
 		
 		List<YM> prevSixMonthsList = new ArrayList<YM>();
 		Calendar cal = Calendar.getInstance();
@@ -245,5 +227,40 @@ public class UserService {
 		
 		return result;
 	}
+	
+	public List<Integer> sumPrevMonths(List<LocalDateTime> list){
+		List<Integer> result = new ArrayList<>();
+		
+		List<YM> prevSixMonthsList = new ArrayList<YM>();
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(new Date());
+		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+		
+		for(int i=0;i<6; i++) {
+			prevSixMonthsList.add(new YM(df.format(cal.getTime()).split("-")[0],cal.getDisplayName(Calendar.MONTH,Calendar.SHORT, Locale.KOREA)));
+			cal.add(Calendar.MONTH, -1);
+		}
+		
+		return result;
+	}
 
+}
+
+class YM{
+	String year;
+	String month;
+	
+	public YM(String year, String month) {
+		this.year = year;
+		this.month = month;
+	}
+	
+	@Override
+	public String toString() {
+		return year + month;
+	}
+	
+	public boolean isEqual(YM ym) {
+		return this.toString().equals(ym.toString());
+	}
 }

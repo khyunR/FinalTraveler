@@ -50,13 +50,18 @@
 					</ul>
 					<nav>
 						<ul class="gnb clear">
-							<li><a href="#" class="openAll">추천 여행지</a></li>
-							<li><a href="" class="openAll">숙소 예약</a></li>
-							<li><a
-								href="${pageContext.request.contextPath }/notice/list" class="openAll">공지사항</a></li>
-							<li>
-								<div id="weather"></div>
-							</li>
+                            <li>
+                                <a href="${pageContext.request.contextPath }/location/list" class="openAll">추천 여행지</a>
+                            </li>
+                            <li>
+                                <a href="${pageContext.request.contextPath }/" class="openAll">숙소 예약</a>
+                            </li>
+                            <li>
+                                <a href="${pageContext.request.contextPath }/notice/list" class="openAll">공지사항</a>
+                            </li>
+                            <li>
+                            <div id="weather"></div>
+                            </li>
 						</ul>
 					</nav>
 				</div>

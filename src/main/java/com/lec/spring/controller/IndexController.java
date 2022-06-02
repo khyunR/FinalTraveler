@@ -1,5 +1,7 @@
 package com.lec.spring.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,9 +21,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.lec.spring.domain.EmailDTO;
+import com.lec.spring.domain.LocationDTO;
 import com.lec.spring.domain.UserDTO;
 import com.lec.spring.domain.UserValidator;
 import com.lec.spring.service.EmailService;
+import com.lec.spring.service.LocationService;
 import com.lec.spring.service.UserService;
 
 
@@ -30,6 +34,8 @@ public class IndexController {
 	
 	@Autowired
 	UserService userService;
+	@Autowired
+	LocationService locationService;
 	@Autowired
 	EmailService emailService;
 	@Autowired
@@ -222,8 +228,14 @@ public class IndexController {
 	public String guestpage() {
 		return "sample/guestAccessTest";
 	}
-	@RequestMapping("/main")
-	public String main() {
+	@RequestMapping({"", "/", "/main", "/index"})
+	public String main(Model model) {
+		List<LocationDTO> list = locationService.selectTop3ViewCnt();
+		
+		
+		model.addAttribute("imgSrcList", locationService.getImgSrcList(list));
+		model.addAttribute("uidList", locationService.getPostUidList(list));
+		model.addAttribute("locationNameList", locationService.getLocationNameList(list));
 		return "/index";
 	}
 	

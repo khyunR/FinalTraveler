@@ -3,7 +3,14 @@
 <mapper namespace="com.lec.spring.domain.CommentDAO">
 
 <!-- 댓글 조회 -->
-	<select id="replyList" parameterType="int" resultType="com.lec.spring.domain.CommentDTO">
+	<select id="selectByUid" parameterType="int" resultType="com.lec.spring.domain.CommentDTO">
+    	select
+        	uid, mb_uid, content, regDate
+    	from t_accommo_review
+        	where mb_uid = #{mb_uid}        
+	</select>
+<!-- 댓글 조회 -->
+	<select id="ResultSetByUid" parameterType="int" resultType="com.lec.spring.domain.CommentDTO">
     	select
         	uid, mb_uid, content, regDate
     	from t_accommo_review
@@ -11,13 +18,16 @@
 	</select>
 
 <!-- 댓글 작성 -->
-	<insert id="replyWrite" parameterType="com.lec.spring.domain.CommentDTO">
+	<insert id="insert" parameterType="com.lec.spring.domain.CommentDTO"
+		useGeneratedKeys="true"
+		keyColumn="uid" keyProperty="uid"
+		flushCache="true">
     	insert into t_accommo_review(mb_uid, content, regDate)
         	value(#{mb_uid}, #{content}, #{regDate})
 	</insert>
     
 <!-- 댓글 수정 -->
-	<update id="replyModify" parameterType="com.lec.spring.domain.CommentDTO">
+	<update id="udpate" parameterType="com.lec.spring.domain.CommentDTO">
     	update t_accommo_review set
         	content = #{content}
     	where uid = #{uid}
@@ -25,11 +35,22 @@
 	</update>
 
 <!-- 댓글 삭제 -->
-	<delete id="replyDelete" parameterType="com.lec.spring.domain.CommentDTO">
+	<delete id="deleteByUid" parameterType="com.lec.spring.domain.CommentDTO">
     	delete from t_accommo_review
     	where uid = #{uid}
         	and mb_uid = ${mb_uid}    
 	</delete>
+	
+<!-- 댓글 전체 select -->
+	<select id="select" resultType="com.lec.spring.domain.CommentDTO">
+		SELECT
+			uid uid,
+			mb_uid mb_uid,
+			content content,
+			regDate regDate
+		FROM
+			t_accommo_review
+	</select>
 
 	
 </mapper>

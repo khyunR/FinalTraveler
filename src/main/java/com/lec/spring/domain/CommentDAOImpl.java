@@ -44,9 +44,11 @@ public class CommentDAOImpl implements CommentDAO {
 		return mapper.update(dto);
 	}
 
+
 	@Override
-	public int deleteByUid(int uid) {
-		return mapper.deleteByUid(uid);
+	public int deleteByUid(CommentDTO dto) {
+		// TODO Auto-generated method stub
+		return mapper.deleteByUid(dto);
 	}
 
 }

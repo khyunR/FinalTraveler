@@ -40,8 +40,8 @@ public class CommentService {
 		return dao.update(dto);
 	}
 
-	public int deleteByUid(int uid) {
-		return dao.deleteByUid(uid);
+	public int deleteByUid(CommentDTO dto) {
+		return dao.deleteByUid(dto);
 	}
 }
 

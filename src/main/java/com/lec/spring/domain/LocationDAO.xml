@@ -38,6 +38,21 @@
 		ORDER BY tpl.uid DESC
 	</select>
 	
+	<select id="selectTop3ViewCnt" resultType="com.lec.spring.domain.LocationDTO">
+		SELECT
+			tpl.uid uid,
+			mb_uid,
+			username,
+			subject,
+			content,
+			viewCnt,
+			tpl.regDate regDate
+		FROM 
+			(t_post_location tpl JOIN t_member tm ON tpl.mb_uid = tm.uid)
+		ORDER BY tpl.uid DESC
+		LIMIT 3
+	</select>
+	
 	<select id="selectByUid" parameterType="int" resultType="com.lec.spring.domain.LocationDTO">
 		SELECT
 			tpl.uid uid,

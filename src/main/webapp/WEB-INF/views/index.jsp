@@ -1,16 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <sec:authentication property="name" var="username"/>
 <sec:authentication property="authorities" var="authorities"/>
 <sec:authentication property="principal" var="principal"/>
-
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/common.css" />
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/index.css" />
-<script src="${pageContext.request.contextPath}/resources/js/common.js" defer></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
 
 
 <!DOCTYPE html>
@@ -18,6 +13,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Seoul Traveler</title>
+
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/common.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/index.css" />
+<script src="${pageContext.request.contextPath}/resources/js/common.js" defer></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
 </head>
 <body>
     <div id="wrap">
@@ -49,7 +51,7 @@
                                 <a href="${pageContext.request.contextPath }/location/list" class="openAll">추천 여행지</a>
                             </li>
                             <li>
-                                <a href="" class="openAll">숙소 예약</a>
+                                <a href="${pageContext.request.contextPath }/" class="openAll">숙소 예약</a>
                             </li>
                             <li>
                                 <a href="${pageContext.request.contextPath }/notice/list" class="openAll">공지사항</a>
@@ -121,34 +123,25 @@
                 </div>
             </div>
                <div class="about_area">
-                <h2> 서울 인기 여행지 </h2>
+                <h2> 추천 여행지 </h2>
                 <div class="about_box">
                     <ul class="place_list box_inner clear">
-                        <li class="place_list_img">
-                            <a href="#">
-                                <img src="${pageContext.request.contextPath}/resources/images/namsan_tower.jpg" alt="남산 타워" class="img_topplace">
-                                <h3>남산 타워</h3>
-                                <p class="txt">
-                                    
-                                </p>
+                        <li class="recommend_place_list_img">
+                            <a href="${pageContext.request.contextPath}/location/view?uid=${uidList[0]}">
+                                <img src="${imgSrcList[0] }" alt="${locationNameList[0] }" class="img_topplace">
+                                <h3>${locationNameList[0] }</h3>
                             </a>
                         </li>
-                        <li class="place_list_img">
-                            <a href="#">
-                                <img src="${pageContext.request.contextPath}/resources/images/olympic_park.jpg" alt="올림픽 공원" class="img_topplace">
-                                <h3>올림픽 공원</h3>
-                                <p class="txt">
-                                    
-                                </p>
+                        <li class="recommend_place_list_img">
+                            <a href="${pageContext.request.contextPath}/location/view?uid=${uidList[1]}">
+                                <img src="${imgSrcList[1] }" alt="${locationNameList[1] }" class="img_topplace">
+                                <h3>${locationNameList[1] }</h3>
                             </a>
                         </li>
-                        <li class="place_list_img">
-                            <a href="#">
-                                <img src="${pageContext.request.contextPath}/resources/images/seoul_forest.jpg" alt="서울숲" class="img_topplace">
-                                <h3>서울숲</h3>
-                                <p class="txt">
-                                    
-                                </p>
+                        <li class="recommend_place_list_img">
+                            <a href="${pageContext.request.contextPath}/location/view?uid=${uidList[2]}">
+                                <img src="${imgSrcList[2] }" alt="${locationNameList[2] }" class="img_topplace">
+                                <h3>${locationNameList[2] }</h3>
                             </a>
                         </li>
                     </ul>
