@@ -140,6 +140,7 @@
           	</c:if>
           </ul>
         </div>
+        </div>
   
         <footer>
             <div class="foot_area box_inner">
@@ -165,7 +166,7 @@
             </div>
         </footer>
 
-    
+
 
 </body>
 </html> 

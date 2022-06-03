@@ -39,7 +39,19 @@
     <meta charset="utf-8">
 <title>추천 여행지 세부</title>
 
-    <div id="wrap">
+    
+<script>
+function chkDelete(){
+	var answer = confirm("삭제하시겠습니까?");
+	if(answer){
+		document.forms['frmDelete'].submit();
+	}
+}
+</script>
+</head>
+
+<body>
+<div id="wrap">
         <header>
             <div class="header_area box_inner clear">
                 <h1><a href="/">Seoul Traveler</a></h1>
@@ -80,16 +92,6 @@
             </div>
         </header>
 
-<script>
-function chkDelete(){
-	var answer = confirm("삭제하시겠습니까?");
-	if(answer){
-		document.forms['frmDelete'].submit();
-	}
-}
-</script>
-
-<body>
         <div class="title">
         <h2>추천 여행지</h2>
         </div>
