@@ -4,11 +4,13 @@ import java.util.List;
 // MyBatis가 매핑할 인터페이스
 public interface WriteDAO {
 	
+	public abstract int countPosts();
+	
 	// 새글 작성 <-- DTO
 	public abstract int insert(WriteDTO dto);
 	
 	// 전체 SELECT
-	public abstract List<WriteDTO> select();
+	public abstract List<WriteDTO> select(int targetPageStartPostNo);
 		
 	// 특정 uid 의 글 하나 SELECT --> List<DTO> 로 리턴
 	public abstract List<WriteDTO> selectByUid(int uid);

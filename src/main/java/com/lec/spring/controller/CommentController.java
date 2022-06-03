@@ -18,9 +18,6 @@ public class CommentController{
 	public String roomDetail() {
 		return "/room/roomDetail";
 	}
-
-	
-
 }	
 
 

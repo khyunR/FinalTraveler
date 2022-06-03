@@ -7,6 +7,14 @@
 <sec:authentication property="authorities" var="authorities"/>
 <sec:authentication property="principal" var="principal"/>
 
+
+<!DOCTYPE html>
+<html>
+<head>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
+
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/common.css" />
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/notice.css" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
@@ -14,11 +22,6 @@
 <script src="${pageContext.request.contextPath}/resources/js/common.js" defer></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
-
-
-<!DOCTYPE html>
-<html>
-<head>
 <meta charset="UTF-8">
 <title>공지사항 목록</title>
 <body>
@@ -88,24 +91,24 @@
       </main>
 
 
-        <div id="">
+		<div id="">
           <ul class="pagination justify-content-center">
-          	<c:if test="${ page > 1 }">
+          	<c:if test="${ paging.cri.page > 1 }">
             	<li class="page-item">
 	              <a href="${ url }?page=1" class="page-link text-dark" title="처음">&laquo;</a>
 	            </li>
           	</c:if>
           	
-          	<c:if test="${ startPage > 1 }">
+          	<c:if test="${ paging.startPage > 1 }">
           		<li class="page-item">
-          			<a href="${ url }?page=${ startPage - 1 }" class="page-link text-dark">&lt;</a>
+          			<a href="${ url }?page=${ paging.startPage - 1 }" class="page-link text-dark">&lt;</a>
           		</li>
           	</c:if>
           	
-          	<c:if test="${ totalPage > 1 }">
-          		<c:forEach var="k" begin="${ startPage }" end="${ endPage }">
+          	<c:if test="${ paging.totalPage > 1 }">
+          		<c:forEach var="k" begin="${ paging.startPage }" end="${ paging.endPage }">
           			<c:choose>
-          				<c:when test="${ k != page }">
+          				<c:when test="${ k != paging.cri.page }">
 				            <li class="page-item">
 				              <a href="${ url }?page=${ k }" class="page-link text-dark">${ k }</a>
 				            </li>
@@ -119,19 +122,21 @@
           		</c:forEach>
           	</c:if>
           	
-          	<c:if test="${ totalPage > endPage }">
+          	<c:if test="${ paging.totalPage > paging.endPage }">
           		<li class="page-item">
-          			<a href="${ url }?page=${ endPage + 1 }" class="page-link text-dark">&gt;</a>
+          			<a href="${ url }?page=${ paging.endPage + 1 }" class="page-link text-dark">&gt;</a>
           		</li>
           	</c:if>
           	
-          	<c:if test="${ page < totalPage }">
+          	<c:if test="${ paging.cri.page < paging.totalPage }">
 	            <li class="page-item">
-	              <a href="${ url }?page=${ totalPage }" class="page-link text-dark">&raquo;</a>
+	              <a href="${ url }?page=${ paging.totalPage }" class="page-link text-dark">&raquo;</a>
 	            </li>
           	</c:if>
           </ul>
         </div>
+	        
+        
  		<div class="contents_read">
 	        <div class="button">
 			    <sec:authorize access="isAuthenticated()">

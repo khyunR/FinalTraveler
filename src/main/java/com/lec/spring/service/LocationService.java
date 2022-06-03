@@ -20,10 +20,13 @@ public class LocationService {
 	@Autowired
 	LocationDAO dao;
 	
+	public int countPosts() {
+		return dao.countPosts();
+	}
 
-	public List<LocationDTO> list() {
+	public List<LocationDTO> list(int targetPageStartPostNo) {
 		
-		return dao.select();
+		return dao.select(targetPageStartPostNo);
 	}
 
 	public List<LocationDTO> viewByUid(int uid) {

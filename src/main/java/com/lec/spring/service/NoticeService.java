@@ -31,10 +31,14 @@ public class NoticeService {
 	public NoticeService() {
 		System.out.println("NoticeServcie() 생성");		
 	}
+	
+	public int countPosts() {
+		return dao.countPosts();
+	}
 
-	public List<WriteDTO> list() {
+	public List<WriteDTO> list(int targetPageStartPostNo) {
 		
-		return dao.select();
+		return dao.select(targetPageStartPostNo);
 	}
 
 	public List<WriteDTO> viewByUid(int uid) {

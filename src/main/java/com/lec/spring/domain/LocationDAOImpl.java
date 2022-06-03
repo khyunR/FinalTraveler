@@ -26,8 +26,8 @@ public class LocationDAOImpl implements LocationDAO {
 	}
 
 	@Override
-	public List<LocationDTO> select() {
-		return mapper.select();
+	public List<LocationDTO> select(int targetPageStartPostNo) {
+		return mapper.select(targetPageStartPostNo);
 	}
 
 	@Override
@@ -51,6 +51,11 @@ public class LocationDAOImpl implements LocationDAO {
 	@Override
 	public List<LocationDTO> selectTop3ViewCnt() {
 		return mapper.selectTop3ViewCnt();
+	}
+	@Override
+	public int countPosts() {
+		// TODO Auto-generated method stub
+		return mapper.countPosts();
 	}
 
 }

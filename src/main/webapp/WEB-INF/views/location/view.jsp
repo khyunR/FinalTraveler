@@ -118,7 +118,16 @@ function chkDelete(){
 				조회수: ${dto.viewCnt }
 			</div>
             <div class="button">
-	            <a class="butt" href="list">목록</a>
+	            <a class="butt" onclick="backToList()">목록</a>
+	            <script>
+	            	function backToList(){
+	            		var prevUrl = document.referrer;
+	            		if(prevUrl.includes("/list"))
+	            			window.location.href=prevUrl;
+	            		else
+	            			window.location.href="/location/list";	            			
+	            	}
+	            </script>
 	            <sec:authorize access="isAuthenticated()">
 		        	<sec:authorize access="hasRole('ADMIN')">
 		        		<c:if test="${principal.username eq dto.username }">

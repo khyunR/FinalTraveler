@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.lec.spring.domain.LocationDAO">
+	
+	<select id="countPosts" resultType="int">
+		SELECT
+			count(*)
+		FROM
+			t_post_location
+	</select>
+	
 	<insert id="insert" parameterType="com.lec.spring.domain.LocationDTO"
 		useGeneratedKeys="true"
 		keyColumn="uid" keyProperty="uid"
@@ -24,7 +32,7 @@
 			uid = #{uid}
 	</update>
 	
-	<select id="select" resultType="com.lec.spring.domain.LocationDTO">
+	<select id="select" parameterType="int" resultType="com.lec.spring.domain.LocationDTO">
 		SELECT
 			tpl.uid uid,
 			mb_uid,
@@ -36,6 +44,7 @@
 		FROM 
 			(t_post_location tpl JOIN t_member tm ON tpl.mb_uid = tm.uid)
 		ORDER BY tpl.uid DESC
+		LIMIT #{param1}, 10
 	</select>
 	
 	<select id="selectTop3ViewCnt" resultType="com.lec.spring.domain.LocationDTO">
@@ -49,7 +58,7 @@
 			tpl.regDate regDate
 		FROM 
 			(t_post_location tpl JOIN t_member tm ON tpl.mb_uid = tm.uid)
-		ORDER BY tpl.uid DESC
+		ORDER BY tpl.viewCnt DESC
 		LIMIT 3
 	</select>
 	

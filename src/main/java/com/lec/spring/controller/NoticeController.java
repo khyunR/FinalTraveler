@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.lec.spring.common.Criteria;
+import com.lec.spring.common.Paging;
 import com.lec.spring.config.PrincipalDetails;
 import com.lec.spring.domain.WriteDTO;
 import com.lec.spring.service.NoticeService;
@@ -30,8 +32,19 @@ public class NoticeController {
 	
 	
 	@RequestMapping("/list")
-	public void list(Model model) {
-		model.addAttribute("list", noticeService.list());
+	public void list(Integer page, Model model) {
+		int totalPostsCount = noticeService.countPosts();
+		if(page==null || page <1) {
+			page = 1;
+		}
+		Paging paging = new Paging();
+		paging.setCri(new Criteria(page));
+		paging.setTotalCount(totalPostsCount);
+		
+		System.out.println(paging);
+		
+		model.addAttribute("list", noticeService.list((paging.getCri().getPage()-1)*10));
+		model.addAttribute("paging", paging);
 	}
 	
 	@GetMapping("/write")

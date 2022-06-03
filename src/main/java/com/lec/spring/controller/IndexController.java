@@ -231,7 +231,7 @@ public class IndexController {
 	@RequestMapping({"", "/", "/main", "/index"})
 	public String main(Model model) {
 		List<LocationDTO> list = locationService.selectTop3ViewCnt();
-		
+		System.out.println(list);
 		
 		model.addAttribute("imgSrcList", locationService.getImgSrcList(list));
 		model.addAttribute("uidList", locationService.getPostUidList(list));

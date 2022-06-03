@@ -34,3 +34,6 @@ INSERT INTO t_post_location (mb_uid, subject, locationName, locationAddr, conten
 INSERT INTO t_post_location (mb_uid, subject, locationName, locationAddr, content) VALUES ('1', '세번째 추천 여행지: 서울숲', '서울숲', '서울 성동구 뚝섬로 273 (성수동1가 685-20)', '서울숲은 문화예술공원, 체험학습원, 생태숲, 습지생태원 네 가지의 특색 있는 공간들로 구성되어 있으며, 한강과 맞닿아 있어 다양한 문화여가공간을 제공합니다. 또한 서울숲공원은 조성부터 프로그램 운영까지 시민의 참여로 이루어진 최초의 공원입니다.');
 
 
+INSERT INTO t_post_notice (mb_uid, subject, content) VALUES ('1', '첫번째 공지사항입니다', '첫번째 공지사항 내용입니다.');
+INSERT INTO t_post_notice (mb_uid, subject, content) VALUES ('1', '두번째 공지사항입니다', '두번째 공지사항 내용입니다.');
+INSERT INTO t_post_notice (mb_uid, subject, content) VALUES ('1', '세번째 공지사항입니다', '세번째 공지사항 내용입니다.');

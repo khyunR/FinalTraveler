@@ -24,8 +24,8 @@ public class WriteDAOImpl implements WriteDAO {
 	}
 
 	@Override
-	public List<WriteDTO> select() {
-		return mapper.select();
+	public List<WriteDTO> select(int targetPageStartPostNo) {
+		return mapper.select(targetPageStartPostNo);
 	}
 
 	@Override
@@ -51,6 +51,12 @@ public class WriteDAOImpl implements WriteDAO {
 	@Override
 	public int decViewCnt(int uid) {
 		return mapper.incViewCnt(uid);
+	}
+
+
+	@Override
+	public int countPosts() {
+		return mapper.countPosts();
 	}
 
 }

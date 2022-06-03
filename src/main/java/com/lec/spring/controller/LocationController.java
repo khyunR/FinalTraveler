@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.lec.spring.common.Criteria;
+import com.lec.spring.common.Paging;
 import com.lec.spring.config.PrincipalDetails;
 import com.lec.spring.domain.LocationDTO;
 import com.lec.spring.service.LocationService;
@@ -24,8 +26,22 @@ public class LocationController {
 	}
 	
 	@RequestMapping("/list")
-	public void list(Model model) {
-		model.addAttribute("list", locationService.list());
+	public void list(Integer page, Model model) {
+		
+		if(page==null || page <1) {
+			page = 1;
+		}
+		
+		int totalPostsCount = locationService.countPosts();
+		
+		Paging paging = new Paging();
+		paging.setCri(new Criteria(page));
+		paging.setTotalCount(totalPostsCount);
+		
+		System.out.println(paging);
+		
+		model.addAttribute("list", locationService.list((paging.getCri().getPage()-1)*10));
+		model.addAttribute("paging", paging);
 	}
 	
 	@GetMapping("/write")
