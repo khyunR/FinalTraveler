@@ -63,6 +63,18 @@ SELECT
 FROM
 	t_member;
 
+SELECT
+	tav.uid uid,
+	username,
+	content content,
+	tav.regDate regDate
+FROM
+	(t_accommo_review tav
+		join
+	t_member tm
+	on
+	tav.mb_uid = tm.uid);
+
 DELETE FROM t_member;
 delete from t_authority;
 

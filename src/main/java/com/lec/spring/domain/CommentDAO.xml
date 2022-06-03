@@ -44,12 +44,12 @@
 <!-- 댓글 전체 select -->
 	<select id="select" resultType="com.lec.spring.domain.CommentDTO">
 		SELECT
-			uid uid,
-			mb_uid mb_uid,
-			content content,
-			regDate regDate
-		FROM
-			t_accommo_review
+			tav.uid uid,
+		username,
+		content content,
+		tav.regDate regDate
+	FROM
+		(t_accommo_review tav JOIN t_member tm ON tav.mb_uid = tm.uid)
 	</select>
 
 	
