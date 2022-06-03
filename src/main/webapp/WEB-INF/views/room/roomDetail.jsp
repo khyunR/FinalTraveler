@@ -20,7 +20,7 @@
     <div class="room_choose">
         <p>price</p>
         <input name="birth" type="date" class="room_date" placeholder="날짜"/>
-        <button type="submit" class="room_res">예약</button>
+        <button id="button1" type="submit" class="room_res">예약</button>
     </div>
     <div class="room_pics">
         <img src="${pageContext.request.contextPath}/images/hotel1-1.jpg" alt="페어필드 바이 메리어트 서울">
@@ -57,7 +57,13 @@
 		<button type="button">댓글 작성</button>
 	</p>
 	</div>
-
+	
+	
+	<script>
+	$("#button1").click(function() {
+	alert("버튼1을 누르셨습니다.");
+	});
+	</script>
 
     
    
