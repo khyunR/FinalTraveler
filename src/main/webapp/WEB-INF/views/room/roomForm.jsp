@@ -12,7 +12,7 @@
     
         <div id="room_all">
             <div class="room_img">
-            	<a href="#"></a><img src="img/hotel1.jpg" alt="페어필드 바이 메리어트 서울">
+            	<a href="${pageContext.request.contextPath}/room/roomDetail"></a><img src="${pageContext.request.contextPath}/images/hotel1.jpg" alt="페어필드 바이 메리어트 서울">
             </div>    
             <div id="room_name">
                 <h2><a href="#"></a>페어필드 바이 메리어트 서울</h2>
@@ -21,7 +21,7 @@
         </div>
         <div id="room_all">
             <div class="room_img">
-            	<a href="#"></a><img src="img/hotel2.jpg" alt="파스파라 서울">
+            	<a href="#"></a><img src="${pageContext.request.contextPath}/images/hotel2.jpg" alt="파스파라 서울">
             </div>
             <div id="room_name">
             	<a href="#"></a><h2>파라스파라 서울</h2>
@@ -30,7 +30,7 @@
         </div>
         <div id="room_all">
             <div class="room_img">
-            	<a href="#"></a><img src="img/hotel3.jpg" alt="글래드 강남 코엑스 센터">
+            	<a href="#"></a><img src="${pageContext.request.contextPath}/images/hotel3.jpg" alt="글래드 강남 코엑스 센터">
             </div>
             <div id="room_name">
             	<a href="#"></a><h2>글래드 강남 코엑스 센터</h2>
@@ -39,7 +39,7 @@
         </div>
         <div id="room_all">
             <div class="room_img">
-            	<a href="#"></a><img src="img/hotel4.jpg" alt="글래드 여의도">
+            	<a href="#"></a><img src="${pageContext.request.contextPath}/images/hotel4.jpg" alt="글래드 여의도">
             </div>
             <div id="room_name">
             	<a href="#"></a><h2>글래드 여의도</h2>

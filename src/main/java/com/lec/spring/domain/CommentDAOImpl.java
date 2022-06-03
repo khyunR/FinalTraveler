@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 public class CommentDAOImpl implements CommentDAO {
 
 
-	private CommentDAO mapper;
+	CommentDAO mapper;
 	
 	@Autowired
 	public CommentDAOImpl(SqlSession sqlSession) {

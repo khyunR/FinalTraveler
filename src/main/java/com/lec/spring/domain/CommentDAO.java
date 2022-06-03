@@ -3,13 +3,11 @@ import java.util.List;
 
 public interface CommentDAO{
 	
-	// 새글 작성 <-- DTO
-	public abstract int insert(CommentDTO dto);
-		
+	int insert(CommentDTO dto);
+	
 	// 전체 SELECT
-	public abstract List<CommentDTO> select();
-			
-
+		public abstract List<CommentDTO> select();
+	
 	// 댓글목록읽기
 	// ResultSet --> List<DTO> 로 리턴
 	public abstract List<CommentDTO> ResultSetByUid(int uid);
@@ -22,6 +20,9 @@ public interface CommentDAO{
 		
 	// 특정 댓글 삭제하기 <-- uid
 	public abstract int deleteByUid(CommentDTO dto);
+
+	
+
 	
 	
 	

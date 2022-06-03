@@ -14,17 +14,16 @@ public class CommentService {
 	@Autowired
 	CommentDAO dao;
 	
-//	@Autowired
-//	public void setDao(CommentDAO dao) {
-//		this.dao = dao;
-//	}
+	@Autowired
+	public void setDao(CommentDAO dao) {
+		this.dao = dao;
+	}
 	
 	public CommentService() {
 		System.out.println("CommentServcie() 생성");		
 	}
 
 	public List<CommentDTO> list() {
-		
 		return dao.select();
 	}
 

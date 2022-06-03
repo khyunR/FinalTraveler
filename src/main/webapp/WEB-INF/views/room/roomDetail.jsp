@@ -15,7 +15,7 @@
 
     <div class="room_name">페어필드 바이 메리어트 서울</div>
     <div class="room_pic">
-        <img src="img/hotel1.jpg" alt="페어필드 바이 메리어트 서울">
+        <img src="${pageContext.request.contextPath}/images/hotel1.jpg" alt="페어필드 바이 메리어트 서울">
     </div>
     <div class="room_choose">
         <p>price</p>
@@ -23,8 +23,8 @@
         <button type="submit" class="room_res">예약</button>
     </div>
     <div class="room_pics">
-        <img src="img/hotel1-1.jpg" alt="페어필드 바이 메리어트 서울">
-        <img src="img/hotel1-2.jpg" alt="페어필드 바이 메리어트 서울">
+        <img src="${pageContext.request.contextPath}/images/hotel1-1.jpg" alt="페어필드 바이 메리어트 서울">
+        <img src="${pageContext.request.contextPath}/images/hotel1-2.jpg" alt="페어필드 바이 메리어트 서울">
     </div>
     <div class="room_info">
     <p>페어필드 바이 메리어트는 1호선 영등포역 3번 출구에서 도보 약 5분 거리에 있으며, 
@@ -46,7 +46,7 @@
     </c:forEach>
 	</ul> 
 	
-	<div>
+	<div class="room_comment">
 	<p>
 		<label>댓글 작성자</label> <input type="text">
 	</p>
