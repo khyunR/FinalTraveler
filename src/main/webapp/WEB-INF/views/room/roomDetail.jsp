@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
+<sec:authentication property="authorities" var="authorities"/>
 <!DOCTYPE html>
 <html lang="ko-KR">
 <head>
@@ -39,28 +41,31 @@
     
     <div class="room_map" id="map"></div>
     
-	<ul>
-    <c:forEach items="${reply}" var="relpy">
-    <li>
-    	<div>
-    		<p>${reply.write} / ${reply.regDate}</p>
-    		<p>${reply.content}</p>
-    	</div>
-    </li>
-    </c:forEach>
-	</ul> 
+    <sec:authorize access="isAuthenticated()">
+    	<ul>
+    	<c:forEach items="${reply}" var="relpy">
+    	<li>
+    		<div>
+    			<p>${reply.write} / ${reply.regDate}</p>
+    			<p>${reply.content}</p>
+    		</div>
+    	</li>
+    	</c:forEach>
+		</ul> 
 	
-	<div class="room_comment">
-	<p>
-		<label>댓글 작성자</label> <input type="text">
-	</p>
-	<p>
-		<textarea rows="5" cols="50"></textarea>
-	</p>
-	<p>
-		<button type="button">댓글 작성</button>
-	</p>
-	</div>
+		<div class="room_comment">
+		<p>
+			<label>댓글 작성자</label> <input type="text">
+		</p>
+		<p>
+			<textarea rows="5" cols="50"></textarea>
+		</p>
+		<p>
+			<button type="button">댓글 작성</button>
+		</p>
+		</div>
+    </sec:authorize>
+    
 	
 	
 	<script>
