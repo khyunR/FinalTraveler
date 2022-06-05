@@ -13,9 +13,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Seoul Traveler</title>
-
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/common.css" />
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/index.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/travelList.css" />
 <script src="${pageContext.request.contextPath}/resources/js/common.js" defer></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -48,7 +47,7 @@
                     <nav>
                         <ul class="gnb clear">
                             <li>
-                                <a href="${pageContext.request.contextPath }/travel/culture/cultureList" class="openAll">추천 여행지</a>
+                                <a href="${pageContext.request.contextPath }/location/list" class="openAll">추천 여행지</a>
                             </li>
                             <li>
                                 <a href="${pageContext.request.contextPath }/" class="openAll">숙소 예약</a>
@@ -68,42 +67,29 @@
         <div id="container">
             <div class="main_rolling_pc">
                 <div class="visualRoll">
-                    <ul class="viewImgList">
-                        <li class="imgList0">
-                            <div class="roll_content">
-                                <a href="${pageContext.request.contextPath}/travel/culture/cultureList"></a><p class="roll_txtline">SEOUL TRAVELER</p>
-                            </div>
-                        </li>
-                        <li class="imgList1">
-                            <div class="roll_content">
-                                <a href="${pageContext.request.contextPath}/travel/park/parkList"></a><p class="roll_txtline">SEOUL TRAVELER</p>
-                            </div>
-                        </li>
-                        <li class="imgList2">
-                            <div class="roll_content">
-                                <a href="${pageContext.request.contextPath}/travel/attraction/attractionList"></a><p class="roll_txtline">SEOUL TRAVELER</p>
-                            </div>
-                        </li>
-                    </ul>
+                <img src="${pageContext.request.contextPath}/resources/images/img_slidecontents01.jpg">
+                     <div class="roll_content">
+                           <a href="#"></a><p class="roll_txtline">서울의 궁궐 문화재</p>
+                      </div>
                 </div>
+            </div>
+            <div id="locationWrap">
+                    <div id="subDepth">
+                            <ul>
+                                <li><a href="${pageContext.request.contextPath}/travel/culture/cultureList" class="on">문화재</a></li>
+                                <li><a href="${pageContext.request.contextPath}/travel/park/parkList" >자연&공원</a></li>
+                                <li><a href="${pageContext.request.contextPath}/travel/museum/museumList" >박물관&미술관</a></li>
+                                <li><a href="${pageContext.request.contextPath}/travel/attraction/attractionList" >명소</a></li>
+                            </ul>
+                        </div>
             </div>
 
             <div class="about_area">
-                <h2> 서울 인기 여행지 </h2>
                 <div class="about_box">
                     <ul class="place_list box_inner clear">
                         <li class="place_list_img">
-                            <a href="${pageContext.request.contextPath}/travel/attraction/namsanTower">
-                                <img src="${pageContext.request.contextPath}/resources/images/travel/attraction/namsan_tower.jpg" alt="남산 타워" class="img_topplace">
-                                <h3>남산 타워</h3>
-                                <p class="txt">
-                                    
-                                </p>
-                            </a>
-                        </li>
-                        <li class="place_list_img">
                             <a href="${pageContext.request.contextPath}/travel/culture/gyeongbokgung">
-                                <img src="${pageContext.request.contextPath}/resources/images/travel/culture/gyeongbokgung_2.jpg" alt="경복궁" class="img_topplace">
+                                <img src="${pageContext.request.contextPath}/resources/images/travel/culture/gyeongbokgung_1.jpg" alt="경복궁" class="img_topplace">
                                 <h3>경복궁</h3>
                                 <p class="txt">
                                     
@@ -111,9 +97,18 @@
                             </a>
                         </li>
                         <li class="place_list_img">
-                            <a href="${pageContext.request.contextPath}/travel/museum/nationalMuseum">
-                                <img src="${pageContext.request.contextPath}/resources/images/travel/museum/nationalMuseum_1.jpg" alt="국립중앙박물관" class="img_topplace">
-                                <h3>국립중앙박물관</h3>
+                            <a href="${pageContext.request.contextPath}/travel/culture/changdeokgung">
+                                <img src="${pageContext.request.contextPath}/resources/images/travel/culture/changdeokgung_1.jpg" alt="창덕궁" class="img_topplace">
+                                <h3>창덕궁</h3>
+                                <p class="txt">
+                                    
+                                </p>
+                            </a>
+                        </li>
+                        <li class="place_list_img">
+                            <a href="${pageContext.request.contextPath}/travel/culture/jongmyoShrine">
+                                <img src="${pageContext.request.contextPath}/resources/images/travel/culture/jongmyoShrine_1.jpg" alt="종묘" class="img_topplace">
+                                <h3>종묘</h3>
                                 <p class="txt">
                                     
                                 </p>
@@ -122,26 +117,34 @@
                     </ul>
                 </div>
             </div>
-               <div class="about_area">
-                <h2> 추천 여행지 </h2>
+            <div class="about_area">
                 <div class="about_box">
                     <ul class="place_list box_inner clear">
-                        <li class="recommend_place_list_img">
-                            <a href="${pageContext.request.contextPath}/location/view?uid=${uidList[0]}">
-                                <img src="${imgSrcList[0] }" alt="${locationNameList[0] }" class="img_topplace">
-                                <h3>${locationNameList[0] }</h3>
+                        <li class="place_list_img">
+                            <a href="${pageContext.request.contextPath}/travel/culture/deoksugung">
+                                <img src="${pageContext.request.contextPath}/resources/images/travel/culture/deoksugung_3.png" alt="덕수궁" class="img_topplace">
+                                <h3>덕수궁</h3>
+                                <p class="txt">
+                                    
+                                </p>
                             </a>
                         </li>
-                        <li class="recommend_place_list_img">
-                            <a href="${pageContext.request.contextPath}/location/view?uid=${uidList[1]}">
-                                <img src="${imgSrcList[1] }" alt="${locationNameList[1] }" class="img_topplace">
-                                <h3>${locationNameList[1] }</h3>
+                        <li class="place_list_img">
+                            <a href="${pageContext.request.contextPath}/travel/culture/changgyeonggung">
+                                <img src="${pageContext.request.contextPath}/resources/images/travel/culture/changgyeonggung_1.jpg" alt="창경궁" class="img_topplace">
+                                <h3>창경궁</h3>
+                                <p class="txt">
+                                    
+                                </p>
                             </a>
                         </li>
-                        <li class="recommend_place_list_img">
-                            <a href="${pageContext.request.contextPath}/location/view?uid=${uidList[2]}">
-                                <img src="${imgSrcList[2] }" alt="${locationNameList[2] }" class="img_topplace">
-                                <h3>${locationNameList[2] }</h3>
+                        <li class="place_list_img">
+                            <a href="${pageContext.request.contextPath}/travel/culture/gyeonghuigung">
+                                <img src="${pageContext.request.contextPath}/resources/images/travel/culture/gyeonghuigung_3.jpg" alt="경희궁" class="img_topplace">
+                                <h3>경희궁</h3>
+                                <p class="txt">
+                                    
+                                </p>
                             </a>
                         </li>
                     </ul>

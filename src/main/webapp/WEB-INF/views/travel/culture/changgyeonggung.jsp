@@ -15,11 +15,12 @@
 <title>Seoul Traveler</title>
 
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/common.css" />
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/index.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/travel.css" />
 <script src="${pageContext.request.contextPath}/resources/js/common.js" defer></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+<script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=8d916d2023f8da17e354c4592559d114" ></script>
 </head>
 <body>
     <div id="wrap">
@@ -64,91 +65,52 @@
                 </div>
             </div>
         </header>
-
-        <div id="container">
-            <div class="main_rolling_pc">
-                <div class="visualRoll">
-                    <ul class="viewImgList">
+        <div class="title">
+        <h2 id="locationName">창경궁</h2>
+        </div>
+<div class="content">
+		<div class="imageWrap">
+		<div class="subtitle">사진 보기</div>
+			<div id="image" style="width: 100%; height: 350px;">
+			          <ul class="ImgList">
                         <li class="imgList0">
                             <div class="roll_content">
-                                <a href="${pageContext.request.contextPath}/travel/culture/cultureList"></a><p class="roll_txtline">SEOUL TRAVELER</p>
+                                <img src="../../resources/images/travel/culture/changgyeonggung_1.jpg"  alt="창덕궁"><p class="roll_txtline"></p>
                             </div>
                         </li>
                         <li class="imgList1">
                             <div class="roll_content">
-                                <a href="${pageContext.request.contextPath}/travel/park/parkList"></a><p class="roll_txtline">SEOUL TRAVELER</p>
+                                <img src="../../resources/images/travel/culture/changgyeonggung_2.jpg" alt="창덕궁"><p class="roll_txtline"></p>
                             </div>
                         </li>
                         <li class="imgList2">
                             <div class="roll_content">
-                                <a href="${pageContext.request.contextPath}/travel/attraction/attractionList"></a><p class="roll_txtline">SEOUL TRAVELER</p>
+                                <img src="../../resources/images/travel/culture/changgyeonggung_3.jpg"  alt="창덕궁"><p class="roll_txtline"></p>
                             </div>
                         </li>
                     </ul>
                 </div>
-            </div>
-
-            <div class="about_area">
-                <h2> 서울 인기 여행지 </h2>
-                <div class="about_box">
-                    <ul class="place_list box_inner clear">
-                        <li class="place_list_img">
-                            <a href="${pageContext.request.contextPath}/travel/attraction/namsanTower">
-                                <img src="${pageContext.request.contextPath}/resources/images/travel/attraction/namsan_tower.jpg" alt="남산 타워" class="img_topplace">
-                                <h3>남산 타워</h3>
-                                <p class="txt">
-                                    
-                                </p>
-                            </a>
-                        </li>
-                        <li class="place_list_img">
-                            <a href="${pageContext.request.contextPath}/travel/culture/gyeongbokgung">
-                                <img src="${pageContext.request.contextPath}/resources/images/travel/culture/gyeongbokgung_2.jpg" alt="경복궁" class="img_topplace">
-                                <h3>경복궁</h3>
-                                <p class="txt">
-                                    
-                                </p>
-                            </a>
-                        </li>
-                        <li class="place_list_img">
-                            <a href="${pageContext.request.contextPath}/travel/museum/nationalMuseum">
-                                <img src="${pageContext.request.contextPath}/resources/images/travel/museum/nationalMuseum_1.jpg" alt="국립중앙박물관" class="img_topplace">
-                                <h3>국립중앙박물관</h3>
-                                <p class="txt">
-                                    
-                                </p>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-               <div class="about_area">
-                <h2> 추천 여행지 </h2>
-                <div class="about_box">
-                    <ul class="place_list box_inner clear">
-                        <li class="recommend_place_list_img">
-                            <a href="${pageContext.request.contextPath}/location/view?uid=${uidList[0]}">
-                                <img src="${imgSrcList[0] }" alt="${locationNameList[0] }" class="img_topplace">
-                                <h3>${locationNameList[0] }</h3>
-                            </a>
-                        </li>
-                        <li class="recommend_place_list_img">
-                            <a href="${pageContext.request.contextPath}/location/view?uid=${uidList[1]}">
-                                <img src="${imgSrcList[1] }" alt="${locationNameList[1] }" class="img_topplace">
-                                <h3>${locationNameList[1] }</h3>
-                            </a>
-                        </li>
-                        <li class="recommend_place_list_img">
-                            <a href="${pageContext.request.contextPath}/location/view?uid=${uidList[2]}">
-                                <img src="${imgSrcList[2] }" alt="${locationNameList[2] }" class="img_topplace">
-                                <h3>${locationNameList[2] }</h3>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-    </div>
-
+		</div>
+		
+	<div class="infoWrap">	
+	<div class="subtitle">상세 정보</div>
+	 <div id="info">
+	창경궁은 세종대왕이 상왕인 태종을 모시고자 1418년에 지은 수강궁이 그 전신이다. 이후 성종 임금 대로 와서 세조의 비 정희왕후, 덕종의 비소혜왕후, 예종의 비 안순왕후를 모시기 위해 명정전, 문정전, 통명전을 짓고 창경궁이라 명명했다.창경궁에는 아픈 사연이 많다. 임진왜란 때 전소된 적이 있고 이괄의 난이나 병자호란 때에도 화를 입었다. 숙종 때의 인현왕후와 장희빈, 영조 때 뒤주에 갇혀 죽임을 당한 사도세자의 이야기 등이 창경궁 뜰에 묻혀있다. 사적인 창경궁은 일제강점기에 일제에 의하여 창경원이라 격하되고 동물원으로 탈바꿈 했었으나, 일제의 잔재를 없애기 위한 온 겨레의 노력으로 1987년부터 그 옛날 본래 궁의 모습을 되찾게 되었다. 홍화문, 명정전(조선 왕조의 정전 중에서 가장 오래된 건물임), 통명전, 양화당, 춘당지 등이 있으며 구름다리를 통하여 종묘와 드나들 수 있게 되어 있다.
+	</div>
+	</div>
+	<div class="mapWrap">	
+		<div id="map"></div>
+		<div class="mapInfo">
+			<div class="address">
+				<div class="mAddr"><span>주소</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;서울 종로구 창경궁로 185 창경궁</div>
+				<div class="homepage"><span>홈페이지</span> &nbsp;&nbsp; http://cgg.cha.go.kr/</div>
+				<div class="price"><span>영업시간</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;09:00 - 21:00 매주 월요일 정기휴무</div>
+			</div>
+		</div>
+	</div>
+	</div>
+	</div>
+<!-- //content -->
         <footer>
             <div class="foot_area box_inner">
                 <ul class="foot_list clear">
@@ -172,8 +134,52 @@
                 </p>
             </div>
         </footer>
-    </div>
-    
-
+        </div>
 </body>
-</html> 
+
+
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=bf6f76ad722b04c307bfdc8a887d2d33&libraries=services"></script>
+<script>
+var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+    mapOption = {
+        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+        level: 3 // 지도의 확대 레벨
+    };  
+
+// 지도를 생성합니다    
+var map = new kakao.maps.Map(mapContainer, mapOption); 
+
+// 주소-좌표 변환 객체를 생성합니다
+var geocoder = new kakao.maps.services.Geocoder();
+
+// 주소로 좌표를 검색합니다
+geocoder.addressSearch('서울 종로구 창경궁로 185', function(result, status) {
+
+    // 정상적으로 검색이 완료됐으면 
+     if (status === kakao.maps.services.Status.OK) {
+
+        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+        // 결과값으로 받은 위치를 마커로 표시합니다
+        var marker = new kakao.maps.Marker({
+            map: map,
+            position: coords
+        });
+
+
+    	var locationName = $("#locationName").text();
+        // 인포윈도우로 장소에 대한 설명을 표시합니다
+        var infowindow = new kakao.maps.InfoWindow({
+            content: '<div style="width:150px;text-align:center;padding:6px 0;">'+locationName+'</div>'
+        });
+        infowindow.open(map, marker);
+
+        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+        map.setCenter(coords);
+    }else{
+    	alert("지도 실패");
+    } 
+    
+});    
+    </script>
+    </html> 

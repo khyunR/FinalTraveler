@@ -1,22 +1,27 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/common.css" />
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/travel.css" />
-<script src="${pageContext.request.contextPath}/resources/js/common.js" defer></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
-<script src="../../../js/jquery-3.6.0.min.js"></script>
-<script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=8d916d2023f8da17e354c4592559d114" ></script>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
+<sec:authentication property="name" var="username"/>
+<sec:authentication property="authorities" var="authorities"/>
+<sec:authentication property="principal" var="principal"/>
 
 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Olympic Park</title>
+<title>Seoul Traveler</title>
+
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/common.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/travel.css" />
+<script src="${pageContext.request.contextPath}/resources/js/common.js" defer></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+<script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=8d916d2023f8da17e354c4592559d114" ></script>
 </head>
-<body>
 <body>
     <div id="wrap">
         <header>
@@ -24,13 +29,27 @@
                 <h1><a href="${pageContext.request.contextPath}/main">Seoul Traveler</a></h1>
                 <div class="header_cont">
                     <ul class="util clear">
-                        <li><a href="">로그인</a></li>
-                        <li><a href="">회원가입</a></li>
+                    	<sec:authorize access="isAnonymous()">
+	                        <li><a href="${pageContext.request.contextPath }/login">로그인</a></li>
+	                        <li><a href="${pageContext.request.contextPath }/register">회원가입</a></li>
+                    	</sec:authorize>
+                    	<sec:authorize access="isAuthenticated()">
+	                    	<sec:authentication property="principal.username" var="username" />
+	                    	<sec:authentication property="principal.name" var="name" />
+                    		<li class="welcome">환영합니다, <strong>${username }</strong>(${name }) 님! </li>
+	                    	<sec:authorize access="hasRole('ADMIN')">
+		                        <li><a href="${pageContext.request.contextPath }/admin/">관리자</a></li>
+	                    	</sec:authorize>
+	                    	<sec:authorize access="hasRole('MEMBER')">
+		                        <li><a href="${pageContext.request.contextPath }/user/mypage">마이페이지</a></li>
+	                    	</sec:authorize>
+	                    	<li><a href="${pageContext.request.contextPath }/logout">로그아웃</a></li>
+                    	</sec:authorize>
                     </ul>
                     <nav>
                         <ul class="gnb clear">
                             <li>
-                                <a href="${pageContext.request.contextPath }/location/list" class="openAll">추천 여행지</a>
+                                <a href="${pageContext.request.contextPath }/travel/culture/cultureList" class="openAll">추천 여행지</a>
                             </li>
                             <li>
                                 <a href="${pageContext.request.contextPath }/" class="openAll">숙소 예약</a>
@@ -47,7 +66,7 @@
             </div>
         </header>
         <div class="title">
-        <h2>올림픽 공원</h2>
+        <h2 id="locationName">종묘</h2>
         </div>
 <div class="content">
 		<div class="imageWrap">
@@ -56,17 +75,17 @@
 			          <ul class="ImgList">
                         <li class="imgList0">
                             <div class="roll_content">
-                                <img src="../../resources/images/seoul_forest.jpg" alt="서울숲"><p class="roll_txtline"></p>
+                                <img src="../../resources/images/travel/culture/jongmyoShrine_1.jpg"  alt="종묘"><p class="roll_txtline"></p>
                             </div>
                         </li>
                         <li class="imgList1">
                             <div class="roll_content">
-                                <img src="../../resources/images/seoul_forest1.jpg" alt="서울숲"><p class="roll_txtline"></p>
+                                <img src="../../resources/images/travel/culture/jongmyoShrine_2.jpg" alt="종묘"><p class="roll_txtline"></p>
                             </div>
                         </li>
                         <li class="imgList2">
                             <div class="roll_content">
-                                <img src="../../resources/images/seoul_forest2.jpg" alt="서울숲"><p class="roll_txtline"></p>
+                                <img src="../../resources/images/travel/culture/jongmyoShrine_3.jpg"  alt="종묘"><p class="roll_txtline"></p>
                             </div>
                         </li>
                     </ul>
@@ -76,22 +95,19 @@
 	<div class="infoWrap">	
 	<div class="subtitle">상세 정보</div>
 	 <div id="info">
-	 서울숲은 문화예술공원, 체험학습원, 생태숲, 습지생태원 네 가지의 특색 있는 공간들로 구성되어 있으며, 한강과 맞닿아 있어 다양한 문화여가공간을 제공합니다.
-    또한 서울숲공원은 조성부터 프로그램 운영까지 시민의 참여로 이루어진 최초의 공원입니다.
-   </div>
+	 1963년 1월 18일 사적 제125호로 지정되었다. 총면적 5만 6503평. 서울 종로구 훈정동에 있다. 원래는 정전(正殿)을 가리키며, 태묘(太廟)라고도 한다. 중국의 우(虞)나라에서 처음 시작된 종묘제도는 은(殷)·주(周) 시대에는 7대조까지 묘(廟)에 봉안하는 7묘제가 시행되다가 명(明)나라 때에는 9묘제로 바뀌었다. 한국의 경우 종묘에 대한 최초의 기록은 392년(고구려 고국양왕 9)에 보이며, 신라에서는 5묘제, 고려에서는 7묘제로 하였다. 조선 초기에는 7묘제도를 따르다가 중기 이후부터는 치적이 많은 왕은 7대가 지나도 정전에 그대로 모셨으며, 그 밖의 신주는 일정한 기간이 지나면 영녕전(永寧殿)으로 옮겨 모셨는데, 이를 조천(祧遷)이라고 하였다.
+	</div>
 	</div>
 	<div class="mapWrap">	
-	 <div id="map"></div>
+		<div id="map"></div>
 		<div class="mapInfo">
 			<div class="address">
-				<div class="mAddr"><span>주소</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;서울 성동구 뚝섬로 273 (성수동1가 685-20)</div>
-				<div class="mAddr"><span>전화</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;02-460-2905</div>
-				<div class="homepage"><span>홈페이지</span> &nbsp;&nbsp; https://seoulforest.or.kr/</div>
-				<div class="price"><span>주차안내</span> &nbsp;&nbsp;&nbsp;070-7119-2893, 1688-1054(24시간)</div>
-				<div class="price"><span>관람시간</span> &nbsp;&nbsp;&nbsp;연중무휴 (일부 시설 월요일 휴관)</div>
-				</div>
+				<div class="mAddr"><span>주소</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;서울 종로구 종로 157</div>
+				<div class="homepage"><span>홈페이지</span> &nbsp;&nbsp; http://jm.cha.go.kr/</div>
+				<div class="price"><span>입장료</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;성인 1,000원</div>
 			</div>
-	    </div>
+		</div>
+	</div>
 	</div>
 	</div>
 <!-- //content -->
@@ -137,7 +153,7 @@ var map = new kakao.maps.Map(mapContainer, mapOption);
 var geocoder = new kakao.maps.services.Geocoder();
 
 // 주소로 좌표를 검색합니다
-geocoder.addressSearch('서울 성동구 뚝섬로 273', function(result, status) {
+geocoder.addressSearch('서울 종로구 종로 157', function(result, status) {
 
     // 정상적으로 검색이 완료됐으면 
      if (status === kakao.maps.services.Status.OK) {
@@ -150,15 +166,20 @@ geocoder.addressSearch('서울 성동구 뚝섬로 273', function(result, status
             position: coords
         });
 
+
+    	var locationName = $("#locationName").text();
         // 인포윈도우로 장소에 대한 설명을 표시합니다
         var infowindow = new kakao.maps.InfoWindow({
-            content: '<div style="width:150px;text-align:center;padding:6px 0;">서울숲</div>'
+            content: '<div style="width:150px;text-align:center;padding:6px 0;">'+locationName+'</div>'
         });
         infowindow.open(map, marker);
 
         // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
         map.setCenter(coords);
+    }else{
+    	alert("지도 실패");
     } 
+    
 });    
     </script>
     </html> 

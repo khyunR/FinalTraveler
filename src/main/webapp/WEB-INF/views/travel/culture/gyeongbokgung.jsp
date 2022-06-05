@@ -1,5 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
+<sec:authentication property="name" var="username"/>
+<sec:authentication property="authorities" var="authorities"/>
+<sec:authentication property="principal" var="principal"/>
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Seoul Traveler</title>
+
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/common.css" />
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/travel.css" />
 <script src="${pageContext.request.contextPath}/resources/js/common.js" defer></script>
@@ -7,15 +21,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
 <script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=8d916d2023f8da17e354c4592559d114" ></script>
-
-
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Namsan Tower</title>
 </head>
-<body>
 <body>
     <div id="wrap">
         <header>
@@ -23,13 +29,27 @@
                 <h1><a href="${pageContext.request.contextPath}/main">Seoul Traveler</a></h1>
                 <div class="header_cont">
                     <ul class="util clear">
-                        <li><a href="">로그인</a></li>
-                        <li><a href="">회원가입</a></li>
+                    	<sec:authorize access="isAnonymous()">
+	                        <li><a href="${pageContext.request.contextPath }/login">로그인</a></li>
+	                        <li><a href="${pageContext.request.contextPath }/register">회원가입</a></li>
+                    	</sec:authorize>
+                    	<sec:authorize access="isAuthenticated()">
+	                    	<sec:authentication property="principal.username" var="username" />
+	                    	<sec:authentication property="principal.name" var="name" />
+                    		<li class="welcome">환영합니다, <strong>${username }</strong>(${name }) 님! </li>
+	                    	<sec:authorize access="hasRole('ADMIN')">
+		                        <li><a href="${pageContext.request.contextPath }/admin/">관리자</a></li>
+	                    	</sec:authorize>
+	                    	<sec:authorize access="hasRole('MEMBER')">
+		                        <li><a href="${pageContext.request.contextPath }/user/mypage">마이페이지</a></li>
+	                    	</sec:authorize>
+	                    	<li><a href="${pageContext.request.contextPath }/logout">로그아웃</a></li>
+                    	</sec:authorize>
                     </ul>
                     <nav>
                         <ul class="gnb clear">
                             <li>
-                                <a href="${pageContext.request.contextPath }/location/list" class="openAll">추천 여행지</a>
+                                <a href="${pageContext.request.contextPath }/travel/culture/cultureList" class="openAll">추천 여행지</a>
                             </li>
                             <li>
                                 <a href="${pageContext.request.contextPath }/" class="openAll">숙소 예약</a>
@@ -46,7 +66,7 @@
             </div>
         </header>
         <div class="title">
-        <h2 id="locationName">남산 타워</h2>
+        <h2 id="locationName">경복궁</h2>
         </div>
 <div class="content">
 		<div class="imageWrap">
@@ -55,17 +75,17 @@
 			          <ul class="ImgList">
                         <li class="imgList0">
                             <div class="roll_content">
-                                <img src="../../resources/images/namsan_tower.jpg"  alt="남산타워"><p class="roll_txtline"></p>
+                                <img src="../../resources/images/travel/culture/gyeongbokgung_1.jpg"  alt="경복궁"><p class="roll_txtline"></p>
                             </div>
                         </li>
                         <li class="imgList1">
                             <div class="roll_content">
-                                <img src="../../resources/images/namsan_tower1.jpg" alt="남산타워"><p class="roll_txtline"></p>
+                                <img src="../../resources/images/travel/culture/gyeongbokgung_2.jpg" alt="경복궁"><p class="roll_txtline"></p>
                             </div>
                         </li>
                         <li class="imgList2">
                             <div class="roll_content">
-                                <img src="../../resources/images/namsan_tower2.jpg"  alt="남산타워"><p class="roll_txtline"></p>
+                                <img src="../../resources/images/travel/culture/gyeongbokgung_3.jpg"  alt="경복궁"><p class="roll_txtline"></p>
                             </div>
                         </li>
                     </ul>
@@ -75,16 +95,16 @@
 	<div class="infoWrap">	
 	<div class="subtitle">상세 정보</div>
 	 <div id="info">
-	 ‘남산서울타워’는 효율적인 방송전파 송수신과 한국의 전통미를 살린 관광 전망시설의 기능을 겸비한 국내 최초의 종합전파 탑으로 방송문화와 관광산업의 미래를 위해 건립되었습니다. 세계 유명한 종합 탑들이 그 나라 또는 그 도시의 상징적인 존재가 된 것처럼 '남산서울타워' 역시 지난 40여 년간 대한민국의 대표적인 관광지이자 서울의 상징물 역할을 해왔습니다. ‘남산서울타워’는 서울 시내 전 지역에서 바라보이는 탑의 높이와 독특한 구조, 형태 등으로 인하여 시민의 관심과 사랑의 대상이 되었고, 내외국인들이 즐겨 찾는 제1의 관광 명소로서의 위치를 확고히 하고 있습니다. 최근에는 한류 바람을 몰고 온 각종 예능, 드라마의 촬영지로 이름이 높아지면서 내외국인 관광객들이 발길이 끊이지 않는 곳입니다.
+	 사적 제117호. 도성의 북쪽에 있다고 하여 북궐(北闕)이라고도 불리었다. 조선왕조의 건립에 따라 창건되어 초기에 정궁으로 사용되었으나 임진왜란 때 전소된 후 오랫동안 폐허로 남아 있다가 조선 말기 고종 때 중건되어 잠시 궁궐로 이용되었다.
 	 </div>
 	</div>
 	<div class="mapWrap">	
 		<div id="map"></div>
 		<div class="mapInfo">
 			<div class="address">
-				<div class="mAddr"><span>주소</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;서울 용산구 남산공원길 105 (용산동2가 산1-3)</div>
-				<div class="homepage"><span>홈페이지</span> &nbsp;&nbsp; www.seoultower.co.kr</div>
-				<div class="price"><span>전망대</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;16,000원(대인) / 12,000원(소인)</div>
+				<div class="mAddr"><span>주소</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;서울 종로구 사직로 161 경복궁</div>
+				<div class="homepage"><span>홈페이지</span> &nbsp;&nbsp; http://www.royalpalace.go.kr/</div>
+				<div class="price"><span>운영시간</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;매일 09:00 - 18:00</div>
 			</div>
 		</div>
 	</div>
@@ -133,7 +153,7 @@ var map = new kakao.maps.Map(mapContainer, mapOption);
 var geocoder = new kakao.maps.services.Geocoder();
 
 // 주소로 좌표를 검색합니다
-geocoder.addressSearch('서울 용산구 남산공원길 105', function(result, status) {
+geocoder.addressSearch('서울 종로구 사직로 161', function(result, status) {
 
     // 정상적으로 검색이 완료됐으면 
      if (status === kakao.maps.services.Status.OK) {
