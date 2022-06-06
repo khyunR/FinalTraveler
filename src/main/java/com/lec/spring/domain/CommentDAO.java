@@ -6,7 +6,7 @@ public interface CommentDAO{
 	int insert(CommentDTO dto);
 	
 	// 전체 SELECT
-		public abstract List<CommentDTO> select();
+	public abstract List<CommentDTO> select();
 	
 	// 댓글목록읽기
 	// ResultSet --> List<DTO> 로 리턴
