@@ -1,14 +1,25 @@
 package com.lec.spring.controller;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.lec.spring.domain.LocationDTO;
+import com.lec.spring.service.LocationService;
+
 @Controller
 @RequestMapping("/travel")
 public class TravelController {
+	
+	@Autowired
+	LocationService locationService;
+	
 	@RequestMapping("/culture/cultureList")
 	public String cultureList() {
 		return "/travel/culture/cultureList";
@@ -127,19 +138,59 @@ public class TravelController {
 	}
 	
 	@GetMapping("/attraction/view")
-	public String attractionView(Model model, RedirectAttributes redirect) {
+	public String attractionView(int uid, Model model, RedirectAttributes redirect) {
+		List<LocationDTO> result = (List<LocationDTO>)redirect.getAttribute("result");
+		
+		if(result==null || result.isEmpty()) {
+			result = locationService.selectByUid(uid);
+			LocationDTO dto = result.get(0);
+			dto.setContent(locationService.getContentDetail(dto));
+			result.set(0, dto);
+		}
+		
+		model.addAttribute("result", result);
 		return "/travel/attraction/view";
 	}
 	@GetMapping("/culture/view")
-	public String cultureView(Model model, RedirectAttributes redirect) {
+	public String cultureView(int uid, Model model, RedirectAttributes redirect) {
+		List<LocationDTO> result = (List<LocationDTO>)redirect.getAttribute("result");
+		
+		if(result==null || result.isEmpty()) {
+			result = locationService.selectByUid(uid);
+			LocationDTO dto = result.get(0);
+			dto.setContent(locationService.getContentDetail(dto));
+			result.set(0, dto);
+		}
+		
+		model.addAttribute("result", result);
 		return "/travel/attraction/view";
 	}
 	@GetMapping("/museum/view")
-	public String museumView(Model model, RedirectAttributes redirect) {
+	public String museumView(int uid, Model model, RedirectAttributes redirect) {
+		List<LocationDTO> result = (List<LocationDTO>)redirect.getAttribute("result");
+		
+		if(result==null || result.isEmpty()) {
+			result = locationService.selectByUid(uid);
+			LocationDTO dto = result.get(0);
+			dto.setContent(locationService.getContentDetail(dto));
+			result.set(0, dto);
+		}
+		
+		model.addAttribute("result", result);
 		return "/travel/museum/view";
 	}
 	@GetMapping("/park/view")
-	public String parkView(Model model, RedirectAttributes redirect) {
+	public String parkView(int uid, Model model, RedirectAttributes redirect) {
+		List<LocationDTO> result = (List<LocationDTO>)redirect.getAttribute("result");
+		
+		if(result==null || result.isEmpty()) {
+			result = locationService.selectByUid(uid);
+			LocationDTO dto = result.get(0);
+			dto.setContent(locationService.getContentDetail(dto));
+			result.set(0, dto);
+		}
+		
+		model.addAttribute("result", result);
 		return "/travel/park/view";
 	}
 }
