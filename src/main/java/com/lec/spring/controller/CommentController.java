@@ -30,7 +30,7 @@ public class CommentController{
 	
 	@RequestMapping("/writeReviewOk")
 	public String writeReviewOk(Model model, CommentDTO dto ) {
-		model.addAttribute("list", commentService.write(dto));
+		model.addAttribute("reply", commentService.write(dto));
 		return "/room/roomDetail";
 	}
 }	
