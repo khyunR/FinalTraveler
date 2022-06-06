@@ -20,7 +20,11 @@ $(document).ready(function(){
       }, function(){
     $(this).css("border-bottom", '5px solid transparent');
 	});
-
+	$("#subDepth ul li a").hover(function(){
+    $(this).css("color", '#595458');
+      }, function(){
+    $(this).css("color", '#cbcbcb');
+	});
 })
 
         $(function(){
