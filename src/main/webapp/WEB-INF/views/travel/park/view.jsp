@@ -71,7 +71,7 @@ function loadImages(){
                                 <a href="${pageContext.request.contextPath }/travel/culture/cultureList" class="openAll">추천 여행지</a>
                             </li>
                             <li>
-                                <a href="${pageContext.request.contextPath }/" class="openAll">숙소 예약</a>
+                                <a href="${pageContext.request.contextPath }/room/roomForm" class="openAll">숙소 예약</a>
                             </li>
                             <li>
                                 <a href="${pageContext.request.contextPath }/notice/list" class="openAll">공지사항</a>
