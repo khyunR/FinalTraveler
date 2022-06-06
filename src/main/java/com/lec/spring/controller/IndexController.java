@@ -44,10 +44,19 @@ public class IndexController {
 	
 	public IndexController() {}
 
-	@RequestMapping("/register")
+	@RequestMapping("/registerAgreement")
+	public void registerAgreement() {
+	}
+	
+	@PostMapping("/register")
 	public String register(UserDTO dto, Model model) {
 		System.out.println("register() 호출");
 		return "registrationForm";
+	}
+	
+	@GetMapping("/register")
+	public String registerGET() {
+		return "redirect:/registerAgreement";
 	}
 	
 	@PostMapping("/registerOk")
@@ -231,7 +240,6 @@ public class IndexController {
 	@RequestMapping({"", "/", "/main", "/index"})
 	public String main(Model model) {
 		List<LocationDTO> list = locationService.selectTop3ViewCnt();
-		System.out.println(list);
 		
 		model.addAttribute("imgSrcList", locationService.getImgSrcList(list));
 		model.addAttribute("uidList", locationService.getPostUidListHome(list));

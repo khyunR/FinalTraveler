@@ -85,14 +85,11 @@ public class LocationService {
 
 	public String getContentDetail (LocationDTO dto){
 		String result = "";
-		System.out.println("getContentDetail() 호출");
 		String content = dto.getContent();
 		Document doc = Jsoup.parseBodyFragment(content);
 		
-		System.out.println(doc.html());
 		result = doc.body().html();
 		result = result.split("&lt;div id=\"detail\"&gt;")[1].replace("&lt;/div&gt;", "");
-		System.out.println("getContentDetail(): " + result);
 
 		return result;
 	}

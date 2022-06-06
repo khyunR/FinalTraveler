@@ -43,8 +43,8 @@
 					</div>
 							
 					<div class="form-group">
-						<label for="name">이름 : </label><span class="text-danger"></span><br>
-						<input type="text" name="name" id="name" class="form-control" value="${w.name }" ><br><br>
+						<label for="name">이름*: </label><span class="text-danger"></span><br>
+						<input type="text" name="name" id="name" class="form-control" value="${w.name }" required ><br><br>
 						<label for="email">이메일*: </label><span class="text-danger"><b> ${errEmail }</b></span><br>
 						<input type="email" name="email" id="email" value="${w.email }" style="width:60%" required>
 						<input type="button" id="sendVerificationCode" style="width:39%; min-height: 45px" value="인증번호 전송" onclick="sendCode()"><br><br>

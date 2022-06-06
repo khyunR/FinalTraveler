@@ -30,7 +30,7 @@
                     <ul class="util clear">
                     	<sec:authorize access="isAnonymous()">
 	                        <li><a href="${pageContext.request.contextPath }/login">로그인</a></li>
-	                        <li><a href="${pageContext.request.contextPath }/register">회원가입</a></li>
+	                        <li><a href="${pageContext.request.contextPath }/registerAgreement">회원가입</a></li>
                     	</sec:authorize>
                     	<sec:authorize access="isAuthenticated()">
 	                    	<sec:authentication property="principal.username" var="username" />
