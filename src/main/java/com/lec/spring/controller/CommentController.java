@@ -30,8 +30,8 @@ public class CommentController{
 	
 	@RequestMapping("/writeReviewOk")
 	public String writeReviewOk(Model model, CommentDTO dto ) {
-		model.addAttribute("reply", commentService.write(dto));
-		return "/room/roomDetail";
+		commentService.write(dto);
+		return "redirect:/room/roomDetail";
 	}
 }	
 

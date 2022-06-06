@@ -23,7 +23,7 @@ public class CommentDTO {
 	
 	private int uid;   // uid
 	private int mb_uid;
-	
+	private String username;
 	private String content;
 	// java.time.* 객체 변환을 위한 annotation
 	@JsonDeserialize(using = LocalDateTimeDeserializer.class)

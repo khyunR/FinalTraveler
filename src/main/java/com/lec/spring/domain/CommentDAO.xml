@@ -22,8 +22,8 @@
 		useGeneratedKeys="true"
 		keyColumn="uid" keyProperty="uid"
 		flushCache="true">
-    	insert into t_accommo_review(mb_uid, content, regDate)
-        	value(#{mb_uid}, #{content}, #{regDate})
+    	insert into t_accommo_review(mb_uid, content)
+        	value(#{mb_uid}, #{content})
 	</insert>
     
 <!-- 댓글 수정 -->
@@ -44,7 +44,7 @@
 <!-- 댓글 전체 select -->
 	<select id="select" resultType="com.lec.spring.domain.CommentDTO">
 		SELECT
-			tav.uid uid,
+		tav.uid uid,
 		username,
 		content content,
 		tav.regDate regDate

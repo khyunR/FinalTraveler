@@ -91,34 +91,33 @@
     </div>
     
     <div class="room_map" id="map"></div>
-    
-    <sec:authorize access="isAuthenticated()">
-    	<ul>
-    	<c:forEach items="${reply}" var="dto">
-    	<li>
-    		<div>
-    			<p>${dto.uid} / ${dto.regDate}</p>
-    			<p>${dto.content}</p>
-    		</div>
-    	</li>
-    	</c:forEach>
-		</ul> 
-	
-		<div class="room_comment">
-		<form method="POST" action="writeReviewOk">
-		<p>
-			<label>댓글 작성자</label> <input type="text" name="username" value="${principal.username }" disabled/>
-			<input type="text" name="mb_uid" hidden value="${principal.uid }"/>
-		</p>
-		<p>
-			<textarea rows="5" cols="50" name="content" ></textarea>
-		</p>
-		<p>
-			<button type="submit" id="button1">댓글 작성</button>
-		</p>
-		</form>
+	<div class="room_comment">
+	    	<ul>
+		    	<c:forEach items="${list}" var="dto">
+		    	<li>
+		    		<div>
+		    			<p>${dto.username} / ${dto.regDate}</p>
+		    			<p>${dto.content}</p>
+		    		</div>
+		    	</li>
+		    	</c:forEach>
+			</ul> 
+		    <sec:authorize access="isAuthenticated()">
+				<form method="POST" action="writeReviewOk">
+				<p>
+					<label>후기 작성자</label> <input type="text" name="username" value="${principal.username }" disabled/>
+					<input type="hidden" name="mb_uid" value="${principal.uid }"/>
+				</p>
+				<p>
+					<textarea rows="5" cols="50" name="content" ></textarea>
+				</p>
+				<p>
+					<button type="submit" id="button1">후기 작성</button>
+				</p>
+				</form>
+		    </sec:authorize>
 		</div>
-    </sec:authorize>
+   
     
 	        <footer>
             <div class="foot_area box_inner">
