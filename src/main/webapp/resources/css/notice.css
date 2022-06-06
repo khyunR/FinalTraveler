@@ -68,6 +68,7 @@ text-align : center;
   text-decoration: none;
   font-size: 22px;
   border-bottom : 2px solid gray;
+  text-align: center;
 }
 #table_menu th:first-child  {
   width : 80px;
