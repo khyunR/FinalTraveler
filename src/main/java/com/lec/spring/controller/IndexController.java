@@ -2,6 +2,7 @@ package com.lec.spring.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,8 +56,14 @@ public class IndexController {
 	}
 	
 	@GetMapping("/register")
-	public String registerGET() {
-		return "redirect:/registerAgreement";
+	public String registerGET(HttpServletRequest request) {
+		String page = "registrationForm";
+		String prevUrl = request.getHeader("Referer");
+		if(prevUrl==null || !prevUrl.equals("http://localhost:8080/register")) {
+			page="redirect:/registerAgreement";
+		}
+		
+		return page;
 	}
 	
 	@PostMapping("/registerOk")
