@@ -1,8 +1,13 @@
+#wrap {
+  width: 1080px;
+  margin: auto;
+}
 /* 롤링 */
 .main_rolling_mobile{ display:none; }
 .visualRoll{ position: relative; width:100%;}
 .viewImgList { position: relative; width:100%; }
 .viewImgList li{
+	position: relative;
     text-align: center;
     height: 600px;
     line-height: 600px;
@@ -15,31 +20,15 @@
     width: 100%;
     margin : 0 auto;
 }
-.viewImgList li.imgList0 {
-    position: relative; z-index: 50;
-    background:url("../../resources/images/img_slidecontents01.jpg") no-repeat center;
-}
-.viewImgList li.imgList1 {
-    position: absolute; z-index: 10;
-    top:0; left:0; width:100%;
-    background:url("../../resources/images/img_slidecontents02.jpg") no-repeat center;
-}
-.viewImgList li.imgList2 {
-    position: absolute; z-index: 10;
-    top:0; left:0; width:100%;
-    background:url("../../resources/images/img_slidecontents03.jpg") no-repeat center;
-}
-.viewImgList li .roll_content{ 
-	position: relative; 
-	}
-.viewImgList li .roll_content .roll_txtline{
+
+.viewImgList li .roll_txtline{
     position: absolute;
     left:0;
-    bottom:60px;
-    width:100%;
+    bottom:120px;
     line-height: 1;
-    text-align: center;
-    font-size: 40px;
+	padding-left : 35px;
+    font-size: 80px;
+    font-weight : bold;
     color:#fff;
     letter-spacing: 2px;
 }

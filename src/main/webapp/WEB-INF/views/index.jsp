@@ -69,20 +69,25 @@
             <div class="main_rolling_pc">
                 <div class="visualRoll">
                     <ul class="viewImgList">
-                        <li class="imgList0">
-                            <div class="roll_content">
-                                <a href="${pageContext.request.contextPath}/travel/culture/cultureList"></a><p class="roll_txtline">SEOUL TRAVELER</p>
-                            </div>
+                        <li>
+                            <a href="${pageContext.request.contextPath}/travel/culture/cultureList">
+                            	<img src="${pageContext.request.contextPath}/resources/images/img_slidecontents01.jpg" alt=""></a>
+                             <a href="${pageContext.request.contextPath}/travel/culture/cultureList"><p class="roll_txtline">서울의 궁궐 문화재</p></a>
                         </li>
-                        <li class="imgList1">
-                            <div class="roll_content">
-                                <a href="${pageContext.request.contextPath}/travel/park/parkList"></a><p class="roll_txtline">SEOUL TRAVELER</p>
-                            </div>
+                        <li>
+                            <a href="${pageContext.request.contextPath}/travel/park/parkList">
+                            <img src="${pageContext.request.contextPath}/resources/images/img_slidecontents02.jpg" alt=""></a>
+                            <a href="${pageContext.request.contextPath}/travel/park/parkList"><p class="roll_txtline">서울의 자연 속 공원들</p></a>
                         </li>
-                        <li class="imgList2">
-                            <div class="roll_content">
-                                <a href="${pageContext.request.contextPath}/travel/attraction/attractionList"></a><p class="roll_txtline">SEOUL TRAVELER</p>
-                            </div>
+                        <li>
+                            <a href="${pageContext.request.contextPath}/travel/museum/museumList">
+                            <img src="${pageContext.request.contextPath}/resources/images/travel/museum/nationalMuseum_1.jpg" alt=""></a>
+                            <a href="${pageContext.request.contextPath}/travel/museum/museumList"><p class="roll_txtline">서울의 미술관&박물관</p></a>
+                        </li>
+                        <li>
+                            <a href="${pageContext.request.contextPath}/travel/attraction/attractionList">
+                            <img src="${pageContext.request.contextPath}/resources/images/img_slidecontents03.jpg" alt=""></a>
+                             <a href="${pageContext.request.contextPath}/travel/attraction/attractionList"><p class="roll_txtline">서울의 명소</p></a>
                         </li>
                     </ul>
                 </div>

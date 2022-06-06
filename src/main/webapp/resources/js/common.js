@@ -1,7 +1,7 @@
 $(document).ready(function(){ 
 	$('.viewImgList').bxSlider({ 
 		auto: true, 
-		speed: 400, 
+		speed: 500, 
 		pause: 4000, 
 		mode:'fade', 
 		autoControls: false, 
