@@ -163,9 +163,6 @@
         </footer>
 </html>
 
-	</c:otherwise>
-</c:choose>
-
 
 
 

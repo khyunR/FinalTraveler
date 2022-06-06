@@ -73,17 +73,19 @@
         <table id="table_menu">
           <thead class="title">
             <tr>
-              <th style="height:40px;">No</th>
-              <th style="height:40px;">제목</th>
-              <th style="height:40px;">작성자</th>
-              <th style="height:40px;">조회수</th>
-              <th style="height:40px;">작성일</th>
+              <th style="height:40px; text-align:center;">No</th>
+              <th style="height:40px; text-align:center;">Category</th>
+              <th style="height:40px; text-align:center;">제목</th>
+              <th style="height:40px; text-align:center;">작성자</th>
+              <th style="height:40px; text-align:center;">조회수</th>
+              <th style="height:40px; text-align:center;">작성일</th>
             </tr>
           </thead>
           <tbody>
           	<c:forEach var="dto" items="${ list }">
 	            <tr>
                     <td>${dto.uid }</td>
+                    <td>${dto.category }</td>
                     <td><a href="view?uid=${dto.uid }">${dto.subject }</a></td>
                     <td>${dto.username }</td>
                     <td>${dto.viewCnt }</td>

@@ -127,7 +127,19 @@ public class TravelController {
 	}
 	
 	@GetMapping("/attraction/view")
-	public String viewTest(Model model, RedirectAttributes redirect) {
-		return "/travel/attraction/viewTest";
+	public String attractionView(Model model, RedirectAttributes redirect) {
+		return "/travel/attraction/view";
+	}
+	@GetMapping("/culture/view")
+	public String cultureView(Model model, RedirectAttributes redirect) {
+		return "/travel/attraction/view";
+	}
+	@GetMapping("/museum/view")
+	public String museumView(Model model, RedirectAttributes redirect) {
+		return "/travel/museum/view";
+	}
+	@GetMapping("/park/view")
+	public String parkView(Model model, RedirectAttributes redirect) {
+		return "/travel/park/view";
 	}
 }

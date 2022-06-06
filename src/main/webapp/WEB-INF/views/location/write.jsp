@@ -83,9 +83,9 @@
 					카테고리 선택:&nbsp&nbsp
 					<select name="category" required>
 						<option hidden></option>
-						<option value="culturalHeritage">문화재</option>
-						<option value="natureAndPark">자연 & 공원</option>
-						<option value="museumAndArt">박물관 & 미술관</option>
+						<option value="culture">문화재</option>
+						<option value="park">자연 & 공원</option>
+						<option value="museum">박물관 & 미술관</option>
 						<option value="attraction">명소</option>						
 					</select>
 				</div>

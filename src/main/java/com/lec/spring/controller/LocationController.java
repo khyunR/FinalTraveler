@@ -1,8 +1,11 @@
 package com.lec.spring.controller;
 
+import java.io.IOException;
 import java.util.List;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -62,17 +65,22 @@ public class LocationController {
 	}
 
 	@GetMapping("/view")
-	public void view(int uid, Model model, HttpServletRequest request) {
+	public String view(int uid, Model model, RedirectAttributes redirect, HttpServletRequest request, HttpServletResponse response) {
 		List<LocationDTO> list = locationService.viewByUid(uid);
-		if(list!=null||!list.isEmpty()) {
+		String page = "/location/view";
+
+		if(!request.isUserInRole("ROLE_ADMIN")) {
 			LocationDTO dto = list.get(0);
-			dto.setContent(dto.getContent().replace("&lt;div id=&quot;detail&quot;&gt;", "").replace("&lt;/div&gt;", ""));
+			dto.setContent(locationService.getContentDetail(dto));
 			list.set(0, dto);
+			redirect.addFlashAttribute("result", list);
+			return "redirect:/travel/"+list.get(0).getCategory()+"/view?uid="+ list.get(0).getUid();
 		}
-//		if(request.isUserInRole("ROLE_ADMIN")) {
-//			
-//		}
+
 		model.addAttribute("list", list);
+		return page;
+
+		
 	}
 	
 	@GetMapping("/update")

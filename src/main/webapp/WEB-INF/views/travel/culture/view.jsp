@@ -37,7 +37,6 @@ function loadImages(){
 	for(var i = 0; i<imageFilePaths.length; i++){
 		ulImages = ulImages + '<li class="imgList"><div class="roll_content"><img class="locationImage" src="'+imageFilePaths[i]+'"  alt="${result[0].locationName}"><p class="roll_txtline"></p></div></li>';		
 	}
-	alert(ulImages);
 	$(".ImgList").html(ulImages);
 }
 </script>
@@ -108,7 +107,8 @@ function loadImages(){
 		<div class="mapInfo">
 			<div class="address">
 				<div class="mAddr"><span>주소</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="locationAddr">${result[0].locationAddr }</span></div>
-				<div class="homepage"><span>홈페이지</span> &nbsp;&nbsp;${result[0].homepage }</div>
+				<div class="homepage"><span>홈페이지</span> &nbsp;&nbsp;&nbsp;${result[0].homepage }</div>
+				<div class="price"><span>운영시간</span> &nbsp;&nbsp;&nbsp;&nbsp;${result[0].businessHour }</div>
 				<div class="price"><span>전화</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${result[0].phoneNo }</div>
 				<div class="price"><span>이용료</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${result[0].fee }</div>
 			</div>
