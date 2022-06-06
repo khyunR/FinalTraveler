@@ -1,5 +1,12 @@
 package com.lec.spring.controller;
 
+import java.io.IOException;
+import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -7,11 +14,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.lec.spring.common.Criteria;
-import com.lec.spring.common.Paging;
 import com.lec.spring.config.PrincipalDetails;
 import com.lec.spring.domain.LocationDTO;
+import com.lec.spring.pagination.Criteria;
+import com.lec.spring.pagination.Paging;
 import com.lec.spring.service.LocationService;
 
 @Controller
@@ -51,13 +59,28 @@ public class LocationController {
 	public void writeOk(LocationDTO dto, Model model) {
 		PrincipalDetails principal = (PrincipalDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		dto.setMb_uid(principal.getUid());
+		dto.setImageFilePaths(String.join(" ", locationService.getImgSrcList(dto)));
 		model.addAttribute("result", locationService.write(dto));
 		model.addAttribute("dto", dto);  // auto-generated key 
 	}
 
 	@GetMapping("/view")
-	public void view(int uid, Model model) {
-		model.addAttribute("list", locationService.viewByUid(uid));
+	public String view(int uid, Model model, RedirectAttributes redirect, HttpServletRequest request, HttpServletResponse response) {
+		List<LocationDTO> list = locationService.viewByUid(uid);
+		String page = "/location/view";
+
+		if(!request.isUserInRole("ROLE_ADMIN")) {
+			LocationDTO dto = list.get(0);
+			dto.setContent(locationService.getContentDetail(dto));
+			list.set(0, dto);
+			redirect.addFlashAttribute("result", list);
+			return "redirect:/travel/"+list.get(0).getCategory()+"/view?uid="+ list.get(0).getUid();
+		}
+
+		model.addAttribute("list", list);
+		return page;
+
+		
 	}
 	
 	@GetMapping("/update")
@@ -67,6 +90,7 @@ public class LocationController {
 	
 	@PostMapping("/updateOk")
 	public void updateOk(LocationDTO dto, Model model) {
+		dto.setImageFilePaths(String.join(" ", locationService.getImgSrcList(dto)));
 		model.addAttribute("result", locationService.update(dto));
 		model.addAttribute("dto", dto);
 	}
@@ -76,5 +100,17 @@ public class LocationController {
 		model.addAttribute("result", locationService.deleteByUid(uid));
 	}
 	
-	
+	@GetMapping("/viewTest")
+	public String viewTest(int uid, Model model, RedirectAttributes redirect) {
+		List<LocationDTO> result = locationService.selectByUid(uid);
+		LocationDTO dto = new LocationDTO();
+		if(result!=null || !result.isEmpty()) {
+			dto = result.get(0);
+			dto.setContent(locationService.getContentDetail(dto));
+			result.set(0, dto);
+		}
+		model.addAttribute("result", result);
+		redirect.addFlashAttribute("result", result);
+		return "redirect:/travel/"+(String)dto.getCategory()+"/viewTest?uid="+ Integer.toString(dto.getUid());
+	}
 }

@@ -1,4 +1,4 @@
-package com.lec.spring.common;
+package com.lec.spring.pagination;
 
 import lombok.Data;
 

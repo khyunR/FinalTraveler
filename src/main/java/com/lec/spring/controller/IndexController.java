@@ -234,8 +234,8 @@ public class IndexController {
 		System.out.println(list);
 		
 		model.addAttribute("imgSrcList", locationService.getImgSrcList(list));
-		model.addAttribute("uidList", locationService.getPostUidList(list));
-		model.addAttribute("locationNameList", locationService.getLocationNameList(list));
+		model.addAttribute("uidList", locationService.getPostUidListHome(list));
+		model.addAttribute("locationNameList", locationService.getLocationNameListHome(list));
 		return "/index";
 	}
 	

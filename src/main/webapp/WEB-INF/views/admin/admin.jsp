@@ -65,8 +65,10 @@
         </header>
         <main>
       		<div class="notice_list">
-				<h2><br>관리자 페이지<br></h2>
-				<a class="btn btn-primary text-white" href="${pageContext.request.contextPath}/admin/authority">회원 권한 추가/삭제</a>
+				<h2><br>관리자 페이지<br></h2><br>
+				<a class="btn btn-primary text-white" href="${pageContext.request.contextPath}/admin/authority">회원 권한 추가/삭제</a>&nbsp
+				<a class="btn btn-primary text-white" href="${pageContext.request.contextPath}/notice/list">공지사항 게시판</a>&nbsp
+				<a class="btn btn-primary text-white" href="${pageContext.request.contextPath}/location/list">추천 여행지 게시판</a>&nbsp
 		
 			    <div class="line_chart_containter" style="width:480;">
 			        <canvas id="line-chart" width="600" height="150"></canvas>

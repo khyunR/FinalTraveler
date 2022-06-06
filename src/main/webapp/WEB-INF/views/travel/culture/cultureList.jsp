@@ -80,6 +80,7 @@
                                 <li><a href="${pageContext.request.contextPath}/travel/park/parkList" >자연&공원</a></li>
                                 <li><a href="${pageContext.request.contextPath}/travel/museum/museumList" >박물관&미술관</a></li>
                                 <li><a href="${pageContext.request.contextPath}/travel/attraction/attractionList" >명소</a></li>
+                                <li><a href="${pageContext.request.contextPath}/location/list" >전체보기</a></li>
                             </ul>
                         </div>
             </div>

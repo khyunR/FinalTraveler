@@ -1,7 +1,10 @@
 package com.lec.spring.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping("/travel")
@@ -122,4 +125,21 @@ public class TravelController {
 	public String lotteWorld() {
 		return "/travel/attraction/lotteWorld";
 	}
+	
+	@GetMapping("/attraction/view")
+	public String attractionView(Model model, RedirectAttributes redirect) {
+		return "/travel/attraction/view";
 	}
+	@GetMapping("/culture/view")
+	public String cultureView(Model model, RedirectAttributes redirect) {
+		return "/travel/attraction/view";
+	}
+	@GetMapping("/museum/view")
+	public String museumView(Model model, RedirectAttributes redirect) {
+		return "/travel/museum/view";
+	}
+	@GetMapping("/park/view")
+	public String parkView(Model model, RedirectAttributes redirect) {
+		return "/travel/park/view";
+	}
+}

@@ -58,6 +58,12 @@ CREATE TABLE t_post_location
 	content text,
 	viewCnt int NOT NULL DEFAULT 0,
 	regDate datetime NOT NULL DEFAULT now(),
+	imageFilePaths text,
+	category varchar(20),
+	homepage varchar(100),
+	fee varchar(100),
+	phoneNo varchar(20),
+	businessHour varchar(100),
 	PRIMARY KEY (uid)
 );
 

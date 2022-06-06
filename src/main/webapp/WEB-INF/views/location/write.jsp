@@ -5,6 +5,13 @@
 <sec:authentication property="authorities" var="authorities"/>
 <sec:authentication property="principal" var="principal"/>
 
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>추천 여행지 작성</title>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/common.css" />
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/notice.css" />
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/write.css" />
@@ -14,13 +21,6 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
-
-
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>추천 여행지 작성</title>
 </head>
 
 <body>
@@ -78,16 +78,41 @@
 					<input type="text" class="form-control" id="subject" placeholder="제목을 입력하세요" name="subject" required>
 				</div>
 				
+				<br>
+				<div class="locationType">
+					카테고리 선택:&nbsp&nbsp
+					<select name="category" required>
+						<option hidden></option>
+						<option value="culture">문화재</option>
+						<option value="park">자연 & 공원</option>
+						<option value="museum">박물관 & 미술관</option>
+						<option value="attraction">명소</option>						
+					</select>
+				</div>
+				<br>
 				<div class="locationName">
-					<input type="text" class="form-control" id="locationName" placeholder="여행지 이름을 입력하세요" name="locationName" required>
+					<input type="text" class="form-control" id="locationName" placeholder="여행지 이름을 입력하세요" name="locationName" required><span style="color:red;"><strong> *</strong></span>
 				</div>
 				
 				<div class="locationAddr">
-					<input type="text" class="form-control" id="locationAddr" placeholder="여행지 주소를 입력하세요" name="locationAddr" required>
+					<input type="text" class="form-control" id="locationAddr" placeholder="여행지 주소를 입력하세요" name="locationAddr" required><span style="color:red;"><strong> *</strong></span>
+				</div>
+				<div class="phoneNum">
+					<input type="text" class="form-control" id="phoneNum" placeholder="전화번호를 입력하세요" name="phoneNo" >
+				</div>
+				<div class="homepage">
+					<input type="text" class="form-control" id="homepage" placeholder="홈페이지 주소를 입력하세요" name="homepage" >
+				</div>
+				<div class="businessHour">
+					<input type="text" class="form-control" id="businessHour" placeholder="운영시간을 입력하세요" name="businessHour" >
+				</div>
+				<div class="fee">
+					<input type="text" class="form-control" id="fee" placeholder="입장료를 입력하세요" name="fee" >
 				</div>
 				
 				<div class="content">
 					<div class="content_ti"></div>
+					<br><p>꼭 이미지를 먼저 첨부 후 아래에 본문 글을 &lt;div id="detail"&gt; &lt;/div&gt;로 감싸서 작성하세요. </p> 
 					<textarea class="form-control" rows="5" id="content" placeholder="내용을 입력하세요" name="content"></textarea>
 					<Script>
 						var ckeditor_config = {
