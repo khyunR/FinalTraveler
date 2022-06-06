@@ -15,9 +15,9 @@
 		flushCache="true">
 		INSERT INTO 
 			t_post_location
-			(mb_uid, subject, locationName, locationAddr, content)
+			(mb_uid, subject, category, locationName, locationAddr, homepage, businessHour, phoneNo, fee, content, imageFilePaths)
 		VALUES
-			(#{mb_uid}, #{subject}, #{locationName}, #{locationAddr}, #{content})	
+			(#{mb_uid}, #{subject}, #{category}, #{locationName}, #{locationAddr}, #{homepage}, #{businessHour}, #{phoneNo}, #{fee}, #{content}, #{imageFilePaths})	
 	</insert>
 	
 	<update id="update" parameterType="com.lec.spring.domain.LocationDTO" flushCache="true">
@@ -25,9 +25,15 @@
 			t_post_location
 		SET
 			subject = #{subject},
+			category = #{category},
 			locationName = #{locationName},
 			locationAddr = #{locationAddr},
-			content = #{content}
+			homepage = #{homepage},
+			businessHour = #{businessHour},
+			phoneNo = #{phoneNo},
+			fee = #{fee},
+			content = #{content},
+			imageFilePaths = #{imageFilePaths}
 		WHERE
 			uid = #{uid}
 	</update>
@@ -38,7 +44,15 @@
 			mb_uid,
 			username,
 			subject,
+			category,
+			locationName,
+			locationAddr,
+			homepage,
+			businessHour,
+			phoneNo,
+			fee,
 			content,
+			imageFilePaths,
 			viewCnt,
 			tpl.regDate regDate
 		FROM 
@@ -53,7 +67,15 @@
 			mb_uid,
 			username,
 			subject,
+			category,
+			locationName,
+			locationAddr,
+			homepage,
+			businessHour,
+			phoneNo,
+			fee,
 			content,
+			imageFilePaths,
 			viewCnt,
 			tpl.regDate regDate
 		FROM 
@@ -68,9 +90,15 @@
 			mb_uid,
 			username,
 			subject,
+			category,
 			locationName,
 			locationAddr,
+			homepage,
+			businessHour,
+			phoneNo,
+			fee,
 			content,
+			imageFilePaths,
 			viewCnt,
 			tpl.regDate regDate
 		FROM 

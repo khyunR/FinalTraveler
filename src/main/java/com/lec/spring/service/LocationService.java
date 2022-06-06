@@ -25,20 +25,17 @@ public class LocationService {
 	}
 
 	public List<LocationDTO> list(int targetPageStartPostNo) {
-		
 		return dao.select(targetPageStartPostNo);
 	}
 
 	public List<LocationDTO> viewByUid(int uid) {
-		if(dao.incViewCnt(uid)!=1) {
-			return null;
-		}
 		List<LocationDTO> list = dao.selectByUid(uid);
-		if(list.isEmpty()) {
-			dao.decViewCnt(uid);
+		if(!list.isEmpty()) {
+			int cnt = dao.incViewCnt(uid);
+			if(cnt==1)
+				return list;
 		}
-		System.out.println("viewCnt++ succeed");
-		return list;
+		return null;
 	}
 	
 	public List<LocationDTO> selectTop3ViewCnt(){
@@ -46,7 +43,7 @@ public class LocationService {
 	}
 
 	public int write(LocationDTO dto) {
-
+		
 		return dao.insert(dto);
 	}
 
@@ -76,14 +73,38 @@ public class LocationService {
 		}
 		return result;
 	}
-	public List<Integer> getPostUidList (List<LocationDTO> list){
+
+	public List<String> getImgSrcList (LocationDTO dto){
+		List<String> result = new ArrayList<>();
+		String content = dto.getContent();
+		Document doc = Jsoup.parseBodyFragment(content);
+		Elements imgs = doc.getElementsByTag("img");
+		result = imgs.eachAttr("src");
+		return result;
+	}
+
+	public String getContentDetail (LocationDTO dto){
+		String result = "";
+		System.out.println("getContentDetail() 호출");
+		String content = dto.getContent();
+		Document doc = Jsoup.parseBodyFragment(content);
+		
+		System.out.println(doc.html());
+		result = doc.body().html();
+		result = result.split("&lt;div id=\"detail\"&gt;")[1].replace("&lt;/div&gt;", "");
+		System.out.println("getContentDetail(): " + result);
+
+		return result;
+	}
+
+	public List<Integer> getPostUidListHome (List<LocationDTO> list){
 		List<Integer> result = new ArrayList<>();
 		for (LocationDTO dto : list) {
 			result.add(dto.getUid());
 		}
 		return result;
 	}
-	public List<String> getLocationNameList (List<LocationDTO> list){
+	public List<String> getLocationNameListHome (List<LocationDTO> list){
 		List<String> result = new ArrayList<>();
 		for (LocationDTO dto : list) {
 			result.add(dto.getLocationName());

@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <sec:authentication property="authorities" var="authorities"/>
+<sec:authentication property="principal" var="principal"/>
 <!DOCTYPE html>
 <html lang="ko-KR">
 <head>
@@ -54,15 +55,18 @@
 		</ul> 
 	
 		<div class="room_comment">
+		<form method="POST" action="writeReviewOk">
 		<p>
-			<label>댓글 작성자</label> <input type="text">
+			<label>댓글 작성자</label> <input type="text" name="username" value="${principal.username }" disabled/>
+			<input type="text" name="mb_uid" hidden value="${principal.uid }"/>
 		</p>
 		<p>
-			<textarea rows="5" cols="50"></textarea>
+			<textarea rows="5" cols="50" name="content" ></textarea>
 		</p>
 		<p>
-			<button type="button">댓글 작성</button>
+			<button type="submit" id="button1">댓글 작성</button>
 		</p>
+		</form>
 		</div>
     </sec:authorize>
     

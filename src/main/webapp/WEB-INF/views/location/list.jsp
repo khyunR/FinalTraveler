@@ -140,6 +140,14 @@
           	</c:if>
           </ul>
         </div>
+       <!-- .contents_read .button .butt -->
+       		<sec:authorize access="hasRole('ADMIN')">
+       <div class="contents_read">
+       		<div class="button">
+		        <a class="butt" href="${pageContext.request.contextPath }/location/write">작성</a>
+       		</div>
+       </div>
+		    </sec:authorize>
         </div>
   
         <footer>

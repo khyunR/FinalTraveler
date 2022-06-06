@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.lec.spring.common.Criteria;
-import com.lec.spring.common.Paging;
 import com.lec.spring.config.PrincipalDetails;
 import com.lec.spring.domain.WriteDTO;
+import com.lec.spring.pagination.Criteria;
+import com.lec.spring.pagination.Paging;
 import com.lec.spring.service.NoticeService;
 
 @Controller

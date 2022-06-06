@@ -7,6 +7,19 @@
 <sec:authentication property="authorities" var="authorities"/>
 <sec:authentication property="principal" var="principal"/>
 
+    
+<c:if test="${empty list || fn:length(list) == 0 }">
+		<script>
+			alert("해당 정보가 삭제되거나 없습니다");
+			history.back();
+		</script>
+</c:if>
+
+
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/common.css" />
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/notice.css" />
 <script src="${pageContext.request.contextPath}/resources/ckeditor/ckeditor.js"></script>
@@ -14,24 +27,6 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
-
-    
-<c:choose>
-	<c:when test="${empty list || fn:length(list) == 0 }">
-		<script>
-			alert("해당 정보가 삭제되거나 없습니다");
-			history.back();
-		</script>
-	</c:when>
-	
-	<c:otherwise>
-		<c:set var="dto" value="${list[0] }"/>
-
-
-<!DOCTYPE html>
-<html lang="ko">
-
-<head>
 <title>추천 여행지 수정</title>
      <div id="wrap">
         <header>
@@ -82,21 +77,48 @@
         </div>
         <div class="contents_update">
         <form name="frm" action="updateOk" method="post">
-        <input type="hidden" name="uid" value="${dto.uid }"/>  
+        <input type="hidden" name="uid" value="${list[0].uid }"/>  
             <div class="subject">
-                <input type="text" id="subject" placeholder="제목을 입력하세요" name="subject" value="${dto.subject }" required>
+                <input type="text" id="subject" placeholder="제목을 입력하세요" name="subject" value="${list[0].subject }" required>
             </div>
+            				
+			<br>
+			<div class="locationType">
+				카테고리 선택:&nbsp&nbsp
+				<select name="category" required>
+					<option hidden></option>
+					<option value="culture" <c:if test="${list[0].category eq 'culture' }"> selected=true </c:if>>문화재</option>
+					<option value="park" <c:if test="${list[0].category eq 'park' }"> selected=true </c:if>>자연 & 공원</option>
+					<option value="museum" <c:if test="${list[0].category eq 'museum' }"> selected=true </c:if>>박물관 & 미술관</option>
+					<option value="attraction" <c:if test="${list[0].category eq 'attraction' }"> selected=true </c:if>>명소</option>						
+				</select>
+			</div>
+			<br>
            				
 			<div class="locationName">
-				<input type="text" class="form-control" id="locationName" placeholder="여행지 이름을 입력하세요" name="locationName" value="${dto.locationName }" required>
+				<input type="text" class="form-control" id="locationName" placeholder="여행지 이름을 입력하세요" name="locationName" value="${list[0].locationName }" required>
 			</div>
 			
 			<div class="locationAddr">
-				<input type="text" class="form-control" id="locationAddr" placeholder="여행지 주소를 입력하세요" name="locationAddr" value="${dto.locationAddr }" required>
+				<input type="text" class="form-control" id="locationAddr" placeholder="여행지 주소를 입력하세요" name="locationAddr" value="${list[0].locationAddr }" required>
 			</div>
-			
+			<div class="phoneNum">
+				<input type="text" class="form-control" id="phoneNum" placeholder="전화번호를 입력하세요" name="phoneNo" value="${list[0].phoneNo }" >
+			</div>
+			<div class="homepage">
+				<input type="text" class="form-control" id="homepage" placeholder="홈페이지 주소를 입력하세요" name="homepage" value="${list[0].homepage }" >
+			</div>
+			<div class="businessHour">
+				<input type="text" class="form-control" id="businessHour" placeholder="운영시간을 입력하세요" name="businessHour" value="${list[0].businessHour }">
+			</div>
+			<div class="fee">
+				<input type="text" class="form-control" id="fee" placeholder="입장료를 입력하세요" name="fee" value="${list[0].fee }" >
+			</div>
+			<br>
+				
             <div class="content">
-                <textarea id="content" placeholder="내용을 입력하세요" name="content">${dto.content }</textarea>
+            	이미지를 뺀 본문 글 필히  &lt;div id=&quot;detail&quot;&gt;&lt;/div&gt;로 감싸주세요.
+                <textarea id="content" placeholder="내용을 입력하세요" name="content">${list[0].content }</textarea>
                 <Script>
 					var ckeditor_config = {
 						resize_enaleb : false,
