@@ -2,6 +2,8 @@
  * 
  */
 
+var isUsernameDupChecked = false;
+
 $(function() {
 	
 	$("#password").change(comparePwInput);
@@ -17,12 +19,34 @@ $(function() {
 	});
 });
 
+
 var comparePwInput = function() {
 	if ($("#password").val() != $("#repassword").val()) {
 		$("#pwNotMatching").text("입력하신 두 비밀번호가 일치하지 않습니다.");
 	} else {
 		$("#pwNotMatching").text("");
 	}
+}
+
+function checkUsernameDup(){
+	console.log("jQuery checkUsernameDup() 호출");
+	const data = {
+		"username" : $("#username").val()
+	}
+	var url = "/ajax/checkUsernameDup";	
+	$.ajax({
+		url :  url,
+		type : "POST",
+		data : data,
+		cache: false,
+	}).done(function(data){
+		if(data.status == "Ok"){			
+				alert(data);
+				$("#checkUsernameDup").attr("disabled", true);
+		}else{
+				alert("인증코드 발송에 실패하였습니다.")			
+		}
+	});
 }
 
 function sendCode(){
