@@ -153,10 +153,10 @@ public class TravelController {
 	}
 	@GetMapping("/culture/view")
 	public String cultureView(int uid, Model model, RedirectAttributes redirect) {
-		List<LocationDTO> result = (List<LocationDTO>)redirect.getAttribute("result");
+		List<LocationDTO> result = (List<LocationDTO>)redirect.getFlashAttributes().get("result");
 		
 		if(result==null || result.isEmpty()) {
-			result = locationService.selectByUid(uid);
+			result = locationService.viewByUid(uid);
 			LocationDTO dto = result.get(0);
 			dto.setContent(locationService.getContentDetail(dto));
 			result.set(0, dto);
