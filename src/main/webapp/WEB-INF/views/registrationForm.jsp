@@ -32,7 +32,7 @@
 					<div class="form-group">
 						<label for="username">아이디*: </label><span class="text-danger"><b> ${errUsername }</b></span><br>
 						<input type="text" name="username" id="username" style="width:60%;" value="${w.username }" required/>
-						<input type="button" id="checkUsername" style="width:39%; min-height: 45px" value="인증번호 전송" onclick="checkUsernameDup()"><br><br>
+						<input type="button" id="checkUsername" style="width:39%; min-height: 45px" value="아이디 중복 확인" onclick="checkUsernameDup()"><br><br>
 						<br><br>
 					</div>
 					
