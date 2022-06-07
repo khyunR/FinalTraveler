@@ -142,7 +142,7 @@ public class TravelController {
 		List<LocationDTO> result = (List<LocationDTO>)redirect.getAttribute("result");
 		
 		if(result==null || result.isEmpty()) {
-			result = locationService.selectByUid(uid);
+			result = locationService.viewByUid(uid);
 			LocationDTO dto = result.get(0);
 			dto.setContent(locationService.getContentDetail(dto));
 			result.set(0, dto);
@@ -170,7 +170,7 @@ public class TravelController {
 		List<LocationDTO> result = (List<LocationDTO>)redirect.getAttribute("result");
 		
 		if(result==null || result.isEmpty()) {
-			result = locationService.selectByUid(uid);
+			result = locationService.viewByUid(uid);
 			LocationDTO dto = result.get(0);
 			dto.setContent(locationService.getContentDetail(dto));
 			result.set(0, dto);
@@ -184,7 +184,7 @@ public class TravelController {
 		List<LocationDTO> result = (List<LocationDTO>)redirect.getAttribute("result");
 		
 		if(result==null || result.isEmpty()) {
-			result = locationService.selectByUid(uid);
+			result = locationService.viewByUid(uid);
 			LocationDTO dto = result.get(0);
 			dto.setContent(locationService.getContentDetail(dto));
 			result.set(0, dto);

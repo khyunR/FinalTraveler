@@ -115,6 +115,7 @@
 				<p>
 					<label>후기 작성자</label> <input type="text" name="username" value="${principal.username }" disabled/>
 					<input type="hidden" name="mb_uid" value="${principal.uid }"/>
+					<input type="hidden" name="accommo_uid" value="1"/>
 				</p>
 				<p>
 					<textarea rows="5" cols="40" name="content" ></textarea>
