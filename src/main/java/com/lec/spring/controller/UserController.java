@@ -16,6 +16,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.lec.spring.config.PrincipalDetails;
 import com.lec.spring.domain.UserDTO;
+import com.lec.spring.service.ReservationService;
 import com.lec.spring.service.UserService;
 
 @Controller
@@ -24,6 +25,10 @@ public class UserController {
 
 	@Autowired
 	UserService userService;
+
+	@Autowired
+	ReservationService reservationService;
+	
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 	
@@ -33,7 +38,10 @@ public class UserController {
 	}
 	
 	@RequestMapping("/mypage")
-	public String mypage() {
+	public String mypage(Model model) {
+		PrincipalDetails principal = (PrincipalDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		UserDTO user = principal.getUser();	
+		model.addAttribute("reservationList", reservationService.selectByMb_uid(user.getUid()));
 		return "/user/mypage";
 	}
 	
@@ -113,5 +121,12 @@ public class UserController {
 			model.addAttribute("result", result);
 		}
 		return page;
+	}
+	
+	@RequestMapping("/cancelReservation")
+	public String cancelReservation(int uid, Model model) {
+		System.out.println("cancelling reservation uid " + uid);
+		model.addAttribute("result", reservationService.delete(uid));
+		return "/reservation/cancelOk";
 	}
 }

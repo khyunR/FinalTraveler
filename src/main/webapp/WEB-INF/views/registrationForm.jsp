@@ -31,8 +31,8 @@
 				<form method="POST" name="registration" id="registration" action="${pageContext.request.contextPath }/registerOk">
 					<div class="form-group">
 						<label for="username">아이디*: </label><span class="text-danger"><b> ${errUsername }</b></span><br>
-						<input type="text" name="username" id="username" style="width:60%;" value="${w.username }" required>
-						<input type="button" id="checkUsernameDup" style="width:39%; min-height: 45px" value="아이디 중복 확인" onclick="checkUsernameDup()"><br><br>
+						<input type="text" name="username" id="username" style="width:60%;" value="${w.username }" required/>
+						<input type="button" id="checkUsername" style="width:39%; min-height: 45px" value="인증번호 전송" onclick="checkUsernameDup()"><br><br>
 						<br><br>
 					</div>
 					
@@ -51,7 +51,7 @@
 						<input type="email" name="email" id="email" value="${w.email }" style="width:60%" required>
 						<input type="button" id="sendVerificationCode" style="width:39%; min-height: 45px" value="인증번호 전송" onclick="sendCode()"><br><br>
 						<input type="text" name="verificationCode" id="verificationCode" value="" style="width:60%" required>
-						<input type="button" id="verifyEmail" style="width:39%; min-height: 45px" value="인증번호 확인" onclick="checkCode()" disabled><br><br>					
+						<input type="button" id="verifyEmail" style="width:39%; min-height: 45px" value="인증번호 확인" onclick="checkCode()"><br><br>					
 						<label for="mobile">휴대폰 번호('-' 제외) : </label><span class="text-danger"><b> ${errMobile }</b></span><br>
 						<input type="text" name="mobile" id="mobile" class="form-control" value="${w.mobile }" ><br><br>
 					</div>

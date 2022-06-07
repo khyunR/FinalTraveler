@@ -13,12 +13,14 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/common.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/notice.css" />
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/js/mypage.js"></script>
 	<title>마이페이지</title>
+	
 </head>
 <body>
 	<div id="wrap">
@@ -86,6 +88,27 @@
 				</form>
 			</div>
 			
+			<div class="notice_list">
+		        <table id="table_menu">
+		          <thead class="title">
+		            <tr>
+		              <th style="width:40%; height:40px; text-align:center;">예약 숙소 이름</th>
+		              <th style="width:40%; height:40px; text-align:center;">예약 날짜</th>
+		              <th style="width:20%; height:40px; text-align:center;"> </th>
+		            </tr>
+		          </thead>
+		          <tbody>
+		          	<c:forEach var="dto" items="${ reservationList }">
+			            <tr>
+		                    <td>${dto.accommoName }</td>
+		                    <td>${dto.resDate }</td>
+		                    <td><button type="button" onclick="deleteChk(${dto.uid}, '${dto.accommoName}', '${dto.resDate}')">예약 취소</button></td>
+			            </tr>
+		          	</c:forEach>
+		          </tbody>
+		        </table>
+	        </div>
+			
 		</div>
 	
 	</div>
@@ -115,4 +138,7 @@
 	</footer>
 	
 </body>
+	<script>
+
+	</script>
 </html>

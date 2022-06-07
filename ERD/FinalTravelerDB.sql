@@ -3,9 +3,10 @@ SET SESSION FOREIGN_KEY_CHECKS=0;
 /* Drop Tables */
 
 DROP TABLE IF EXISTS t_accommo_review;
+DROP TABLE IF EXISTS t_reservation;
+DROP TABLE IF EXISTS t_accommo;
 DROP TABLE IF EXISTS t_authority;
 DROP TABLE IF EXISTS t_post_location;
-DROP TABLE IF EXISTS t_reservation;
 DROP TABLE IF EXISTS FinalTraveler.t_post_notice;
 DROP TABLE IF EXISTS t_member;
 
@@ -14,12 +15,23 @@ DROP TABLE IF EXISTS t_member;
 
 /* Create Tables */
 
+CREATE TABLE t_accommo
+(
+	uid int NOT NULL AUTO_INCREMENT,
+	name varchar(50),
+	price int,
+	PRIMARY KEY (uid)
+);
+
+
 CREATE TABLE t_accommo_review
 (
 	uid int NOT NULL AUTO_INCREMENT,
 	mb_uid int NOT NULL,
+	accommo_uid int NOT NULL,
 	content text NOT NULL,
 	regDate datetime DEFAULT now(),
+	accommoName varchar(50),
 	PRIMARY KEY (uid)
 );
 
@@ -71,11 +83,10 @@ CREATE TABLE t_post_location
 CREATE TABLE t_reservation
 (
 	uid int NOT NULL AUTO_INCREMENT,
+	accommo_uid int NOT NULL,
 	mb_uid int NOT NULL,
-	accommoName varchar(20) NOT NULL,
-	resDate datetime NOT NULL,
-	resPeriod int NOT NULL,
-	price int NOT NULL,
+	resDate date NOT NULL,
+	accommoName varchar(50),
 	PRIMARY KEY (uid)
 );
 
@@ -94,6 +105,22 @@ CREATE TABLE FinalTraveler.t_post_notice
 
 
 /* Create Foreign Keys */
+
+ALTER TABLE t_accommo_review
+	ADD FOREIGN KEY (accommo_uid)
+	REFERENCES t_accommo (uid)
+	ON UPDATE RESTRICT
+	ON DELETE RESTRICT
+;
+
+
+ALTER TABLE t_reservation
+	ADD FOREIGN KEY (accommo_uid)
+	REFERENCES t_accommo (uid)
+	ON UPDATE RESTRICT
+	ON DELETE CASCADE
+;
+
 
 ALTER TABLE t_accommo_review
 	ADD FOREIGN KEY (mb_uid)
@@ -130,7 +157,7 @@ ALTER TABLE t_reservation
 ALTER TABLE FinalTraveler.t_post_notice
 	ADD FOREIGN KEY (mb_uid)
 	REFERENCES t_member (uid)
-	ON UPDATE RESTRICT
+	ON UPDATE NO ACTION
 	ON DELETE NO ACTION
 ;
 

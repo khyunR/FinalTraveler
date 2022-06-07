@@ -22,8 +22,8 @@
 		useGeneratedKeys="true"
 		keyColumn="uid" keyProperty="uid"
 		flushCache="true">
-    	insert into t_accommo_review(mb_uid, content)
-        	value(#{mb_uid}, #{content})
+    	insert into t_accommo_review(mb_uid, content, accommo_uid)
+        	value(#{mb_uid}, #{content}, 1)
 	</insert>
     
 <!-- 댓글 수정 -->

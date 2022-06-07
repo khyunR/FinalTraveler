@@ -2,13 +2,14 @@
  * 
  */
 
-var isUsernameDupChecked = false;
 
 $(function() {
 	
 	$("#password").change(comparePwInput);
 	
 	$("#repassword").change(comparePwInput);
+	
+	$("#username").change(idChanged);
 
 	$("#mobile").keyup(function() {
 		$(this).val($(this).val().replace(/[^0-9]/g, "").replace(/(^02.{0}|^01.{1}|[0-9]{3})([0-9]+)([0-9]{4})/, "$1-$2-$3").replace("--", "-"));
@@ -19,12 +20,26 @@ $(function() {
 	});
 });
 
-
+var idChanged = function(){
+	$("#checkUsername").attr("disabled", false);
+	if(isAllChecked()){			
+		$("#submitFormBtn").removeAttr("disabled");
+	}else{
+		$("#submitFormBtn").attr("disabled", true);
+	}
+}
 var comparePwInput = function() {
 	if ($("#password").val() != $("#repassword").val()) {
 		$("#pwNotMatching").text("입력하신 두 비밀번호가 일치하지 않습니다.");
 	} else {
 		$("#pwNotMatching").text("");
+		
+	}
+	
+	if(isAllChecked()){			
+		$("#submitFormBtn").removeAttr("disabled");
+	}else{
+		$("#submitFormBtn").attr("disabled", true);
 	}
 }
 
@@ -38,18 +53,24 @@ function checkUsernameDup(){
 		url :  url,
 		type : "POST",
 		data : data,
-		cache: false,
+		cache: false
 	}).done(function(data){
-		if(data.status == "Ok"){			
-				alert(data);
-				$("#checkUsernameDup").attr("disabled", true);
+		if(data.count!=0){
+			alert("중복되는 아이디가 존재합니다.")
 		}else{
-				alert("인증코드 발송에 실패하였습니다.")			
+			alert("사용 가능한 아이디입니다.");
+			$("#checkUsername").attr("disabled", true);
+			if(isAllChecked()){			
+				$("#submitFormBtn").removeAttr("disabled");
+			}else{
+				$("#submitFormBtn").attr("disabled", true);
+			}
 		}
 	});
 }
 
 function sendCode(){
+	$("#verifyEmail").attr("disabled", false);
 	console.log("jQuery sendCode() 호출");
 	const data = {
 		"emailAddr" : $("#email").val()
@@ -85,9 +106,21 @@ function checkCode(){
 	}).done(function(data){
 		if(data.status == "Ok"){			
 			alert("이메일 인증에 성공하였습니다.");
-			$("#submitFormBtn").removeAttr("disabled");
+			$("#verifyEmail").attr("disabled", true);			
+			if(isAllChecked()){			
+				$("#submitFormBtn").removeAttr("disabled");
+			}else{
+				$("#submitFormBtn").attr("disabled", true);
+			}
 		}else{
 			alert("인증에 실패하였습니다.")		
 		}
 	});
+}
+
+function isAllChecked(){
+	var isIdChecked = $("#checkUsername").attr("disabled");
+	var isPasswordMatches = $("#pwNotMatching").text() == "";
+	var isEmailChecked = $("#verifyEmail").attr("disabled");
+	return isIdChecked && isPasswordMatches && isEmailChecked;
 }

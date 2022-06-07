@@ -76,8 +76,15 @@
     </div>
     <div class="room_choose">
         <p>가격</p>
-        <input name="birth" type="date" class="room_date" placeholder="날짜"/>
-        <button id="button1" type="submit" class="room_res">예약</button>
+        <form name="reservarionForm" action="${pageContext.request.contextPath }/reservation/makeOk" method="POST">
+        <input name="resDate" type="date" class="room_date" placeholder="날짜"/>
+        <input name="accommo_uid" type="hidden" value="1"/>
+        <input name="accommoName" type="hidden" value="페어필드 바이 메리어트"/>
+        <sec:authorize access="isAuthenticated()">
+	        <input name="mb_uid" type="hidden" value="${principal.uid }"/>
+	        <button id="button1" type="submit" class="room_res">예약</button>
+        </sec:authorize>
+        </form>
     </div>
     <div class="room_pics">
         <img src="${pageContext.request.contextPath}/images/hotel1-1.jpg" alt="페어필드 바이 메리어트 서울">
@@ -143,12 +150,6 @@
                 </p>
             </div>
         </footer>
-	
-	<script>
-	$("#button1").click(function() {
-	alert("숙소 예약되었습니다.");
-	});
-	</script>
 
     
    

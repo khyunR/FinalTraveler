@@ -85,3 +85,11 @@ function checkCode(){
 		}
 	});
 }
+
+function deleteChk(uid, accommoName, resDate){
+	var result = window.confirm(accommoName + " : " + resDate + " 예약을 취소하시겠습니까?");
+	if(result){
+		location.href = "cancelReservation?uid="+uid;
+	}
+}
+	
