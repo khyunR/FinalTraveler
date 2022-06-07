@@ -75,7 +75,7 @@
         <img src="${pageContext.request.contextPath}/images/hotel1.jpg" alt="페어필드 바이 메리어트 서울">
     </div>
     <div class="room_choose">
-        <p>price</p>
+        <p>가격</p>
         <input name="birth" type="date" class="room_date" placeholder="날짜"/>
         <button id="button1" type="submit" class="room_res">예약</button>
     </div>
@@ -104,12 +104,13 @@
 			</ul> 
 		    <sec:authorize access="isAuthenticated()">
 				<form method="POST" action="writeReviewOk">
+				<h2>후기</h2>
 				<p>
 					<label>후기 작성자</label> <input type="text" name="username" value="${principal.username }" disabled/>
 					<input type="hidden" name="mb_uid" value="${principal.uid }"/>
 				</p>
 				<p>
-					<textarea rows="5" cols="50" name="content" ></textarea>
+					<textarea rows="5" cols="40" name="content" ></textarea>
 				</p>
 				<p>
 					<button type="submit" id="button1">후기 작성</button>

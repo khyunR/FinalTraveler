@@ -43,7 +43,7 @@
 .room_res{
     width: 70px;
     height: 25px;
-    margin-left: 50px;
+    margin-right: 50px;
     margin-top: 100px;
 }
 
@@ -59,7 +59,7 @@
     width: 800px;
     height: 200px;
     margin-left: 400px;
-    padding-top: 50px;
+    padding-top: 80px;
     text-align: center;
     font-weight: 900;
 }
@@ -78,6 +78,8 @@
 	margin-left: 500px;
 	
 }
+
+
 
 
 
